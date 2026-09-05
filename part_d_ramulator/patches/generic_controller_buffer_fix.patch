@@ -1,0 +1,13 @@
+diff --git a/src/dram_controller/impl/generic_dram_controller.cpp b/src/dram_controller/impl/generic_dram_controller.cpp
+index a1f9f9b..b495b6a 100644
+--- a/src/dram_controller/impl/generic_dram_controller.cpp
++++ b/src/dram_controller/impl/generic_dram_controller.cpp
+@@ -71,6 +71,8 @@ class GenericDRAMController final : public IDRAMController, public Implementatio
+       m_dram = memory_system->get_ifce<IDRAM>();
+       m_bank_addr_idx = m_dram->m_levels("bank");
+       m_priority_buffer.max_size = 512*3 + 32;
++      m_read_buffer.max_size = 16384;
++      m_write_buffer.max_size = 16384;
+ 
+       m_num_cores = frontend->get_num_cores();
+ 

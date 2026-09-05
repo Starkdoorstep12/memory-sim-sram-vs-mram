@@ -7,3 +7,6 @@ autoconf-*.tar.gz
 *.tmp
 
 # large raw simulation output (keep plots/summaries, not every raw csv, unless small)
+
+# CACTI source/build (tool dependency, not part of the assignment deliverable)
+cacti-src/

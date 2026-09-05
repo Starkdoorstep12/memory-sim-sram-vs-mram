@@ -1,5 +1,5 @@
 diff --git a/src/frontend/impl/memory_trace/readwrite_trace.cpp b/src/frontend/impl/memory_trace/readwrite_trace.cpp
-index cee6a27..4a0671a 100644
+index cee6a27..c9bee39 100644
 --- a/src/frontend/impl/memory_trace/readwrite_trace.cpp
 +++ b/src/frontend/impl/memory_trace/readwrite_trace.cpp
 @@ -21,6 +21,7 @@ class ReadWriteTrace : public IFrontEnd, public Implementation {
@@ -10,9 +10,12 @@ index cee6a27..4a0671a 100644
  
      Logger_t m_logger;
  
-@@ -40,6 +41,9 @@ class ReadWriteTrace : public IFrontEnd, public Implementation {
+@@ -38,8 +39,11 @@ class ReadWriteTrace : public IFrontEnd, public Implementation {
+ 
+     void tick() override {
        const Trace& t = m_trace[m_curr_trace_idx];
-       m_memory_system->send({t.addr_vec, t.is_write ? Request::Type::Write : Request::Type::Read});
+-      m_memory_system->send({t.addr_vec, t.is_write ? Request::Type::Write : Request::Type::Read});
++      m_memory_system->send({t.addr_vec[0], t.is_write ? Request::Type::Write : Request::Type::Read});
        m_curr_trace_idx = (m_curr_trace_idx + 1) % m_trace_length;
 +        if (m_curr_trace_idx == 0) {
 +          m_finished = true;

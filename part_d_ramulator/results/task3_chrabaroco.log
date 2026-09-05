@@ -1,0 +1,59 @@
+[Ramulator::ReadWriteTrace] [info] Loading trace file ../traces/l2miss.trace ...
+[Ramulator::ReadWriteTrace] [info] Loaded 5000 lines.
+Frontend:
+  impl: ReadWriteTrace
+
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 101
+  total_num_read_requests: 3529
+  memory_system_cycles: 1875
+  DRAM:
+    impl: DDR4
+  AddrMapper:
+    impl: ChRaBaRoCo
+
+
+  Controller:
+    impl: Generic
+    id: Channel 0
+    avg_read_latency_0: 265.856903
+    read_queue_len_avg_0: 832.790405
+    write_queue_len_0: 61186
+    queue_len_0: 1623408
+    num_other_reqs_0: 0
+    num_write_reqs_0: 1471
+    read_latency_0: 938209
+    priority_queue_len_avg_0: 0.394666672
+    row_hits_0: 51
+    priority_queue_len_0: 740
+    row_misses_0: 17
+    row_conflicts_0: 0
+    read_row_misses_0: 0
+    queue_len_avg_0: 865.817627
+    read_row_conflicts_core_0: 0
+    read_row_hits_0: 0
+    write_queue_len_avg_0: 32.632534
+    read_row_conflicts_0: 0
+    write_row_misses_0: 17
+    write_row_conflicts_0: 0
+    read_queue_len_0: 1561482
+    write_row_hits_0: 51
+    read_row_hits_core_0: 0
+    read_row_misses_core_0: 0
+    num_read_reqs_0: 3529
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+    RowPolicy:
+      impl: ClosedRowPolicy
+      num_close_reqs: 17
+    ControllerPlugin:
+      impl: TraceRecorder
+
+
+

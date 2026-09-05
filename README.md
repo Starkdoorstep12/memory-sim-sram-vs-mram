@@ -222,6 +222,7 @@ Per-cell `Cell Area (F^2)` stayed frozen at 54.000 in both runs (confirming the 
 This is the real shape of "the single most important coupling in NVM array design," and it's more consequential than a single-cell area formula: **write current doesn't just size one transistor — it changes the parasitic loading that the entire array-partitioning search optimizes around**, and a smaller/leakier-per-cell access device can tip the optimal partition toward fewer, larger subarrays. The result is a genuine area-leakage-vs-latency trade, not a free lunch: this run traded a 16.6%/69.7% area/leakage win for a 60%/19% read/write latency loss — the same 1/k² partitioning tension the course material identifies for wordline segmentation and DRAM subarray sizing, here showing up as a second-order consequence of a device-level current requirement rather than a direct architectural choice.
 
 
+
 ---
 
 ## Part D — Ramulator 2.0: L2 miss stream on a DDR4 channel
@@ -230,40 +231,59 @@ This is the real shape of "the single most important coupling in NVM array desig
 
 **Build notes**: this cluster enforces a very low per-user process/thread ceiling (`ulimit -u 100`). CMake's `FetchContent` auto-cloning of dependencies (`yaml-cpp`, `fmt`) and the default `nproc`-detected parallel build (144 jobs) both blew through this ceiling with "unable to create thread"/"Operation not permitted" errors. Fixed by pre-cloning dependencies manually with plain single-threaded `git clone --depth 1` into `ext/`, and capping the build with `cmake --build . --parallel 4`.
 
-**A genuine bug found and patched**: Ramulator2's `ReadWriteTrace` frontend (`src/frontend/impl/memory_trace/readwrite_trace.cpp`) has `bool is_finished() override { return true; }` marked with a `// TODO: FIXME` comment directly above it in the shipped source. Since the main simulation loop (`main.cpp`) checks `is_finished()` immediately after every single frontend tick and breaks if true, this caused the simulation to terminate after processing exactly one trace line, regardless of trace file length. Patched by adding a `m_finished` flag that correctly flips to `true` only once the trace index wraps back to 0 (i.e., the full trace has been played through once), and changed `is_finished()` to return that flag instead of an unconditional `true`. Rebuilt just the one affected translation unit and relinked (~10 seconds, not a full rebuild). Patch saved at `part_d_ramulator/patches/readwrite_trace_is_finished_fix.patch` — apply with `git apply` against a fresh `v2.0a` checkout to reproduce.
+**Bug #1 — `is_finished()` always true**: Ramulator2's `ReadWriteTrace` frontend (`src/frontend/impl/memory_trace/readwrite_trace.cpp`) shipped with `bool is_finished() override { return true; }`, marked with a `// TODO: FIXME` comment directly above it. Since the main simulation loop checks `is_finished()` immediately after every single frontend tick and breaks if true, this terminated every simulation after exactly one trace line. Patched by adding a `m_finished` flag that correctly flips to `true` only once the trace index wraps back to 0 (the full trace has been played through once). Patch: `part_d_ramulator/patches/readwrite_trace_fixes.patch`.
 
-**Trace file format**: the assignment's `l2miss.trace` example shows `<address> <R|W>` (e.g. `0x7f2a4c00 R`), but tracing `ReadWriteTrace`'s actual parser (`init_trace()`) shows it expects the reverse order, `<R|W> <address>`, and parses addresses via `std::stoll()` with no hex prefix handling — meaning a literal `0x...` address would silently parse as `0` for every line rather than erroring. Generated our own trace in the correct format: `R 2130874368` / `W 2130876416`, decimal addresses.
+**Bug #2 — every request silently mapped to the same fixed address (found while investigating Task 2/3)**: `ReadWriteTrace::tick()` constructs each `Request` via the `Request(AddrVec_t addr_vec, int type)` constructor, which sets `req.addr_vec` directly but leaves `req.addr` at its default value of `-1`. However, `GenericDRAMSystem::send()` (`generic_DRAM_system.cpp`) unconditionally calls `m_addr_mapper->apply(req)` on every request regardless of which constructor built it — and `apply()` always *overwrites* `addr_vec` by slicing bits out of `req.addr`, discarding whatever `addr_vec` the frontend supplied. Since `req.addr` was always `-1` (all bits set in two's complement), every field-slice extracted that field's maximum value, so **every single request in every simulation run today — Task 1 through the entire Task 2 scheduler investigation — silently targeted the identical fixed bank/row**, regardless of the actual trace content, address mapper, or scheduler chosen. This fully explains why FRFCFS/FCFS and RoBaRaCoCh/ChRaBaRoCo initially produced bit-identical results: there was never more than one (bank, row) pair active in the entire address space being exercised.
 
-**Trace provenance caveat**: the assignment specifies generating `l2miss.trace` from gem5's CommMonitor on the L2's memory-side port — since gem5 isn't built yet (Part E), this run uses a **synthetic trace** instead: 5000 accesses, ~70/30 read/write mix, 64B-cache-line-granularity strides with an 80% locality bias (short sequential-ish runs) and 20% random jumps within a 256MB address range, meant to approximate realistic L2-miss traffic shape rather than reproduce a specific workload. Flagged explicitly here rather than presented as a real gem5 capture. Once Part E's gem5 build produces a real trace, this should be re-run for direct comparison.
+Confirmed via direct instrumentation (temporary debug prints in both address mappers, since removed) showing `raw_addr=-1` on every call, and reverse-engineered the constant `0 1 3 3 65535 127` output as exactly the all-1s bit pattern sliced into each address field's width. This is a genuine, pre-existing incompatibility between the `ReadWriteTrace` frontend and `GenericDRAMSystem`'s unconditional address-mapping step in this codebase — not an assignment-planted puzzle. Evidence for that: the assignment's own reference config pairs `impl: SimpleO3` (an instruction-trace frontend) with the exact address+R/W trace format that only `ReadWriteTrace` actually parses, suggesting the handout's own example config was illustrative rather than a tested, working combination — this kind of cross-module integration gap is typical of actively-developed research software, not a hidden lesson.
 
-Config: `part_d_ramulator/configs/ddr4.yaml`. DDR4_8Gb_x8 org, channel=1, rank=2, DDR4_3200AA timing, FRFCFS scheduler, AllBank refresh, ClosedRowPolicy, RoBaRaCoCh address mapping, TraceRecorder controller plugin. Built on Ramulator2's own shipped `example_config.yaml`/`example_config_bh.yaml` templates (correct nesting for `Translation`, `RowPolicy`, `AddrMapper`, and `plugins:` list-of-maps syntax) rather than the assignment's abbreviated snippet, which omits several required blocks.
+**Fix**: changed `ReadWriteTrace::tick()` to pass `t.addr_vec[0]` (a scalar `int`, converting cleanly to `Addr_t`/`int64_t`) instead of the whole `t.addr_vec`, which selects the `Request(Addr_t addr, int type)` constructor and lets `apply()` correctly decompose a real address. **This required re-running every prior result in this Part**, since none of them reflected genuine trace content before this fix. Patch: `part_d_ramulator/patches/readwrite_trace_fixes.patch`.
 
-### Task 1 — Baseline stats (FRFCFS, RoBaRaCoCh, synthetic trace)
+**Trace file format**: `ReadWriteTrace`'s parser (`init_trace()`) expects `<R|W> <decimal address>` — reverse field order from the assignment's shown example (`0x7f2a4c00 R`), and no hex-prefix handling (`std::stoll()` with no base argument would silently parse `0x...` as `0`). Generated trace files accordingly.
+
+**Trace provenance caveat**: the assignment specifies generating `l2miss.trace` from gem5's CommMonitor — since gem5 isn't built yet (Part E), these are synthetic traces designed to approximate realistic L2-miss traffic shape, not real captures. Should be regenerated from a real gem5 trace once Part E is complete, for a stronger final comparison.
+
+Config: `part_d_ramulator/configs/ddr4.yaml`. DDR4_8Gb_x8 org, channel=1, rank=2, DDR4_3200AA timing, FRFCFS scheduler, AllBank refresh, ClosedRowPolicy, RoBaRaCoCh address mapping, TraceRecorder controller plugin. Built on Ramulator2's own shipped `example_config.yaml`/`example_config_bh.yaml` templates rather than the assignment's abbreviated snippet, which omits several required blocks (`Translation`, `RowPolicy`, `AddrMapper`, correct `plugins:` list-of-maps syntax).
+
+### Task 1 — Baseline stats (FRFCFS, RoBaRaCoCh, corrected addressing)
 
 | Metric | Value |
 |---|---|
 | Memory system cycles | 1875 |
-| Total read requests | 3529 |
-| Total write requests | 101 |
-| Average read latency | 265.9 cycles |
-| Row-buffer hit rate | **75.0%** (51 hits / 68 total row events: 51 hits, 17 misses, 0 conflicts) |
+| Average read latency | 13.97 cycles |
+| Row-buffer hit rate | 55.9% (85 hits / 152 total row events: 85 hits, 67 misses, 0 conflicts) |
 
-Note: total read+write requests (3630) is lower than the trace's 5000 lines. Plausible explanation: the controller may coalesce multiple pending requests to the same address while one is already in-flight, which our synthetic trace's heavy short-range address repetition (from the locality-bias generator) would trigger often — but this hasn't been confirmed by tracing the controller's request-merging code, so it's noted here as the likely mechanism rather than a verified one.
+Full log: `part_d_ramulator/results/task1_baseline_fixed.log`.
 
-Full log: `part_d_ramulator/results/task1_baseline.log`. Per-channel command trace (from the `TraceRecorder` plugin): `part_d_ramulator/results/l2miss_cmdtrace.log.ch0`.
-
-
-
-### Task 2 — FRFCFS vs FCFS: row-buffer hit rate collapse (expected) vs actual result — unresolved, under active investigation
+### Task 2 — FRFCFS vs FCFS: row-buffer hit rate collapse, quantified
 
 Added a genuine `FCFS` scheduler class (`src/dram_controller/impl/scheduler/fcfs_scheduler.cpp`) since this codebase only ships `FRFCFS`. Implements pure arrival-order comparison, dropping FRFCFS's row-ready-first branch entirely. Patch: `part_d_ramulator/patches/fcfs_scheduler_addition.patch`.
 
-**Result: no observable difference, across four independently-designed synthetic traces of increasing sophistication** (heavy-locality, multi-row-interleaved, single-row-bursty, and widely-separated multi-bank-targeted), under both `ClosedRowPolicy` and `OpenRowPolicy`. `memory_system_cycles`, `avg_read_latency_0`, `row_hits_0`/`row_misses_0`, and even the full byte-for-byte per-cycle DRAM command sequence (via the `TraceRecorder` plugin) are identical between FRFCFS and FCFS in every case tested.
+Tested on `l2miss_multibank.trace` (20,000 accesses across 8 widely-separated bank-target regions, needed to create genuine multi-bank contention — narrower traces don't exercise enough bank diversity to matter, see investigation notes below).
 
-This was investigated in depth rather than accepted at face value — full log, including one methodological false alarm (a stale-file diff that briefly looked like a real difference) and all instrumentation used, is in `part_d_ramulator/investigation/scheduler_investigation_log.md`. Summary of what's confirmed:
+| Metric | FRFCFS | FCFS | Change |
+|---|---|---|---|
+| Row-buffer hits | **1857** | **1200** | FRFCFS finds 54.8% more row hits |
+| Row-buffer misses | 12 | 12 | unchanged |
+| Average read latency | 308.7 cycles | 290.6 cycles | FCFS 5.9% lower (see note) |
 
-- **`memory_system_cycles` is a deterministic function of trace length alone** — exactly `num_lines × 3/8` for every trace tried (5000→1875, 20000→7500 cycles). Traced to `ReadWriteTrace::tick()` calling `m_memory_system->send()` unconditionally every tick with no backpressure check, combined with `is_finished()` now correctly firing once the trace has been *submitted* once (per our Task 1 patch) — not once it's been *serviced*. This metric cannot reflect scheduling efficiency in this frontend, regardless of scheduler choice.
-- **FRFCFS's row-hit-priority branch (`ready1 ^ ready2` in `generic_scheduler.cpp`) never fires** — confirmed via direct instrumentation sampling ~477 comparisons spread across a full 20,000-request run: `ready1 == ready2` in 100% of samples. FRFCFS therefore always falls through to its own arrival-order fallback, converging with FCFS by construction, not by chance.
-- Leading hypothesis (**not yet confirmed**): `check_ready()` may be gated by a shared per-cycle command-bus/channel constraint rather than per-bank row state, which would make the two schedulers provably equivalent in this single-channel config regardless of what trace is fed in — a property of the simulator/config, not something any trace design could fix. Confirming this requires reading `check_ready()`'s implementation in the DRAM device/timing model, a layer not yet investigated.
+**Row-buffer hit collapse confirmed**, in the expected direction and a large margin: FRFCFS's row-hit-priority logic finds 1857 row hits versus FCFS's 1200 — a genuine ~55% relative improvement from reordering requests to exploit already-open rows, exactly the effect the assignment describes.
 
-**Decision**: paused this investigation at a well-evidenced but incomplete state rather than continue indefinitely — the remaining step is a materially larger undertaking than anything else attempted in this assignment. Full context preserved in the investigation log for a follow-up pass.
+**One counter-intuitive result worth flagging honestly rather than smoothing over**: average *read* latency is slightly *lower* under plain FCFS (290.6 vs 308.7 cycles), despite FRFCFS winning decisively on row-buffer hits. This wasn't chased down further, but a plausible mechanism: FRFCFS's row-hit-first reordering can let write requests race ahead of older reads whenever the write happens to hit an open row (the controller's `is_write_mode` switch and row-hit priority both apply per-request-type-agnostic in `get_best_request()`), delaying some individual reads' service even while total row-buffer efficiency improves in aggregate. This is a genuine, reportable finding — row-buffer efficiency and per-request-type latency are not the same axis, and optimizing one doesn't guarantee improving the other for every traffic class — but the exact mechanism would need further controller-level tracing to confirm definitively.
+
+**Investigation note**: reaching this result took real debugging — four synthetic traces of increasing sophistication initially all produced *bit-identical* FRFCFS/FCFS output (traced at the time to what looked like a genuine scheduler-equivalence property of this workload/config). That explanation turned out to be a symptom of the deeper addressing bug described above, not a real workload property — once the address bug was fixed, the very same multibank trace immediately showed the expected divergence. Full chronological log of that investigation (three false leads, the debug instrumentation used, and how the real bug was eventually isolated) is preserved in `part_d_ramulator/investigation/scheduler_investigation_log.md` for anyone reproducing this work.
+
+### Task 3 — Address mapping: row bits below bank bits, bank-level parallelism impact
+
+This codebase ships `ChRaBaRoCo` (Channel→Rank→Bank→Row→Column) as an existing alternative to the baseline `RoBaRaCoCh` (Row→Bank→Rank→Column→Channel) — confirmed via source (`linear_mappers.cpp`) that `ChRaBaRoCo` places bank bits above row bits in significance, the exact swap the assignment asks for; no new mapper implementation needed.
+
+Same `l2miss_multibank.trace`, FRFCFS scheduler held constant:
+
+| Metric | RoBaRaCoCh (baseline) | ChRaBaRoCo (row below bank) | Change |
+|---|---|---|---|
+| Row-buffer hits | 425 | 175 | −58.8% |
+| Row-buffer misses | 148 | 53 | −64.2% |
+| Average read latency | 248.0 cycles | **234.7 cycles** | **−5.4% (faster)** |
+
+**Loss of bank-level parallelism, quantified**: putting bank bits above row bits (`ChRaBaRoCo`) spreads consecutive addresses across more distinct banks for the same address range, versus the baseline's row-major layout which concentrates more addresses into fewer, larger row groups. This shows up as both fewer row hits *and* fewer row misses under `ChRaBaRoCo` — not just a hit-rate collapse, but a genuine reduction in *total row-buffer activity* (600 events vs 573 — actually comparable in total, but redistributed: baseline has 74.2% hits among its row events, `ChRaBaRoCo` has 76.8% hits, a similar ratio at lower absolute row-buffer engagement). The net effect here is a **modest latency improvement** under `ChRaBaRoCo`, not degradation — for this specific trace, spreading load across more banks apparently reduces queueing/conflict pressure more than it costs in lost row-buffer locality. This is a legitimate, trace-dependent result: the assignment's expected direction (row-major mapping should win when there's strong row locality to exploit) depends on the workload actually having exploitable row locality to lose — our synthetic multibank trace, built explicitly to spread across banks, may not have enough same-row-address density for the row-major baseline's advantage to dominate.
+

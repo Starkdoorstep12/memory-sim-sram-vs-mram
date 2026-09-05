@@ -1,0 +1,69 @@
+[Ramulator::ReadWriteTrace] [info] Loading trace file ../traces/l2miss_multibank.trace ...
+[Ramulator::ReadWriteTrace] [info] Loaded 20000 lines.
+[ChRaBaRoCo] raw_addr=200001472 -> 0 0 0 0 24414 31 
+[ChRaBaRoCo] raw_addr=200001152 -> 0 0 0 0 24414 26 
+[ChRaBaRoCo] raw_addr=200001472 -> 0 0 0 0 24414 31 
+[ChRaBaRoCo] raw_addr=200001728 -> 0 0 0 0 24414 35 
+[ChRaBaRoCo] raw_addr=200000192 -> 0 0 0 0 24414 11 
+[ChRaBaRoCo] raw_addr=200000064 -> 0 0 0 0 24414 9 
+[ChRaBaRoCo] raw_addr=200001152 -> 0 0 0 0 24414 26 
+[ChRaBaRoCo] raw_addr=200002112 -> 0 0 0 0 24414 41 
+[ChRaBaRoCo] raw_addr=200003520 -> 0 0 0 0 24414 63 
+[ChRaBaRoCo] raw_addr=200002048 -> 0 0 0 0 24414 40 
+Frontend:
+  impl: ReadWriteTrace
+
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 274
+  total_num_read_requests: 925
+  memory_system_cycles: 7500
+  DRAM:
+    impl: DDR4
+  AddrMapper:
+    impl: ChRaBaRoCo
+
+
+  Controller:
+    impl: Generic
+    id: Channel 0
+    avg_read_latency_0: 234.687363
+    read_queue_len_avg_0: 33.0936012
+    write_queue_len_0: 246544
+    queue_len_0: 497034
+    num_other_reqs_0: 0
+    num_write_reqs_0: 5987
+    read_latency_0: 3288674
+    priority_queue_len_avg_0: 0.305066675
+    row_hits_0: 175
+    priority_queue_len_0: 2288
+    row_misses_0: 53
+    row_conflicts_0: 17
+    read_row_misses_0: 1
+    queue_len_avg_0: 66.2712021
+    read_row_conflicts_core_0: 0
+    read_row_hits_0: 2
+    write_queue_len_avg_0: 32.8725319
+    read_row_conflicts_0: 0
+    write_row_misses_0: 52
+    write_row_conflicts_0: 17
+    read_queue_len_0: 248202
+    write_row_hits_0: 173
+    read_row_hits_core_0: 0
+    read_row_misses_core_0: 0
+    num_read_reqs_0: 14013
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+    RowPolicy:
+      impl: ClosedRowPolicy
+      num_close_reqs: 52
+    ControllerPlugin:
+      impl: TraceRecorder
+
+
+

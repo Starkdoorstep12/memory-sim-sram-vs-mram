@@ -1,0 +1,10 @@
+# build tool sources (not part of the assignment deliverable)
+ngspice/
+ngspice-*.tar.gz
+autoconf-*/
+autoconf-*.tar.gz
+*.o
+*.tmp
+
+# large raw simulation output (keep plots/summaries, not every raw csv, unless small)
+part_a_ngspice/results/*.csv

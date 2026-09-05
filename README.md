@@ -221,3 +221,34 @@ Per-cell `Cell Area (F^2)` stayed frozen at 54.000 in both runs (confirming the 
 
 This is the real shape of "the single most important coupling in NVM array design," and it's more consequential than a single-cell area formula: **write current doesn't just size one transistor — it changes the parasitic loading that the entire array-partitioning search optimizes around**, and a smaller/leakier-per-cell access device can tip the optimal partition toward fewer, larger subarrays. The result is a genuine area-leakage-vs-latency trade, not a free lunch: this run traded a 16.6%/69.7% area/leakage win for a 60%/19% read/write latency loss — the same 1/k² partitioning tension the course material identifies for wordline segmentation and DRAM subarray sizing, here showing up as a second-order consequence of a device-level current requirement rather than a direct architectural choice.
 
+
+---
+
+## Part D — Ramulator 2.0: L2 miss stream on a DDR4 channel
+
+**Version note**: the assignment's example commands and config syntax (`$ ./ramulator2 -f ddr4.yaml`, flat `impl:` keys) match Ramulator2's `v2.0a` tag, not the current `main` branch — `main` has been restructured to a Python-only interface with no standalone CLI binary at all (confirmed: no `main.cpp`, no `add_executable` anywhere in that branch). Checked out `v2.0a` instead, which has `src/main.cpp` and builds a `ramulator2` executable directly.
+
+**Build notes**: this cluster enforces a very low per-user process/thread ceiling (`ulimit -u 100`). CMake's `FetchContent` auto-cloning of dependencies (`yaml-cpp`, `fmt`) and the default `nproc`-detected parallel build (144 jobs) both blew through this ceiling with "unable to create thread"/"Operation not permitted" errors. Fixed by pre-cloning dependencies manually with plain single-threaded `git clone --depth 1` into `ext/`, and capping the build with `cmake --build . --parallel 4`.
+
+**A genuine bug found and patched**: Ramulator2's `ReadWriteTrace` frontend (`src/frontend/impl/memory_trace/readwrite_trace.cpp`) has `bool is_finished() override { return true; }` marked with a `// TODO: FIXME` comment directly above it in the shipped source. Since the main simulation loop (`main.cpp`) checks `is_finished()` immediately after every single frontend tick and breaks if true, this caused the simulation to terminate after processing exactly one trace line, regardless of trace file length. Patched by adding a `m_finished` flag that correctly flips to `true` only once the trace index wraps back to 0 (i.e., the full trace has been played through once), and changed `is_finished()` to return that flag instead of an unconditional `true`. Rebuilt just the one affected translation unit and relinked (~10 seconds, not a full rebuild).
+
+**Trace file format**: the assignment's `l2miss.trace` example shows `<address> <R|W>` (e.g. `0x7f2a4c00 R`), but tracing `ReadWriteTrace`'s actual parser (`init_trace()`) shows it expects the reverse order, `<R|W> <address>`, and parses addresses via `std::stoll()` with no hex prefix handling — meaning a literal `0x...` address would silently parse as `0` for every line rather than erroring. Generated our own trace in the correct format: `R 2130874368` / `W 2130876416`, decimal addresses.
+
+**Trace provenance caveat**: the assignment specifies generating `l2miss.trace` from gem5's CommMonitor on the L2's memory-side port — since gem5 isn't built yet (Part E), this run uses a **synthetic trace** instead: 5000 accesses, ~70/30 read/write mix, 64B-cache-line-granularity strides with an 80% locality bias (short sequential-ish runs) and 20% random jumps within a 256MB address range, meant to approximate realistic L2-miss traffic shape rather than reproduce a specific workload. Flagged explicitly here rather than presented as a real gem5 capture. Once Part E's gem5 build produces a real trace, this should be re-run for direct comparison.
+
+Config: `part_d_ramulator/configs/ddr4.yaml`. DDR4_8Gb_x8 org, channel=1, rank=2, DDR4_3200AA timing, FRFCFS scheduler, AllBank refresh, ClosedRowPolicy, RoBaRaCoCh address mapping, TraceRecorder controller plugin. Built on Ramulator2's own shipped `example_config.yaml`/`example_config_bh.yaml` templates (correct nesting for `Translation`, `RowPolicy`, `AddrMapper`, and `plugins:` list-of-maps syntax) rather than the assignment's abbreviated snippet, which omits several required blocks.
+
+### Task 1 — Baseline stats (FRFCFS, RoBaRaCoCh, synthetic trace)
+
+| Metric | Value |
+|---|---|
+| Memory system cycles | 1875 |
+| Total read requests | 3529 |
+| Total write requests | 101 |
+| Average read latency | 265.9 cycles |
+| Row-buffer hit rate | **75.0%** (51 hits / 68 total row events: 51 hits, 17 misses, 0 conflicts) |
+
+Note: total read+write requests (3630) is lower than the trace's 5000 lines. Plausible explanation: the controller may coalesce multiple pending requests to the same address while one is already in-flight, which our synthetic trace's heavy short-range address repetition (from the locality-bias generator) would trigger often — but this hasn't been confirmed by tracing the controller's request-merging code, so it's noted here as the likely mechanism rather than a verified one.
+
+Full log: `part_d_ramulator/results/task1_baseline.log`. Per-channel command trace (from the `TraceRecorder` plugin): `part_d_ramulator/results/l2miss_cmdtrace.log.ch0`.
+

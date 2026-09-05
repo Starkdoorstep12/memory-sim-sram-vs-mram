@@ -1,0 +1,111 @@
+[Ramulator::ReadWriteTrace] [info] Loading trace file ../traces/l2miss_multibank.trace ...
+[Ramulator::ReadWriteTrace] [info] Loaded 20000 lines.
+[RoBaRaCoCh] raw_addr=200001472 -> 1 1 3 1 381 15 
+[RoBaRaCoCh] raw_addr=200001152 -> 0 1 3 1 381 13 
+[RoBaRaCoCh] raw_addr=200001472 -> 1 1 3 1 381 15 
+[RoBaRaCoCh] raw_addr=200001728 -> 1 1 3 1 381 17 
+[RoBaRaCoCh] raw_addr=200000192 -> 1 1 3 1 381 5 
+[RoBaRaCoCh] raw_addr=200000064 -> 1 1 3 1 381 4 
+[RoBaRaCoCh] raw_addr=200001152 -> 0 1 3 1 381 13 
+[RoBaRaCoCh] raw_addr=200002112 -> 1 1 3 1 381 20 
+[RoBaRaCoCh] raw_addr=200003520 -> 1 1 3 1 381 31 
+[RoBaRaCoCh] raw_addr=200002048 -> 0 1 3 1 381 20 
+Frontend:
+  impl: ReadWriteTrace
+
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 1187
+  total_num_read_requests: 1818
+  memory_system_cycles: 7500
+  DRAM:
+    impl: DDR4
+  AddrMapper:
+    impl: RoBaRaCoCh
+
+
+  Controller:
+    impl: Generic
+    id: Channel 0
+    avg_read_latency_0: 476.370483
+    read_queue_len_avg_0: 33.0745316
+    write_queue_len_0: 244215
+    queue_len_0: 498355
+    num_other_reqs_0: 0
+    num_write_reqs_0: 3019
+    read_latency_0: 3352219
+    priority_queue_len_avg_0: 0.810800016
+    row_hits_0: 422
+    priority_queue_len_0: 6081
+    row_misses_0: 146
+    row_conflicts_0: 0
+    read_row_misses_0: 5
+    queue_len_avg_0: 66.4473343
+    read_row_conflicts_core_0: 0
+    read_row_hits_0: 4
+    write_queue_len_avg_0: 32.5620003
+    read_row_conflicts_0: 0
+    write_row_misses_0: 141
+    write_row_conflicts_0: 0
+    read_queue_len_0: 248059
+    write_row_hits_0: 418
+    read_row_hits_core_0: 0
+    read_row_misses_core_0: 0
+    num_read_reqs_0: 7037
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+    RowPolicy:
+      impl: ClosedRowPolicy
+      num_close_reqs: 139
+    ControllerPlugin:
+      impl: TraceRecorder
+
+
+
+  Controller:
+    impl: Generic
+    id: Channel 1
+    read_queue_len_avg_1: 33.0885315
+    priority_queue_len_1: 6084
+    write_queue_len_1: 243896
+    num_write_reqs_1: 2968
+    row_hits_1: 425
+    row_misses_1: 148
+    avg_read_latency_1: 455.147064
+    queue_len_avg_1: 66.4191971
+    read_queue_len_1: 248164
+    read_row_misses_1: 5
+    priority_queue_len_avg_1: 0.811200023
+    read_row_hits_1: 5
+    queue_len_1: 498144
+    read_row_conflicts_1: 0
+    num_read_reqs_1: 6976
+    num_other_reqs_1: 0
+    row_conflicts_1: 0
+    write_row_hits_1: 420
+    write_queue_len_avg_1: 32.5194664
+    write_row_misses_1: 143
+    write_row_conflicts_1: 0
+    read_row_hits_core_0: 0
+    read_row_misses_core_0: 0
+    read_latency_1: 3175106
+    read_row_conflicts_core_0: 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+    RowPolicy:
+      impl: ClosedRowPolicy
+      num_close_reqs: 139
+    ControllerPlugin:
+      impl: TraceRecorder
+
+
+

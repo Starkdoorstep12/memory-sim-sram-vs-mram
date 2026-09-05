@@ -1,0 +1,68 @@
+diff --git a/src/dram_controller/CMakeLists.txt b/src/dram_controller/CMakeLists.txt
+index 9349fe5..29db0e0 100644
+--- a/src/dram_controller/CMakeLists.txt
++++ b/src/dram_controller/CMakeLists.txt
+@@ -17,7 +17,8 @@ target_sources(
+   
+   impl/scheduler/bh_scheduler.cpp
+   impl/scheduler/blocking_scheduler.cpp
+-  impl/scheduler/generic_scheduler.cpp
++  impl/scheduler/generic_scheduler.cpp
++  impl/scheduler/fcfs_scheduler.cpp
+   impl/scheduler/bliss_scheduler.cpp
+   impl/scheduler/prac_scheduler.cpp
+ 
+diff --git a/src/dram_controller/impl/scheduler/fcfs_scheduler.cpp b/src/dram_controller/impl/scheduler/fcfs_scheduler.cpp
+new file mode 100644
+index 0000000..199a33d
+--- /dev/null
++++ b/src/dram_controller/impl/scheduler/fcfs_scheduler.cpp
+@@ -0,0 +1,48 @@
++#include <vector>
++
++#include "base/base.h"
++#include "dram_controller/controller.h"
++#include "dram_controller/scheduler.h"
++
++namespace Ramulator {
++
++// Plain FCFS scheduler: no row-buffer-hit priority, strict arrival order only.
++// Added for Assignment 1 Part D Task 2 (comparison against FRFCFS).
++class FCFS : public IScheduler, public Implementation {
++  RAMULATOR_REGISTER_IMPLEMENTATION(IScheduler, FCFS, "FCFS", "Strict FCFS DRAM Scheduler (no row-hit priority).")
++  private:
++    IDRAM* m_dram;
++
++  public:
++    void init() override { };
++
++    void setup(IFrontEnd* frontend, IMemorySystem* memory_system) override {
++      m_dram = cast_parent<IDRAMController>()->m_dram;
++    };
++
++    ReqBuffer::iterator compare(ReqBuffer::iterator req1, ReqBuffer::iterator req2) override {
++      if (req1->arrive <= req2->arrive) {
++        return req1;
++      } else {
++        return req2;
++      }
++    }
++
++    ReqBuffer::iterator get_best_request(ReqBuffer& buffer) override {
++      if (buffer.size() == 0) {
++        return buffer.end();
++      }
++
++      for (auto& req : buffer) {
++        req.command = m_dram->get_preq_command(req.final_command, req.addr_vec);
++      }
++
++      auto candidate = buffer.begin();
++      for (auto next = std::next(buffer.begin(), 1); next != buffer.end(); next++) {
++        candidate = compare(candidate, next);
++      }
++      return candidate;
++    }
++};
++
++}       // namespace Ramulator

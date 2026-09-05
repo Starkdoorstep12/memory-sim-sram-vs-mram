@@ -1,0 +1,74 @@
+[Ramulator::ReadWriteTrace] [info] Loading trace file ../traces/l2miss_burst.trace ...
+[Ramulator::ReadWriteTrace] [info] Loaded 20000 lines.
+[compare] ready1=0 ready2=0 cmd1=3 cmd2=3
+[compare] ready1=0 ready2=0 cmd1=3 cmd2=3
+[compare] ready1=0 ready2=0 cmd1=3 cmd2=3
+[compare] ready1=0 ready2=0 cmd1=3 cmd2=3
+[compare] ready1=0 ready2=0 cmd1=3 cmd2=3
+[compare] ready1=0 ready2=0 cmd1=3 cmd2=3
+[compare] ready1=0 ready2=0 cmd1=3 cmd2=3
+[compare] ready1=0 ready2=0 cmd1=3 cmd2=3
+[compare] ready1=0 ready2=0 cmd1=3 cmd2=3
+[compare] ready1=0 ready2=0 cmd1=3 cmd2=3
+[compare] ready1=0 ready2=0 cmd1=3 cmd2=3
+[compare] ready1=0 ready2=0 cmd1=3 cmd2=3
+[compare] ready1=0 ready2=0 cmd1=3 cmd2=3
+[compare] ready1=0 ready2=0 cmd1=3 cmd2=3
+[compare] ready1=0 ready2=0 cmd1=3 cmd2=3
+Frontend:
+  impl: ReadWriteTrace
+
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 299
+  total_num_read_requests: 13989
+  memory_system_cycles: 7500
+  DRAM:
+    impl: DDR4
+  AddrMapper:
+    impl: RoBaRaCoCh
+
+
+  Controller:
+    impl: Generic
+    id: Channel 0
+    avg_read_latency_0: 1070.37805
+    read_queue_len_avg_0: 3266.83032
+    write_queue_len_0: 246654
+    queue_len_0: 24750829
+    num_other_reqs_0: 0
+    num_write_reqs_0: 6011
+    read_latency_0: 14973518
+    priority_queue_len_avg_0: 0.393066674
+    row_hits_0: 201
+    priority_queue_len_0: 2948
+    row_misses_0: 67
+    row_conflicts_0: 0
+    read_row_misses_0: 1
+    queue_len_avg_0: 3300.11035
+    read_row_conflicts_core_0: 0
+    read_row_hits_0: 1
+    write_queue_len_avg_0: 32.8871994
+    read_row_conflicts_0: 0
+    write_row_misses_0: 66
+    write_row_conflicts_0: 0
+    read_queue_len_0: 24501227
+    write_row_hits_0: 200
+    read_row_hits_core_0: 0
+    read_row_misses_core_0: 0
+    num_read_reqs_0: 13989
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+    RowPolicy:
+      impl: ClosedRowPolicy
+      num_close_reqs: 67
+    ControllerPlugin:
+      impl: TraceRecorder
+
+
+

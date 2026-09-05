@@ -1,0 +1,61 @@
+[Ramulator::ReadWriteTrace] [info] Loading trace file ../traces/l2miss_burst.trace ...
+[Ramulator::ReadWriteTrace] [info] Loaded 20000 lines.
+[FCFS::compare called]
+[FCFS::compare called]
+[FCFS::compare called]
+[FCFS::compare called]
+[FCFS::compare called]
+Frontend:
+  impl: ReadWriteTrace
+
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 966
+  total_num_read_requests: 13989
+  memory_system_cycles: 7500
+  DRAM:
+    impl: DDR4
+  AddrMapper:
+    impl: RoBaRaCoCh
+
+
+  Controller:
+    impl: Generic
+    id: Channel 0
+    avg_read_latency_0: 1070.37805
+    read_queue_len_avg_0: 3266.83032
+    write_queue_len_0: 246201
+    queue_len_0: 24747428
+    num_other_reqs_0: 0
+    num_write_reqs_0: 6011
+    read_latency_0: 14973518
+    priority_queue_len_avg_0: 0
+    row_hits_0: 934
+    priority_queue_len_0: 0
+    row_misses_0: 1
+    row_conflicts_0: 0
+    read_row_misses_0: 1
+    queue_len_avg_0: 3299.65698
+    read_row_conflicts_core_0: 0
+    read_row_hits_0: 1
+    write_queue_len_avg_0: 32.8268013
+    read_row_conflicts_0: 0
+    write_row_misses_0: 0
+    write_row_conflicts_0: 0
+    read_queue_len_0: 24501227
+    write_row_hits_0: 933
+    read_row_hits_core_0: 0
+    read_row_misses_core_0: 0
+    num_read_reqs_0: 13989
+    Scheduler:
+      impl: FCFS
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      impl: OpenRowPolicy
+    ControllerPlugin:
+      impl: TraceRecorder
+
+
+

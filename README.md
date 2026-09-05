@@ -182,3 +182,21 @@ Built from source (`SEAL-UCSB/NVSim`, plain make). Hit a compiler-era mismatch: 
 
 **Dramatically worse: write latency and write energy.** Both trace to a different device-level fact — reversing an MTJ's magnetization via spin-transfer torque is a physical switching process, not a voltage-level flip. Writing an SRAM cell means overpowering a small cross-coupled inverter pair's regenerative feedback — a few gate delays of a low-energy CMOS transition. Writing an STT-MRAM cell means sustaining a large current (200µA, per the assignment's `.cell` file) through the junction for a fixed pulse duration (`ResetPulse`/`SetPulse` = 10ns) long enough for spin torque to reliably reverse the free layer against thermal fluctuations — a stochastic, current-and-time-dependent magnetic switching process that cannot be sped up simply by adding drive strength the way an SRAM write can. This directly produces both symptoms: write *latency* is dominated by that fixed switching pulse duration rather than by RC/decoder delay (confirmed in Task 1 — array peripheral overhead adds only ~0.5ns on top of the 10ns pulse), and write *energy* is dominated by I²Rt resistive dissipation through the MTJ during that sustained pulse (confirmed by the Task 1 hand-check: E=I²Rt scales directly with pulse duration and current, both of which are set by switching physics, not by circuit design choices available at the array level).
 
+
+### Task 3 — TMR ratio sensitivity (2:1 → 4:1: R_on 3k→4kΩ, R_off 6k→12kΩ)
+
+| Metric | 2:1 TMR (baseline) | 4:1 TMR | Change |
+|---|---|---|---|
+| Total area | 2.888 mm² | 2.884 mm² | −0.14% |
+| Read hit latency | 2.533 ns | 2.540 ns | +0.28% |
+| Write latency | 10.526 ns | 10.543 ns | +0.16% |
+| Read dynamic energy | 0.559 nJ | 0.558 nJ | −0.18% |
+| Write dynamic energy | 1.901 nJ | 1.900 nJ | −0.05% |
+| Leakage power | 433.932 mW | 433.932 mW | 0.00% |
+| **Bitline latency (data array)** | 90.8 ps | 96.0 ps | **+5.72%** |
+| Bitline latency (tag array) | 24.4 ps | 25.2 ps | +3.22% |
+
+At the headline level, **nothing moved** — every top-line metric changed by less than 0.3%, and leakage didn't move at all. If we stopped there, the answer would be "TMR doesn't matter," which is the wrong conclusion. Digging into the component breakdown: the **bitline latency component moved 5.72%** — the only metric anywhere in the design that responds meaningfully to the TMR change — but bitline delay is a small fraction of total read latency here (90.8-96.0ps out of 1.426-1.432ns total data-array read latency, versus 805ps of essentially-fixed sense-amplifier latency). The bitline component moves because doubling R_on/R_off raises the equivalent cell resistance R_B seen by the current-sensing delay model (per the NVSim paper's Eq. 16, δt_i scales with R_B relative to the line resistance R_T); the sense-amplifier latency, by contrast, is drawn from a fixed current-voltage-converter lookup table (Table II in the NVSim paper) keyed to process node and the user-specified `ReadCurrent` — not derived from R_on/R_off at all.
+
+**What the TMR headline actually buys at the array level, in this run: nothing, because the design wasn't allowed to re-optimize around it.** A bigger TMR ratio means an easier-to-distinguish resistance state in principle — more sensing margin — but that margin only translates into a faster or lower-power *array* if something downstream is redesigned to exploit it: a smaller/faster sense amplifier tolerant of less margin, a lower `ReadCurrent`, or more cells sharing one sense amp (longer bitlines, since the margin loss from a longer column can now be tolerated). None of those were changed here — `ReadCurrent` (40µA) and the sense amplifier design point are independent config inputs, not derived from R_on/R_off, so NVSim faithfully reports that a 2× improvement in raw TMR, applied to an otherwise-unchanged design, is invisible above the noise floor of the array's overall timing and energy budget. This is the practical lesson behind a device paper's TMR headline: the number describes the memory element in isolation, not the delivered system-level benefit — that only materializes when a circuit designer actually spends the margin on something.
+

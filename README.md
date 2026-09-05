@@ -140,3 +140,29 @@ Given no authoritative number is available from the assignment materials or a cl
 
 CACTI's number is significantly larger, not smaller — the opposite direction from a plain "wire is slower than expected" error. The mechanism: this hand-calc only captures the bitline metal's own self-capacitance (wire-to-substrate, wire-to-wire coupling). It omits the per-cell junction/diffusion capacitance that every memory cell's access transistor adds to the column — per the course's own Lecture 4 material, "C_BL comes from junctions, gate overlap, and wire — roughly 0.2–0.5 fF per cell." With hundreds of cells per bitline in a real subarray, this per-cell term dominates over the bare wire's self-capacitance by a wide margin. This is the effect CACTI's array-level model captures (loading the bitline with the cumulative capacitance of every cell it serves) that a naive isolated-wire `0.38RCL²` calculation structurally cannot, since it treats the bitline as an unloaded transmission line rather than a wire loaded by hundreds of transistor junctions along its length.
 
+
+---
+
+## Part C — NVSim: The same 2 MB as STT-MRAM
+
+Built from source (`SEAL-UCSB/NVSim`, plain make). Hit a compiler-era mismatch: the codebase (2012, pre-C++17) defines an enum value literally named `data`, which collides with `std::data()` once C++17 pulls it into unqualified lookup via `<string>`/`<iostream>` — every `memoryType == data` comparison becomes ambiguous under a modern default `-std`. Fixed by building with `-std=gnu++98` explicitly (`make CXXFLAGS="-Wall -std=gnu++98"`), which predates the collision. Same CWD-relative-path behavior as CACTI observed in Part B — `-MemoryCellInputFile` in the `.cfg` resolves relative to wherever `nvsim` is invoked from, not the config file's location; fixed by using an absolute path to the `.cell` file.
+
+**Config note**: same trap as CACTI's minimal config — the assignment's stripped-down `STT_cache.cfg`/`sample.cell` outline is missing several fields NVSim's parser needs (`-CacheAccessMode`, `-DeviceRoadmap`, wire-type fields, `-MinSenseVoltage (mV)`, `-VoltageDropAccessDevice (V)` on the cell side). Built from NVSim's own shipped `sample_STTRAM_cache.cfg`/`sample_STTRAM.cell` templates, overriding only the assignment's specified values (ProcessNode=45, Capacity=2MB, Associativity=8, and all `.cell` fields from the handout) on top of the working structure.
+
+### Task 1 — 2 MB STT-MRAM baseline (8-way, 64B blocks, 45nm, ReadEDP-optimized, sequential access)
+
+| Metric | STT-MRAM (NVSim) | SRAM baseline (CACTI, Part B) |
+|---|---|---|
+| Total area | **2.888 mm²** | 10.658 mm² |
+| Read (hit) latency | 2.533 ns | 2.902 ns |
+| Write latency | 10.526 ns | — (not separately reported by CACTI at this granularity) |
+| Read dynamic energy | 0.559 nJ/access | 0.793 nJ/access |
+| Write dynamic energy | 1.901 nJ/access | 0.851 nJ/access |
+| Total leakage power | 433.9 mW | 562.6 mW (per bank; ~2.25W total across 4 banks) |
+
+**Literature sanity check**: multiple independent papers building on NVSim (citing Dong et al. 2012) consistently report STT-RAM/MRAM offering "at least 3-4× area savings" over SRAM. Our result: 10.658mm² / 2.888mm² = **3.69×** — lands squarely inside the cited range, using the assignment's own `.cell` file parameters at matched capacity/associativity/block size/process node against our own CACTI SRAM baseline. This is an independent confirmation, not a number we adjusted to fit.
+
+**Write latency mechanism**: 10.526ns is almost entirely the cell's own `ResetPulse`/`SetPulse` (10ns from the `.cell` file) — array peripheral circuitry (H-Tree, row decoder, charge latency) contributes only ~0.5ns on top. This is the correct physical story: STT-MRAM write time is set by how fast the MTJ can be switched, not by decoder/wordline speed — the opposite of CACTI's SRAM delay breakdown (Part B), which is dominated by H-tree/subarray RC delay, not any intrinsic device switching time (SRAM's cross-coupled inverters flip essentially instantly once enough drive current is available).
+
+**Write energy hand-check** (NVSim paper Eq. 17, Joule's law: E = I²Rt, using the cell's own R_on/R_off as the resistance during SET/RESET): for a single bit, E_SET = (200µA)² × 3000Ω × 10ns = **1.20 pJ**, E_RESET = (200µA)² × 6000Ω × 10ns = **2.40 pJ**. NVSim's reported per-subarray "Bitline & Cell Write Energy" (67.9pJ data array, 131.9pJ tag array) is ~30-100× larger than this single-bit estimate — consistent with a cache write operation switching many bits in parallel (a full cache line's worth of cells across the active subarray), not one bit at a time. The single-cell number is a lower bound and sets the right order of magnitude; the array-level number correctly reflects the actual multi-bit write.
+

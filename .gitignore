@@ -10,3 +10,6 @@ autoconf-*.tar.gz
 
 # CACTI source/build (tool dependency, not part of the assignment deliverable)
 cacti-src/
+
+# NVSim source/build (tool dependency, not part of the assignment deliverable)
+nvsim-src/

@@ -1,6 +1,6 @@
-* AMCAS TakeHomeLab - 6T read, bitline discharge and margin
+* AMCAS TakeHomeLab - 6T read, Task 3: time for dv to reach 25mV offset, vs VDD
 .include ../models/45nm_bulk.txt $ PTM BSIM4 card
-.param VDD=1.1 VBL=1.1
+.param VDD=VDD_VAL VBL=VDD_VAL
 Vdd vdd 0 'VDD'
 Vwl wl 0 PWL(0 0 1n 0 1.05n 'VDD')
 MP1 qb q vdd vdd pmos W=0.15u L=0.045u
@@ -13,10 +13,8 @@ Cbl bl 0 180f IC='VBL'
 Cblb blb 0 180f IC='VBL'
 .ic v(q)=0 v(qb)='VDD'
 .control
- tran 5p 4n uic
+ tran 5p 8n uic
  let dv_vec = v(blb) - v(bl)
- meas tran dv FIND dv_vec AT=2.0n
- meas tran qmax MAX v(q) FROM=1n TO=4n
- wrdata ../results/read.csv v(bl) v(blb) v(q) v(qb)
+ meas tran t_thresh WHEN dv_vec=0.025 RISE=1
 .endc
 .end

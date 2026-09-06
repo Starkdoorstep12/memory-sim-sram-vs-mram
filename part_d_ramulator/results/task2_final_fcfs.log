@@ -1,0 +1,66 @@
+[Ramulator::ReadWriteTrace] [info] Loading trace file ../traces/l2miss_multibank.trace ...
+[Ramulator::ReadWriteTrace] [info] Loaded 20000 lines.
+[RoBaRaCoCh] raw_addr=200001472 -> 0 0 3 3 762 31 
+[RoBaRaCoCh] raw_addr=200001152 -> 0 0 3 3 762 26 
+[RoBaRaCoCh] raw_addr=200001472 -> 0 0 3 3 762 31 
+[RoBaRaCoCh] raw_addr=200001728 -> 0 0 3 3 762 35 
+[RoBaRaCoCh] raw_addr=200000192 -> 0 0 3 3 762 11 
+[RoBaRaCoCh] raw_addr=200000064 -> 0 0 3 3 762 9 
+[RoBaRaCoCh] raw_addr=200001152 -> 0 0 3 3 762 26 
+[RoBaRaCoCh] raw_addr=200002112 -> 0 0 3 3 762 41 
+[RoBaRaCoCh] raw_addr=200003520 -> 0 0 3 3 762 63 
+[RoBaRaCoCh] raw_addr=200002048 -> 0 0 3 3 762 40 
+Frontend:
+  impl: ReadWriteTrace
+
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 5987
+  total_num_read_requests: 14013
+  memory_system_cycles: 7500
+  DRAM:
+    impl: DDR4
+  AddrMapper:
+    impl: RoBaRaCoCh
+
+
+  Controller:
+    impl: Generic
+    id: Channel 0
+    avg_read_latency_0: 1248.40637
+    read_queue_len_avg_0: 3432.01978
+    write_queue_len_0: 22538920
+    queue_len_0: 48279069
+    num_other_reqs_0: 0
+    num_write_reqs_0: 5987
+    read_latency_0: 17493918
+    priority_queue_len_avg_0: 0
+    row_hits_0: 954
+    priority_queue_len_0: 0
+    row_misses_0: 12
+    row_conflicts_0: 0
+    read_row_misses_0: 12
+    queue_len_avg_0: 6437.20898
+    read_row_conflicts_core_0: 0
+    read_row_hits_0: 954
+    write_queue_len_avg_0: 3005.18945
+    read_row_conflicts_0: 0
+    write_row_misses_0: 0
+    write_row_conflicts_0: 0
+    read_queue_len_0: 25740149
+    write_row_hits_0: 0
+    read_row_hits_core_0: 0
+    read_row_misses_core_0: 0
+    num_read_reqs_0: 14013
+    Scheduler:
+      impl: FCFS
+    RefreshManager:
+      impl: AllBank
+    RowPolicy:
+      impl: OpenRowPolicy
+    ControllerPlugin:
+      impl: TraceRecorder
+
+
+

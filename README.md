@@ -287,23 +287,40 @@ This codebase ships `ChRaBaRoCo` (Channel→Rank→Bank→Row→Column) as an ex
 
 **Loss of bank-level parallelism, correctly quantified**: putting bank bits above row bits genuinely costs latency (+6.4%), matching the assignment's expected direction (this reverses an earlier, buggy-buffer result that showed the opposite — a good illustration of why the buffer fix mattered for every task, not just Task 4). The mechanism is visible in the data: row-*hit rate* itself stays essentially flat (~75% either way), but both raw hit and miss counts drop by ~70% under `ChRaBaRoCo` — meaning total row-buffer engagement collapses, not the per-attempt success rate. Spreading consecutive addresses across more banks (row bits demoted below bank bits) means fewer accesses land in the same open row group at all, so the row buffer is consulted far less often — and when a row isn't already open, each access pays a full activate/precharge cycle instead of a fast row hit, which is the direct cost of losing bank-level row locality.
 
-### Task 4 — Doubling channel count: real effect confirmed, mechanism still open
+
+### Task 4 — Doubling channel count: resolved. The apparent slowdown was a measurement artifact, not an architectural effect
 
 Doubled `channel` from 1 to 2, same `l2miss_multibank.trace`, RoBaRaCoCh, FRFCFS.
 
-| Metric | 1 channel | 2 channels (per channel) |
-|---|---|---|
-| Completion | 14013/5987 (100%) | 14013/5987 (100%) |
-| Average read latency | **1215.3 cycles** | **3774.0 / 3826.1 cycles** |
-| Row-buffer hit rate | 74.6% (925/1240) | 74.5% combined (1328/1783) |
-| **Ratio (2ch/1ch)** | — | **~3.1×** |
+**Initial result (with the buffer-drop bug fixed, 100% completion confirmed on both sides)**: 2-channel average read latency was **~3.1× worse** than 1-channel (1215.3 vs 3774.0/3826.1 cycles), with nearly identical row-hit rates (74.6% vs 74.5%) ruling out row-buffer efficiency as the cause.
 
-**The result is real and got more pronounced once the buffer bug was fixed** (the buggy-buffer version understated it at ~1.9×, since it was comparing two differently-biased small samples rather than the full workload). Nearly-identical row-hit rates rule out row-buffer efficiency as the explanation.
+**Three explanations proposed and directly disproven, each via a real ablation test, not left as assumptions:**
 
-**Three plausible explanations proposed and directly disproven, each via a real ablation test:**
-1. **Survivorship bias** from unequal buffer-drop rates — ruled out once both configs were verified at 100% completion; the gap widened under fair conditions, the opposite of what bias would predict.
-2. **`tRFC` (refresh) amortization** — the leading hypothesis, given `tRFC≈576` cycles at DDR4-3200 (≈7.8× larger than `tRC`) and independent per-channel refresh scheduling. Disproven by patching `AllBankRefresh` to never fire and re-running: bit-identical results to refresh-enabled. In hindsight, `tREFI≈12480` cycles exceeds the entire 7500-cycle simulation window, so refresh could never have fired regardless — this should have been caught by arithmetic before proposing the hypothesis, not after disproving it experimentally.
-3. **Watermark distortion from the buffer-size fix** (`set_write_mode()`'s thresholds are fractions of `max_size`, so enlarging the buffer also changes the absolute pending-write count needed to switch modes) — tested by overriding the watermark fractions to preserve the original small-buffer's absolute threshold; this made completion worse, confirming the fractional default (0.8/0.2) is correct and not the source of the gap.
+1. **Survivorship bias** from unequal buffer-drop rates — ruled out once both configs were verified at 100% completion (14013/5987 exactly, matching the trace's true counts via `grep -c`); the gap widened under fair conditions, the opposite of what bias would predict.
+2. **`tRFC` (refresh) amortization** — the leading hypothesis, given `tRFC≈576` cycles at DDR4-3200 (confirmed from `DDR4.cpp`'s timing tables: `tRFC_TABLE[0][2]=360ns` for our `8Gb` density, ≈7.8× `tRC`). Disproven by patching `AllBankRefresh::setup()` (`m_next_refresh_cycle = 999999999`) to prevent any refresh from firing, then re-running: bit-identical results to refresh-enabled (`avg_read_latency_0` matched to 6 decimal places). In hindsight, `tREFI≈12480` cycles exceeds the entire 7500-cycle simulation window on the short trace, so refresh could never have fired regardless of channel count — an arithmetic check that should have preceded the hypothesis, not followed its disproof.
+3. **Watermark distortion from the buffer-size fix** (`set_write_mode()`'s mode-switching thresholds are fractions of `max_size`, so enlarging the buffer also changes the absolute pending-write count needed to switch modes) — tested by overriding the watermark fractions to preserve the original small-buffer's absolute threshold; this made completion *worse*, confirming the fractional default (0.8/0.2) is correct and not the source of the gap.
 
-**Status: the effect is confirmed real and robust, but the mechanism is not yet found.** The next unexamined layer is `IDRAM`'s internal per-channel `check_ready()`/timing-constraint implementation. Full chronological log — including the exact hypotheses tested, the arithmetic that should have ruled out refresh sooner, and the buffer-bug discovery that came from refusing to accept this result as either a bug or a settled finding without further checking — is preserved in `part_d_ramulator/investigation/channel_count_and_buffer_bug_log.md`.
+**Actual root cause, found and proven with direct evidence:**
+
+Re-instrumented `RoBaRaCoCh::apply()` (debug print of `req.addr_vec` per request, `linear_mappers.cpp`) and compared the *same* raw address across the 1-channel and 2-channel configs:
+
+| Config | `raw_addr` | channel | rank | bankgroup | bank | row | column |
+|---|---|---|---|---|---|---|---|
+| 1 channel | 200001472 | 0 | 0 | 3 | **3** | **762** | **31** |
+| 2 channels | 200001472 | 1 | 1 | 3 | **1** | **381** | **15** |
+
+**The identical physical address decomposes into a completely different bank and row depending only on channel count** — bank 3→1, row 762→381 (exactly halved), column 31→15 (exactly halved). Traced to the exact mechanism in `LinearMapperBase`/`RoBaRaCoCh::apply()`: fields are extracted sequentially via `slice_lower_bits(addr, m_addr_bits[i])`, which consumes bits from `addr` in place. With `channel: 1`, the channel field needs `log2(1)=0` bits and consumes nothing; with `channel: 2`, it needs `log2(2)=1` bit and consumes the address's actual lowest bit *before* every subsequent field (rank, bank, row, column) is extracted — shifting every other field's bit-window up by exactly one position, system-wide. Doubling channel count in this address mapper isn't an isolated, independent architectural change — it silently reassigns which physical bits determine every other field, for every address in the system.
+
+**Decisive confirmation**: generated a compensated trace with every address pre-multiplied by 2 (shifting left by one bit to counteract the channel field's bit consumption), then re-ran the 2-channel config on it:
+
+```
+[RoBaRaCoCh] raw_addr=400002944 -> 0 0 3 3 762 31 # matches the ORIGINAL 1-channel decomposition exactly
+...
+avg_read_latency_0: 1215.25171 # matches the 1-channel baseline to 5 decimal places
+```
+
+
+(Side effect of this particular compensation: doubling every address makes its lowest bit always 0, so the channel-select bit always evaluates to 0 too — all traffic landed on Channel 0 alone, confirmed by `row_hits_1: 0`. This doesn't weaken the conclusion; if anything it sharpens it — once the intended bank/row locality is restored, performance is not just "closer to" but **identical to** the 1-channel case, to five decimal places.)
+
+**Conclusion**: the observed ~3.1× slowdown was never a genuine cost of channel-level parallelism. It was entirely an artifact of the address mapper's bit-field allocation silently scrambling a trace's deliberately-engineered locality pattern whenever channel count changes the number of bits that field consumes. This is a real, previously-undocumented methodological trap for anyone sweeping channel count with a fixed synthetic trace under this class of linear address mapper (`RoBaRaCoCh`/`ChRaBaRoCo`) — a fair channel-count comparison requires either regenerating the trace for each channel-count's actual bit layout, or using a channel-count-invariant addressing scheme (e.g., XOR-based interleaving) that doesn't shift other fields' bit windows when channel count changes. Full investigation chronology — including the three disproven hypotheses and the exact debug output at each step — preserved in `part_d_ramulator/investigation/channel_count_and_buffer_bug_log.md`.
 

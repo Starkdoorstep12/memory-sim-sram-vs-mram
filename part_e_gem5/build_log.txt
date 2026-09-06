@@ -1,0 +1,2187 @@
+scons: Reading SConscript files ...
+Mkdir("/home/vedant.tejas/memory-sim-sram-vs-mram/gem5-src/build/X86/gem5.build")
+Checking for linker -Wl,--as-needed support... (cached) yes
+Checking for linker -fuse-ld=gold support... yes
+Checking for linker -Wl,--threads support... no
+Checking for linker -Wl,--thread-count=4 support... yes
+Checking for compiler -gz support... (cached) yes
+Checking for linker -gz support... yes
+Info: Using Python config: python3-config
+Checking for C header file Python.h... (cached) yes
+Checking Python version... 3.9.25
+Checking for accept(0,0,0) in C++ library None... yes
+Checking for zlibVersion() in C++ library z... yes
+Checking for C library tcmalloc_minimal... no
+Checking for C library tcmalloc... no
+Warning: You can get a 12% performance improvement by installing tcmalloc
+         (libgoogle-perftools-dev package on Ubuntu or RedHat).
+Building in /home/vedant.tejas/memory-sim-sram-vs-mram/gem5-src/build/X86
+"build_tools/kconfig_base.py" "/home/vedant.tejas/memory-sim-sram-vs-mram/gem5-src/build/X86/gem5.build/Kconfig" "/home/vedant.tejas/memory-sim-sram-vs-mram/gem5-src/src/Kconfig"
+Checking for backtrace_symbols_fd((void *)1, 0, 0) in C library None... yes
+Checking for C header file capstone/capstone.h... (cached) no
+Warning: Header file <capstone/capstone.h> not found.
+         This host has no capstone library installed.
+Checking for C header file linux/kvm.h... (cached) yes
+Checking for timer_create(CLOCK_MONOTONIC, NULL, NULL) in C library None... yes
+Checking for member exclude_host in struct perf_event_attr...(cached) yes
+Warning: While checking protoc version: [Errno 2] No such file or directory:
+         'protoc'
+Warning: Protocol buffer compiler (protoc) not found.
+         Please install protobuf-compiler for tracing support.
+Checking for C header file linux/if_tun.h... (cached) yes
+Checking size of struct kvm_xsave ... yes
+Checking for C header file fenv.h... (cached) yes
+Checking for C header file png.h... (cached) yes
+Checking for clock_nanosleep(0,0,NULL,NULL) in C library None... yes
+Checking for C header file valgrind/valgrind.h... (cached) yes
+Checking for pkg-config package hdf5-serial... (cached) no
+Checking for pkg-config package hdf5... (cached) no
+Checking for H5Fcreate("", 0, 0, 0) in C library hdf5... (cached) no
+Warning: Couldn't find HDF5 C++ libraries. Disabling HDF5 support.
+Checking for shm_open("/test", 0, 0) in C library None... yes
+Checking whether __i386__ is declared... (cached) no
+Checking whether __x86_64__ is declared... (cached) yes
+Checking for compiler -Wno-self-assign-overloaded support... (cached) yes
+Checking for linker -Wno-free-nonheap-object support... yes
+BUILD_TLM not set, not building CHI-TLM integration
+
+scons: done reading SConscript files.
+scons: Building targets ...
+ [    LINK]  -> X86/gem5py
+ [VER TAGS]  -> X86/sim/tags.cc
+ [EMBED PY] src/mem/HeteroMemCtrl.py -> X86/mem/HeteroMemCtrl.py.cc
+ [EMBED PY] src/python/gem5/prebuilt/demo/arm_demo_board.py -> X86/python/gem5/prebuilt/demo/arm_demo_board.py.cc
+ [EMBED PY] src/python/gem5/components/processors/random_generator.py -> X86/python/gem5/components/processors/random_generator.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/mesi_three_level/__init__.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/mesi_three_level/__init__.py.cc
+ [EMBED PY] src/arch/x86/X86LocalApic.py -> X86/arch/x86/X86LocalApic.py.cc
+ [EMBED PY] src/sim/InstTracer.py -> X86/sim/InstTracer.py.cc
+ [EMBED PY] src/python/m5/util/attrdict.py -> X86/python/m5/util/attrdict.py.cc
+ [EMBED PY] src/cpu/testers/traffic_gen/GUPSGen.py -> X86/cpu/testers/traffic_gen/GUPSGen.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/mesi_two_level_cache_hierarchy.py -> X86/python/gem5/components/cachehierarchies/ruby/mesi_two_level_cache_hierarchy.py.cc
+ [EMBED PY] src/dev/Device.py -> X86/dev/Device.py.cc
+ [EMBED PY] src/cpu/minor/BaseMinorCPU.py -> X86/cpu/minor/BaseMinorCPU.py.cc
+ [EMBED PY] src/python/gem5/components/processors/base_cpu_processor.py -> X86/python/gem5/components/processors/base_cpu_processor.py.cc
+ [EMBED PY] src/python/gem5/components/boards/__init__.py -> X86/python/gem5/components/boards/__init__.py.cc
+ [EMBED PY] src/python/m5/ext/pystats/timeconversion.py -> X86/python/m5/ext/pystats/timeconversion.py.cc
+ [EMBED PY] src/python/gem5/prebuilt/viper/gpu_cache_hierarchy.py -> X86/python/gem5/prebuilt/viper/gpu_cache_hierarchy.py.cc
+ [EMBED PY] src/cpu/testers/spatter_gen/SpatterGen.py -> X86/cpu/testers/spatter_gen/SpatterGen.py.cc
+ [EMBED PY] src/dev/x86/I82094AA.py -> X86/dev/x86/I82094AA.py.cc
+ [EMBED PY] src/mem/cache/tags/partitioning_policies/PartitioningPolicies.py -> X86/mem/cache/tags/partitioning_policies/PartitioningPolicies.py.cc
+ [EMBED PY] src/cpu/o3/BaseO3CPU.py -> X86/cpu/o3/BaseO3CPU.py.cc
+ [EMBED PY] src/mem/ruby/network/simple/SimpleLink.py -> X86/mem/ruby/network/simple/SimpleLink.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/viper/__init__.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/viper/__init__.py.cc
+ [EMBED PY] src/python/m5/ext/__init__.py -> X86/python/m5/ext/__init__.py.cc
+ [EMBED PY] src/python/m5/proxy.py -> X86/python/m5/proxy.py.cc
+ [EMBED PY] src/mem/qos/QoSMemCtrl.py -> X86/mem/qos/QoSMemCtrl.py.cc
+ [EMBED PY] src/python/m5/params/power_params.py -> X86/python/m5/params/power_params.py.cc
+ [EMBED PY] src/mem/ruby/system/RubySystem.py -> X86/mem/ruby/system/RubySystem.py.cc
+ [EMBED PY] src/arch/generic/BaseInterrupts.py -> X86/arch/generic/BaseInterrupts.py.cc
+ [EMBED PY] src/python/gem5/utils/multiprocessing/popen_spawn_gem5.py -> X86/python/gem5/utils/multiprocessing/popen_spawn_gem5.py.cc
+ [EMBED PY] src/python/gem5/utils/progress_bar.py -> X86/python/gem5/utils/progress_bar.py.cc
+ [EMBED PY] src/python/gem5/components/boards/x86_board.py -> X86/python/gem5/components/boards/x86_board.py.cc
+ [EMBED PY] src/dev/x86/I8042.py -> X86/dev/x86/I8042.py.cc
+ [EMBED PY] src/python/gem5/components/memory/multi_channel.py -> X86/python/gem5/components/memory/multi_channel.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/chi/nodes/l2_cache.py -> X86/python/gem5/components/cachehierarchies/chi/nodes/l2_cache.py.cc
+ [EMBED PY] src/python/gem5/components/memory/dram_interfaces/lpddr3.py -> X86/python/gem5/components/memory/dram_interfaces/lpddr3.py.cc
+ [EMBED PY] src/mem/ruby/structures/RubyPrefetcher.py -> X86/mem/ruby/structures/RubyPrefetcher.py.cc
+ [EMBED PY] src/python/gem5/components/processors/complex_generator.py -> X86/python/gem5/components/processors/complex_generator.py.cc
+ [EMBED PY] src/arch/x86/X86Decoder.py -> X86/arch/x86/X86Decoder.py.cc
+ [EMBED PY] src/python/gem5/prebuilt/demo/riscv_demo_board.py -> X86/python/gem5/prebuilt/demo/riscv_demo_board.py.cc
+ [EMBED PY] src/python/gem5/components/processors/random_generator_core.py -> X86/python/gem5/components/processors/random_generator_core.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/chi/private_l1_cache_hierarchy.py -> X86/python/gem5/components/cachehierarchies/chi/private_l1_cache_hierarchy.py.cc
+ [EMBED PY] src/python/gem5/resources/elfie.py -> X86/python/gem5/resources/elfie.py.cc
+ [EMBED PY] src/python/m5/util/__init__.py -> X86/python/m5/util/__init__.py.cc
+ [EMBED PY] src/mem/DRAMInterface.py -> X86/mem/DRAMInterface.py.cc
+ [EMBED PY] X86/mem/ruby/protocol/MESI_Two_Level/MESI_Two_Level_Directory_Controller.py -> .cc
+ [EMBED PY] src/python/gem5/simulate/simulator.py -> X86/python/gem5/simulate/simulator.py.cc
+ [EMBED PY] src/python/gem5/components/devices/__init__.py -> X86/python/gem5/components/devices/__init__.py.cc
+ [EMBED PY] src/dev/pci/PciDevice.py -> X86/dev/pci/PciDevice.py.cc
+ [EMBED PY] src/python/m5/trace.py -> X86/python/m5/trace.py.cc
+ [EMBED PY] src/cpu/simple/BaseTimingSimpleCPU.py -> X86/cpu/simple/BaseTimingSimpleCPU.py.cc
+ [EMBED PY] src/python/m5/params/enum_params.py -> X86/python/m5/params/enum_params.py.cc
+ [EMBED PY] src/cpu/o3/FuncUnitConfig.py -> X86/cpu/o3/FuncUnitConfig.py.cc
+ [EMBED PY] src/sim/DVFSHandler.py -> X86/sim/DVFSHandler.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/abstract_ruby_cache_hierarchy.py -> X86/python/gem5/components/cachehierarchies/ruby/abstract_ruby_cache_hierarchy.py.cc
+ [EMBED PY] src/dev/x86/Cmos.py -> X86/dev/x86/Cmos.py.cc
+ [EMBED PY] src/mem/ruby/network/BasicLink.py -> X86/mem/ruby/network/BasicLink.py.cc
+ [EMBED PY] src/python/gem5/components/processors/decoupled_processor.py -> X86/python/gem5/components/processors/decoupled_processor.py.cc
+ [EMBED PY] src/python/gem5/prebuilt/viper/cpu_cache_hierarchy.py -> X86/python/gem5/prebuilt/viper/cpu_cache_hierarchy.py.cc
+ [EMBED PY] src/python/m5/ext/pystats/storagetype.py -> X86/python/m5/ext/pystats/storagetype.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/mesi_two_level/l2_cache.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/mesi_two_level/l2_cache.py.cc
+ [EMBED PY] src/sim/power/PowerModelState.py -> X86/sim/power/PowerModelState.py.cc
+ [EMBED PY] src/mem/ruby/structures/WireBuffer.py -> X86/mem/ruby/structures/WireBuffer.py.cc
+ [EMBED PY] src/arch/x86/kvm/X86KvmCPU.py -> X86/arch/x86/kvm/X86KvmCPU.py.cc
+ [EMBED PY] src/mem/MemChecker.py -> X86/mem/MemChecker.py.cc
+ [EMBED PY] src/cpu/probes/PcCountTracker.py -> X86/cpu/probes/PcCountTracker.py.cc
+ [EMBED PY] src/learning_gem5/part2/SimpleCache.py -> X86/learning_gem5/part2/SimpleCache.py.cc
+ [EMBED PY] src/cpu/o3/O3Checker.py -> X86/cpu/o3/O3Checker.py.cc
+ [EMBED PY] src/python/m5/options.py -> X86/python/m5/options.py.cc
+ [EMBED PY] src/python/m5/params/port_params.py -> X86/python/m5/params/port_params.py.cc
+ [EMBED PY] src/mem/cache/Cache.py -> X86/mem/cache/Cache.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/prebuilt/octopi_cache/octopi.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/prebuilt/octopi_cache/octopi.py.cc
+ [EMBED PY] src/python/gem5/utils/multiprocessing/context.py -> X86/python/gem5/utils/multiprocessing/context.py.cc
+ [EMBED PY] src/python/gem5/components/boards/test_board.py -> X86/python/gem5/components/boards/test_board.py.cc
+ [EMBED PY] src/mem/ThreadBridge.py -> X86/mem/ThreadBridge.py.cc
+ [EMBED PY] src/python/gem5/components/memory/single_channel.py -> X86/python/gem5/components/memory/single_channel.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/chi/nodes/l1_cache.py -> X86/python/gem5/components/cachehierarchies/chi/nodes/l1_cache.py.cc
+ [EMBED PY] src/python/gem5/components/memory/dram_interfaces/lpddr2.py -> X86/python/gem5/components/memory/dram_interfaces/lpddr2.py.cc
+ [EMBED PY] src/python/gem5/components/processors/complex_generator_core.py -> X86/python/gem5/components/processors/complex_generator_core.py.cc
+ [EMBED PY] src/sim/Root.py -> X86/sim/Root.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/mi_example/l1_cache.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/mi_example/l1_cache.py.cc
+ [EMBED PY] src/python/gem5/components/__init__.py -> X86/python/gem5/components/__init__.py.cc
+ [EMBED PY] src/cpu/simple/TimingSimpleCPU.py -> X86/cpu/simple/TimingSimpleCPU.py.cc
+ [EMBED PY] src/python/gem5/prebuilt/demo/x86_demo_board.py -> X86/python/gem5/prebuilt/demo/x86_demo_board.py.cc
+ [EMBED PY] src/python/gem5/components/processors/strided_generator.py -> X86/python/gem5/components/processors/strided_generator.py.cc
+ [EMBED PY] src/mem/cache/compressors/Compressors.py -> X86/mem/cache/compressors/Compressors.py.cc
+ [EMBED PY] src/arch/generic/BaseISA.py -> X86/arch/generic/BaseISA.py.cc
+ [EMBED PY] src/python/m5/ticks.py -> X86/python/m5/ticks.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/chi/__init__.py -> X86/python/gem5/components/cachehierarchies/chi/__init__.py.cc
+ [EMBED PY] src/python/gem5/resources/looppoint.py -> X86/python/gem5/resources/looppoint.py.cc
+ [EMBED PY] src/dev/virtio/VirtIORng.py -> X86/dev/virtio/VirtIORng.py.cc
+ [EMBED PY] src/dev/storage/Ide.py -> X86/dev/storage/Ide.py.cc
+ [EMBED PY] src/python/gem5/utils/override.py -> X86/python/gem5/utils/override.py.cc
+ [EMBED PY] src/mem/cache/replacement_policies/ReplacementPolicies.py -> X86/mem/cache/replacement_policies/ReplacementPolicies.py.cc
+ [EMBED PY] src/python/gem5/simulate/__init__.py -> X86/python/gem5/simulate/__init__.py.cc
+ [EMBED PY] src/cpu/minor/MinorCPU.py -> X86/cpu/minor/MinorCPU.py.cc
+ [EMBED PY] src/cpu/CpuCluster.py -> X86/cpu/CpuCluster.py.cc
+ [EMBED PY] src/mem/cache/tags/indexing_policies/IndexingPolicies.py -> X86/mem/cache/tags/indexing_policies/IndexingPolicies.py.cc
+ [EMBED PY] src/cpu/o3/probe/SimpleTrace.py -> X86/cpu/o3/probe/SimpleTrace.py.cc
+ [EMBED PY] src/dev/storage/DiskImage.py -> X86/dev/storage/DiskImage.py.cc
+ [EMBED PY] src/mem/ruby/slicc_interface/Controller.py -> X86/mem/ruby/slicc_interface/Controller.py.cc
+ [EMBED PY] src/mem/probes/StackDistProbe.py -> X86/mem/probes/StackDistProbe.py.cc
+ [EMBED PY] src/mem/XBar.py -> X86/mem/XBar.py.cc
+ [EMBED PY] src/mem/qos/QoSPolicy.py -> X86/mem/qos/QoSPolicy.py.cc
+ [EMBED PY] X86/mem/ruby/protocol/MESI_Two_Level/MESI_Two_Level_DMA_Controller.py -> .cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/__init__.py -> X86/python/gem5/components/cachehierarchies/ruby/__init__.py.cc
+ [EMBED PY] src/python/gem5/components/processors/simple_processor.py -> X86/python/gem5/components/processors/simple_processor.py.cc
+ [EMBED PY] src/cpu/o3/O3CPU.py -> X86/cpu/o3/O3CPU.py.cc
+ [EMBED PY] src/base/Graphics.py -> X86/base/Graphics.py.cc
+ [EMBED PY] src/python/gem5/prebuilt/viper/board.py -> X86/python/gem5/prebuilt/viper/board.py.cc
+ [EMBED PY] src/python/m5/ext/pystats/statistic.py -> X86/python/m5/ext/pystats/statistic.py.cc
+ [EMBED PY] src/python/m5/stats/__init__.py -> X86/python/m5/stats/__init__.py.cc
+ [EMBED PY] src/arch/x86/X86TLB.py -> X86/arch/x86/X86TLB.py.cc
+ [EMBED PY] src/python/m5/util/terminal_formatter.py -> X86/python/m5/util/terminal_formatter.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/topologies/simple_pt2pt.py -> X86/python/gem5/components/cachehierarchies/ruby/topologies/simple_pt2pt.py.cc
+ [EMBED PY] src/arch/x86/bios/IntelMP.py -> X86/arch/x86/bios/IntelMP.py.cc
+ [EMBED PY] src/mem/ExternalSlave.py -> X86/mem/ExternalSlave.py.cc
+ [EMBED PY] src/python/m5/main.py -> X86/python/m5/main.py.cc
+ [EMBED PY] src/python/m5/params/param_types.py -> X86/python/m5/params/param_types.py.cc
+ [EMBED PY] src/base/filters/BloomFilters.py -> X86/base/filters/BloomFilters.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/prebuilt/octopi_cache/__init__.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/prebuilt/octopi_cache/__init__.py.cc
+ [EMBED PY] src/mem/ruby/network/fault_model/FaultModel.py -> X86/mem/ruby/network/fault_model/FaultModel.py.cc
+ [EMBED PY] src/python/gem5/utils/multiprocessing/_command_line.py -> X86/python/gem5/utils/multiprocessing/_command_line.py.cc
+ [EMBED PY] src/arch/generic/InstDecoder.py -> X86/arch/generic/InstDecoder.py.cc
+ [EMBED PY] src/python/gem5/components/memory/memory.py -> X86/python/gem5/components/memory/memory.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/mesi_two_level/l1_cache.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/mesi_two_level/l1_cache.py.cc
+ [EMBED PY] src/python/gem5/components/memory/dram_interfaces/hmc.py -> X86/python/gem5/components/memory/dram_interfaces/hmc.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/classic/two_level_fdp_cache_hierarchy.py -> X86/python/gem5/components/cachehierarchies/classic/two_level_fdp_cache_hierarchy.py.cc
+ [EMBED PY] src/sim/power/MathExprPowerModel.py -> X86/sim/power/MathExprPowerModel.py.cc
+ [EMBED PY] src/mem/cache/tags/Tags.py -> X86/mem/cache/tags/Tags.py.cc
+ [EMBED PY] src/dev/x86/Pc.py -> X86/dev/x86/Pc.py.cc
+ [EMBED PY] src/cpu/simple/NonCachingSimpleCPU.py -> X86/cpu/simple/NonCachingSimpleCPU.py.cc
+ [EMBED PY] src/python/gem5/prebuilt/demo/__init__.py -> X86/python/gem5/prebuilt/demo/__init__.py.cc
+ [EMBED PY] src/python/gem5/components/processors/strided_generator_core.py -> X86/python/gem5/components/processors/strided_generator_core.py.cc
+ [EMBED PY] src/python/gem5/resources/workload.py -> X86/python/gem5/resources/workload.py.cc
+ [EMBED PY] src/python/gem5/utils/filelock.py -> X86/python/gem5/utils/filelock.py.cc
+ [EMBED PY] src/mem/qos/QoSTurnaround.py -> X86/mem/qos/QoSTurnaround.py.cc
+ [EMBED PY] src/cpu/testers/directedtest/RubyDirectedTester.py -> X86/cpu/testers/directedtest/RubyDirectedTester.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/chi/nodes/dma_requestor.py -> X86/python/gem5/components/cachehierarchies/chi/nodes/dma_requestor.py.cc
+ [EMBED PY] src/cpu/simple/probes/SimPoint.py -> X86/cpu/simple/probes/SimPoint.py.cc
+ [EMBED PY] src/python/gem5/coherence_protocol.py -> X86/python/gem5/coherence_protocol.py.cc
+ [EMBED PY] src/dev/virtio/VirtIO.py -> X86/dev/virtio/VirtIO.py.cc
+ [EMBED PY] src/sim/SignalPort.py -> X86/sim/SignalPort.py.cc
+ [EMBED PY] src/python/gem5/simulate/exit_handler.py -> X86/python/gem5/simulate/exit_handler.py.cc
+ [EMBED PY] src/python/m5/ext/pystats/simstat.py -> X86/python/m5/ext/pystats/simstat.py.cc
+ [EMBED PY] src/python/gem5/components/processors/abstract_processor.py -> X86/python/gem5/components/processors/abstract_processor.py.cc
+ [EMBED PY] src/python/gem5/prebuilt/viper/__init__.py -> X86/python/gem5/prebuilt/viper/__init__.py.cc
+ [EMBED PY] src/cpu/FuncUnit.py -> X86/cpu/FuncUnit.py.cc
+ [EMBED PY] src/sim/PowerState.py -> X86/sim/PowerState.py.cc
+ [EMBED PY] src/python/m5/util/terminal.py -> X86/python/m5/util/terminal.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/topologies/__init__.py -> X86/python/gem5/components/cachehierarchies/ruby/topologies/__init__.py.cc
+ [EMBED PY] src/python/m5/event.py -> X86/python/m5/event.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/mi_example/dma_controller.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/mi_example/dma_controller.py.cc
+ [EMBED PY] X86/mem/ruby/protocol/MESI_Two_Level/MESI_Two_Level_L2Cache_Controller.py -> .cc
+ [EMBED PY] src/dev/pci/CopyEngine.py -> X86/dev/pci/CopyEngine.py.cc
+ [EMBED PY] src/python/m5/params/time_params.py -> X86/python/m5/params/time_params.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/classic/caches/mmu_cache.py -> X86/python/gem5/components/cachehierarchies/classic/caches/mmu_cache.py.cc
+ [EMBED PY] src/cpu/TimingExpr.py -> X86/cpu/TimingExpr.py.cc
+ [EMBED PY] src/cpu/simple/AtomicSimpleCPU.py -> X86/cpu/simple/AtomicSimpleCPU.py.cc
+ [EMBED PY] src/dev/Platform.py -> X86/dev/Platform.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/mesi_two_level/dma_controller.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/mesi_two_level/dma_controller.py.cc
+ [EMBED PY] src/python/gem5/components/memory/dram_interfaces/hbm.py -> X86/python/gem5/components/memory/dram_interfaces/hbm.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/abstract_three_level_cache_hierarchy.py -> X86/python/gem5/components/cachehierarchies/abstract_three_level_cache_hierarchy.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/classic/private_l1_private_l2_cache_hierarchy.py -> X86/python/gem5/components/cachehierarchies/classic/private_l1_private_l2_cache_hierarchy.py.cc
+ [EMBED PY] src/learning_gem5/part2/SimpleObject.py -> X86/learning_gem5/part2/SimpleObject.py.cc
+ [EMBED PY] src/mem/MemCtrl.py -> X86/mem/MemCtrl.py.cc
+ [EMBED PY] src/python/gem5/components/processors/linear_generator.py -> X86/python/gem5/components/processors/linear_generator.py.cc
+ [EMBED PY] src/sim/System.py -> X86/sim/System.py.cc
+ [EMBED PY] src/python/gem5/resources/resource.py -> X86/python/gem5/resources/resource.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/prebuilt/__init__.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/prebuilt/__init__.py.cc
+ [EMBED PY] src/dev/BadDevice.py -> X86/dev/BadDevice.py.cc
+ [EMBED PY] src/python/gem5/__init__.py -> X86/python/gem5/__init__.py.cc
+ [EMBED PY] src/arch/x86/bios/ACPI.py -> X86/arch/x86/bios/ACPI.py.cc
+ [EMBED PY] src/python/gem5/utils/__init__.py -> X86/python/gem5/utils/__init__.py.cc
+ [EMBED PY] src/cpu/testers/memtest/MemTest.py -> X86/cpu/testers/memtest/MemTest.py.cc
+ [EMBED PY] src/systemc/Tlm.py -> X86/systemc/Tlm.py.cc
+ [EMBED PY] src/python/gem5/components/memory/simple.py -> X86/python/gem5/components/memory/simple.py.cc
+ [EMBED PY] src/cpu/probes/InstTracker.py -> X86/cpu/probes/InstTracker.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/chi/nodes/directory.py -> X86/python/gem5/components/cachehierarchies/chi/nodes/directory.py.cc
+ [EMBED PY] src/cpu/pred/BranchPredictor.py -> X86/cpu/pred/BranchPredictor.py.cc
+ [EMBED PY] src/cpu/simple/BaseNonCachingSimpleCPU.py -> X86/cpu/simple/BaseNonCachingSimpleCPU.py.cc
+ [EMBED PY] src/dev/net/Ethernet.py -> X86/dev/net/Ethernet.py.cc
+ [EMBED PY] src/dev/x86/X86QemuFwCfg.py -> X86/dev/x86/X86QemuFwCfg.py.cc
+ [EMBED PY] src/mem/ruby/network/garnet/GarnetNetwork.py -> X86/mem/ruby/network/garnet/GarnetNetwork.py.cc
+ [EMBED PY] src/dev/x86/I8259.py -> X86/dev/x86/I8259.py.cc
+ [EMBED PY] src/python/gem5/prebuilt/__init__.py -> X86/python/gem5/prebuilt/__init__.py.cc
+ [EMBED PY] src/dev/x86/PcSpeaker.py -> X86/dev/x86/PcSpeaker.py.cc
+ [EMBED PY] src/python/gem5/components/processors/base_cpu_core.py -> X86/python/gem5/components/processors/base_cpu_core.py.cc
+ [EMBED PY] src/mem/AbstractMemory.py -> X86/mem/AbstractMemory.py.cc
+ [EMBED PY] src/python/m5/util/pybind.py -> X86/python/m5/util/pybind.py.cc
+ [EMBED PY] src/mem/PortTerminator.py -> X86/mem/PortTerminator.py.cc
+ [EMBED PY] src/python/m5/debug.py -> X86/python/m5/debug.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/mi_example/directory.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/mi_example/directory.py.cc
+ [EMBED PY] src/python/gem5/utils/multiprocessing/__init__.py -> X86/python/gem5/utils/multiprocessing/__init__.py.cc
+ [EMBED PY] src/python/gem5/simulate/exit_event_generators.py -> X86/python/gem5/simulate/exit_event_generators.py.cc
+ [EMBED PY] src/python/m5/ext/pystats/group.py -> X86/python/m5/ext/pystats/group.py.cc
+ [EMBED PY] src/python/gem5/prebuilt/riscvmatched/riscvmatched_core.py -> X86/python/gem5/prebuilt/riscvmatched/riscvmatched_core.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/mesi_two_level/directory.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/mesi_two_level/directory.py.cc
+ [EMBED PY] src/python/gem5/components/boards/simple_board.py -> X86/python/gem5/components/boards/simple_board.py.cc
+ [EMBED PY] src/python/gem5/components/memory/dram_interfaces/gddr.py -> X86/python/gem5/components/memory/dram_interfaces/gddr.py.cc
+ [EMBED PY] src/mem/ruby/network/BasicRouter.py -> X86/mem/ruby/network/BasicRouter.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/abstract_two_level_cache_hierarchy.py -> X86/python/gem5/components/cachehierarchies/abstract_two_level_cache_hierarchy.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/classic/private_l1_walk_cache_hierarchy.py -> X86/python/gem5/components/cachehierarchies/classic/private_l1_walk_cache_hierarchy.py.cc
+ [EMBED PY] src/dev/virtio/VirtIOBlock.py -> X86/dev/virtio/VirtIOBlock.py.cc
+ [EMBED PY] src/python/gem5/prebuilt/riscvmatched/riscvmatched_cache.py -> X86/python/gem5/prebuilt/riscvmatched/riscvmatched_cache.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/viper/tcc.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/viper/tcc.py.cc
+ [EMBED PY] src/mem/HMCController.py -> X86/mem/HMCController.py.cc
+ [EMBED PY] src/python/gem5/components/processors/linear_generator_core.py -> X86/python/gem5/components/processors/linear_generator_core.py.cc
+ [EMBED PY] src/mem/SimpleMemory.py -> X86/mem/SimpleMemory.py.cc
+ [EMBED PY] src/mem/MemInterface.py -> X86/mem/MemInterface.py.cc
+ [EMBED PY] src/mem/qos/QoSMemSinkInterface.py -> X86/mem/qos/QoSMemSinkInterface.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/classic/caches/l2cache.py -> X86/python/gem5/components/cachehierarchies/classic/caches/l2cache.py.cc
+ [EMBED PY] src/python/gem5/gem5_default_config.py -> X86/python/gem5/gem5_default_config.py.cc
+ [EMBED PY] src/dev/serial/Uart.py -> X86/dev/serial/Uart.py.cc
+ [EMBED PY] src/python/m5/objects/SimObject.py -> X86/python/m5/objects/SimObject.py.cc
+ [EMBED PY] src/python/gem5/components/memory/dramsim_3.py -> X86/python/gem5/components/memory/dramsim_3.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/classic/caches/l1dcache.py -> X86/python/gem5/components/cachehierarchies/classic/caches/l1dcache.py.cc
+ [EMBED PY] src/cpu/o3/SMT.py -> X86/cpu/o3/SMT.py.cc
+ [EMBED PY] src/learning_gem5/part2/SimpleMemobj.py -> X86/learning_gem5/part2/SimpleMemobj.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/chi/nodes/abstract_node.py -> X86/python/gem5/components/cachehierarchies/chi/nodes/abstract_node.py.cc
+ [EMBED PY] src/sim/power/PowerModel.py -> X86/sim/power/PowerModel.py.cc
+ [EMBED PY] src/mem/ruby/structures/RubyCache.py -> X86/mem/ruby/structures/RubyCache.py.cc
+ [EMBED PY] src/arch/x86/X86NativeTrace.py -> X86/arch/x86/X86NativeTrace.py.cc
+ [EMBED PY] src/sst/OutgoingRequestBridge.py -> X86/sst/OutgoingRequestBridge.py.cc
+ [EMBED PY] src/python/gem5/runtime.py -> X86/python/gem5/runtime.py.cc
+ [EMBED PY] src/systemc/python/tlm.py -> X86/systemc/python/tlm.py.cc
+ [EMBED PY] src/mem/ExternalMaster.py -> X86/mem/ExternalMaster.py.cc
+ [EMBED PY] src/python/gem5/components/processors/simple_core.py -> X86/python/gem5/components/processors/simple_core.py.cc
+ [EMBED PY] src/python/gem5/resources/md5_utils.py -> X86/python/gem5/resources/md5_utils.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/mesi_three_level/l3_cache.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/mesi_three_level/l3_cache.py.cc
+ [EMBED PY] src/python/m5/util/multidict.py -> X86/python/m5/util/multidict.py.cc
+ [EMBED PY] src/mem/ruby/network/Network.py -> X86/mem/ruby/network/Network.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/mi_example/__init__.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/mi_example/__init__.py.cc
+ [EMBED PY] src/dev/x86/I8237.py -> X86/dev/x86/I8237.py.cc
+ [EMBED PY] src/cpu/o3/FUPool.py -> X86/cpu/o3/FUPool.py.cc
+ [EMBED PY] src/python/gem5/simulate/exit_event.py -> X86/python/gem5/simulate/exit_event.py.cc
+ [EMBED PY] src/python/gem5/components/processors/traffic_generator.py -> X86/python/gem5/components/processors/traffic_generator.py.cc
+ [EMBED PY] src/mem/ruby/system/Sequencer.py -> X86/mem/ruby/system/Sequencer.py.cc
+ [EMBED PY] src/python/m5/ext/pystats/abstract_stat.py -> X86/python/m5/ext/pystats/abstract_stat.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/mesi_two_level/__init__.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/mesi_two_level/__init__.py.cc
+ [EMBED PY] src/python/gem5/components/boards/experimental/lupv_board.py -> X86/python/gem5/components/boards/experimental/lupv_board.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/abstract_cache_hierarchy.py -> X86/python/gem5/components/cachehierarchies/abstract_cache_hierarchy.py.cc
+ [EMBED PY] src/python/gem5/components/processors/abstract_generator_core.py -> X86/python/gem5/components/processors/abstract_generator_core.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/viper/sqc.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/viper/sqc.py.cc
+ [EMBED PY] src/sim/probe/Probe.py -> X86/sim/probe/Probe.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/classic/caches/__init__.py -> X86/python/gem5/components/cachehierarchies/classic/caches/__init__.py.cc
+ [EMBED PY] src/mem/ruby/structures/DirectoryMemory.py -> X86/mem/ruby/structures/DirectoryMemory.py.cc
+ [EMBED PY] src/python/gem5/components/processors/gups_generator_par.py -> X86/python/gem5/components/processors/gups_generator_par.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/chi/nodes/__init__.py -> X86/python/gem5/components/cachehierarchies/chi/nodes/__init__.py.cc
+ [EMBED PY] src/sim/RedirectPath.py -> X86/sim/RedirectPath.py.cc
+ [EMBED PY] src/cpu/BaseCPU.py -> X86/cpu/BaseCPU.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/classic/caches/l1icache.py -> X86/python/gem5/components/cachehierarchies/classic/caches/l1icache.py.cc
+ [EMBED PY] src/python/gem5/resources/client_api/client_query.py -> X86/python/gem5/resources/client_api/client_query.py.cc
+ [EMBED PY] src/sim/PowerDomain.py -> X86/sim/PowerDomain.py.cc
+ [EMBED PY] src/systemc/python/systemc.py -> X86/systemc/python/systemc.py.cc
+ [EMBED PY] src/cpu/testers/traffic_gen/PyTrafficGen.py -> X86/cpu/testers/traffic_gen/PyTrafficGen.py.cc
+ [EMBED PY] src/python/m5/core.py -> X86/python/m5/core.py.cc
+ [EMBED PY] src/python/gem5/utils/multisim/__main__.py -> X86/python/gem5/utils/multisim/__main__.py.cc
+ [EMBED PY] src/python/gem5/components/memory/abstract_memory_system.py -> X86/python/gem5/components/memory/abstract_memory_system.py.cc
+ [EMBED PY] src/python/gem5/prebuilt/riscvmatched/riscvmatched_processor.py -> X86/python/gem5/prebuilt/riscvmatched/riscvmatched_processor.py.cc
+ [EMBED PY] src/python/gem5/components/memory/dram_interfaces/ddr5.py -> X86/python/gem5/components/memory/dram_interfaces/ddr5.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/classic/private_l1_cache_hierarchy.py -> X86/python/gem5/components/cachehierarchies/classic/private_l1_cache_hierarchy.py.cc
+ [EMBED PY] src/cpu/testers/traffic_gen/BaseTrafficGen.py -> X86/cpu/testers/traffic_gen/BaseTrafficGen.py.cc
+ [EMBED PY] src/sim/power/ThermalModel.py -> X86/sim/power/ThermalModel.py.cc
+ [EMBED PY] src/python/gem5/isas.py -> X86/python/gem5/isas.py.cc
+ [EMBED PY] src/dev/serial/Serial.py -> X86/dev/serial/Serial.py.cc
+ [EMBED PY] src/python/gem5/components/processors/spatter_gen/spatter_kernel.py -> X86/python/gem5/components/processors/spatter_gen/spatter_kernel.py.cc
+ [EMBED PY] src/python/gem5/resources/downloader.py -> X86/python/gem5/resources/downloader.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/mesi_three_level/l2_cache.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/mesi_three_level/l2_cache.py.cc
+ [EMBED PY] src/dev/storage/SimpleDisk.py -> X86/dev/storage/SimpleDisk.py.cc
+ [EMBED PY] src/python/m5/util/fdthelper.py -> X86/python/m5/util/fdthelper.py.cc
+ [EMBED PY] src/cpu/simple/BaseSimpleCPU.py -> X86/cpu/simple/BaseSimpleCPU.py.cc
+ [EMBED PY] src/python/gem5/components/processors/traffic_generator_core.py -> X86/python/gem5/components/processors/traffic_generator_core.py.cc
+ [EMBED PY] src/python/m5/ext/pystats/serializable_stat.py -> X86/python/m5/ext/pystats/serializable_stat.py.cc
+ [EMBED PY] src/python/gem5/components/boards/experimental/__init__.py -> X86/python/gem5/components/boards/experimental/__init__.py.cc
+ [EMBED PY] src/sim/VoltageDomain.py -> X86/sim/VoltageDomain.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/__init__.py -> X86/python/gem5/components/cachehierarchies/__init__.py.cc
+ [EMBED PY] src/arch/generic/BaseTLB.py -> X86/arch/generic/BaseTLB.py.cc
+ [EMBED PY] src/python/gem5/components/processors/abstract_core.py -> X86/python/gem5/components/processors/abstract_core.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/viper/tcp.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/viper/tcp.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/prebuilt/octopi_cache/ruby_network_components.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/prebuilt/octopi_cache/ruby_network_components.py.cc
+ [EMBED PY] src/mem/ruby/network/garnet/GarnetLink.py -> X86/mem/ruby/network/garnet/GarnetLink.py.cc
+ [EMBED PY] src/cpu/simple/probes/LooppointAnalysis.py -> X86/cpu/simple/probes/LooppointAnalysis.py.cc
+ [EMBED PY] src/python/m5/citations.py -> X86/python/m5/citations.py.cc
+ [EMBED PY] src/python/gem5/utils/multisim/multisim.py -> X86/python/gem5/utils/multisim/multisim.py.cc
+ [EMBED PY] src/python/gem5/components/processors/gups_generator_ep.py -> X86/python/gem5/components/processors/gups_generator_ep.py.cc
+ [EMBED PY] src/python/gem5/components/memory/__init__.py -> X86/python/gem5/components/memory/__init__.py.cc
+ [EMBED PY] src/python/gem5/components/memory/dram_interfaces/ddr4.py -> X86/python/gem5/components/memory/dram_interfaces/ddr4.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/__init__.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/__init__.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/classic/no_cache.py -> X86/python/gem5/components/cachehierarchies/classic/no_cache.py.cc
+ [EMBED PY] src/python/m5/params/deprecated_params.py -> X86/python/m5/params/deprecated_params.py.cc
+ [EMBED PY] src/arch/x86/X86FsWorkload.py -> X86/arch/x86/X86FsWorkload.py.cc
+ [EMBED PY] src/python/gem5/components/processors/spatter_gen/spatter_generator.py -> X86/python/gem5/components/processors/spatter_gen/spatter_generator.py.cc
+ [EMBED PY] src/python/gem5/resources/client.py -> X86/python/gem5/resources/client.py.cc
+ [EMBED PY] src/python/gem5/resources/client_api/abstract_client.py -> X86/python/gem5/resources/client_api/abstract_client.py.cc
+ [EMBED PY] src/python/m5/util/dot_writer_ruby.py -> X86/python/m5/util/dot_writer_ruby.py.cc
+ [    INFO] COPYING, LICENSE, README.md -> X86/python/m5/info.py
+ [EMBED PY] src/systemc/core/SystemC.py -> X86/systemc/core/SystemC.py.cc
+ [EMBED PY] src/mem/SerialLink.py -> X86/mem/SerialLink.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/chi/private_l1_private_l2_cache_hierarchy.py -> X86/python/gem5/components/cachehierarchies/chi/private_l1_private_l2_cache_hierarchy.py.cc
+ [EMBED PY] X86/python/m5/info.py -> .cc
+ [EMBED PY] src/sim/ClockedObject.py -> X86/sim/ClockedObject.py.cc
+ [EMBED PY] src/python/gem5/utils/simpoint.py -> X86/python/gem5/utils/simpoint.py.cc
+ [EMBED PY] src/dev/x86/X86Ide.py -> X86/dev/x86/X86Ide.py.cc
+ [EMBED PY] src/python/m5/ext/pystats/__init__.py -> X86/python/m5/ext/pystats/__init__.py.cc
+ [EMBED PY] src/cpu/testers/garnet_synthetic_traffic/GarnetSyntheticTraffic.py -> X86/cpu/testers/garnet_synthetic_traffic/GarnetSyntheticTraffic.py.cc
+ [EMBED PY] src/mem/probes/BaseMemProbe.py -> X86/mem/probes/BaseMemProbe.py.cc
+ [EMBED PY] src/mem/SharedMemoryServer.py -> X86/mem/SharedMemoryServer.py.cc
+ [EMBED PY] src/dev/virtio/VirtIOConsole.py -> X86/dev/virtio/VirtIOConsole.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/mesi_three_level/l1_cache.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/mesi_three_level/l1_cache.py.cc
+ [EMBED PY] src/python/gem5/components/processors/__init__.py -> X86/python/gem5/components/processors/__init__.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/classic/private_l1_shared_l2_walk_cache_hierarchy.py -> X86/python/gem5/components/cachehierarchies/classic/private_l1_shared_l2_walk_cache_hierarchy.py.cc
+ [EMBED PY] src/sim/Process.py -> X86/sim/Process.py.cc
+ [EMBED PY] src/mem/cache/prefetch/Prefetcher.py -> X86/mem/cache/prefetch/Prefetcher.py.cc
+ [EMBED PY] src/mem/HBMCtrl.py -> X86/mem/HBMCtrl.py.cc
+ [EMBED PY] src/cpu/testers/rubytest/RubyTester.py -> X86/cpu/testers/rubytest/RubyTester.py.cc
+ [EMBED PY] src/python/gem5/components/boards/se_binary_workload.py -> X86/python/gem5/components/boards/se_binary_workload.py.cc
+ [EMBED PY] src/arch/x86/X86MMU.py -> X86/arch/x86/X86MMU.py.cc
+ [EMBED PY] src/python/m5/SimObject.py -> X86/python/m5/SimObject.py.cc
+ [EMBED PY] src/python/gem5/utils/multisim/__init__.py -> X86/python/gem5/utils/multisim/__init__.py.cc
+ [EMBED PY] src/mem/NVMInterface.py -> X86/mem/NVMInterface.py.cc
+ [EMBED PY] src/mem/AddrMapper.py -> X86/mem/AddrMapper.py.cc
+ [EMBED PY] src/python/gem5/components/memory/dram_interfaces/ddr3.py -> X86/python/gem5/components/memory/dram_interfaces/ddr3.py.cc
+ [EMBED PY] src/python/gem5/components/boards/riscv_board.py -> X86/python/gem5/components/boards/riscv_board.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/classic/abstract_classic_cache_hierarchy.py -> X86/python/gem5/components/cachehierarchies/classic/abstract_classic_cache_hierarchy.py.cc
+ [EMBED PY] src/python/m5/params/base_params.py -> X86/python/m5/params/base_params.py.cc
+ [EMBED PY] src/cpu/StaticInstFlags.py -> X86/cpu/StaticInstFlags.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/viper/dma_controller.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/viper/dma_controller.py.cc
+ [EMBED PY] src/cpu/o3/IQUnit.py -> X86/cpu/o3/IQUnit.py.cc
+ [EMBED PY] src/arch/x86/bios/E820.py -> X86/arch/x86/bios/E820.py.cc
+ [EMBED PY] src/python/gem5/prebuilt/riscvmatched/riscvmatched_board.py -> X86/python/gem5/prebuilt/riscvmatched/riscvmatched_board.py.cc
+ [EMBED PY] src/python/gem5/components/processors/spatter_gen/spatter_generator_core.py -> X86/python/gem5/components/processors/spatter_gen/spatter_generator_core.py.cc
+ [EMBED PY] src/python/gem5/resources/__init__.py -> X86/python/gem5/resources/__init__.py.cc
+ [EMBED PY] src/python/gem5/resources/client_api/azure_functions_client.py -> X86/python/gem5/resources/client_api/azure_functions_client.py.cc
+ [EMBED PY] src/python/gem5/components/processors/abstract_generator.py -> X86/python/gem5/components/processors/abstract_generator.py.cc
+ [EMBED PY] src/python/gem5/components/devices/gpus/viper_shader.py -> X86/python/gem5/components/devices/gpus/viper_shader.py.cc
+ [EMBED PY] src/arch/x86/X86SeWorkload.py -> X86/arch/x86/X86SeWorkload.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/mi_example_cache_hierarchy.py -> X86/python/gem5/components/cachehierarchies/ruby/mi_example_cache_hierarchy.py.cc
+ [EMBED PY] src/python/gem5/components/processors/gups_generator.py -> X86/python/gem5/components/processors/gups_generator.py.cc
+ [EMBED PY] src/python/m5/params/pin_params.py -> X86/python/m5/params/pin_params.py.cc
+ [EMBED PY] src/arch/x86/X86CPU.py -> X86/arch/x86/X86CPU.py.cc
+ [EMBED PY] src/python/gem5/components/boards/kernel_disk_workload.py -> X86/python/gem5/components/boards/kernel_disk_workload.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/mesi_three_level/dma_controller.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/mesi_three_level/dma_controller.py.cc
+ [EMBED PY] src/cpu/kvm/KvmVM.py -> X86/cpu/kvm/KvmVM.py.cc
+ [EMBED PY] src/mem/Bridge.py -> X86/mem/Bridge.py.cc
+ [EMBED PY] src/python/m5/util/dot_writer.py -> X86/python/m5/util/dot_writer.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/classic/private_l1_shared_l2_cache_hierarchy.py -> X86/python/gem5/components/cachehierarchies/classic/private_l1_shared_l2_cache_hierarchy.py.cc
+ [EMBED PY] src/arch/x86/X86ISA.py -> X86/arch/x86/X86ISA.py.cc
+ [EMBED PY] src/python/gem5/components/memory/dram_interfaces/wideio.py -> X86/python/gem5/components/memory/dram_interfaces/wideio.py.cc
+ [EMBED PY] src/mem/MemDelay.py -> X86/mem/MemDelay.py.cc
+ [EMBED PY] src/python/m5/__init__.py -> X86/python/m5/__init__.py.cc
+ [EMBED PY] src/python/gem5/components/processors/switchable_processor.py -> X86/python/gem5/components/processors/switchable_processor.py.cc
+ [EMBED PY] src/dev/i2c/I2C.py -> X86/dev/i2c/I2C.py.cc
+ [EMBED PY] src/python/m5/ext/pyfdt/__init__.py -> X86/python/m5/ext/pyfdt/__init__.py.cc
+ [EMBED PY] src/python/gem5/components/memory/dram_interfaces/__init__.py -> X86/python/gem5/components/memory/dram_interfaces/__init__.py.cc
+ [EMBED PY] src/python/gem5/components/boards/abstract_system_board.py -> X86/python/gem5/components/boards/abstract_system_board.py.cc
+ [EMBED PY] src/cpu/checker/CheckerCPU.py -> X86/cpu/checker/CheckerCPU.py.cc
+ [EMBED PY] src/mem/SysBridge.py -> X86/mem/SysBridge.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/classic/__init__.py -> X86/python/gem5/components/cachehierarchies/classic/__init__.py.cc
+ [EMBED PY] src/python/m5/stats/gem5stats.py -> X86/python/m5/stats/gem5stats.py.cc
+ [EMBED PY] src/python/m5/params/__init__.py -> X86/python/m5/params/__init__.py.cc
+ [EMBED PY] src/sim/SubSystem.py -> X86/sim/SubSystem.py.cc
+ [EMBED PY] src/mem/CommMonitor.py -> X86/mem/CommMonitor.py.cc
+ [EMBED PY] src/python/gem5/prebuilt/riscvmatched/__init__.py -> X86/python/gem5/prebuilt/riscvmatched/__init__.py.cc
+ [EMBED PY] src/python/gem5/components/processors/spatter_gen/__init__.py -> X86/python/gem5/components/processors/spatter_gen/__init__.py.cc
+ [EMBED PY] src/sim/power/ThermalDomain.py -> X86/sim/power/ThermalDomain.py.cc
+ [EMBED PY] src/python/gem5/resources/client_api/jsonclient.py -> X86/python/gem5/resources/client_api/jsonclient.py.cc
+ [EMBED PY] src/mem/probes/MemFootprintProbe.py -> X86/mem/probes/MemFootprintProbe.py.cc
+ [EMBED PY] src/sim/ClockDomain.py -> X86/sim/ClockDomain.py.cc
+ [EMBED PY] src/dev/pci/PciUpstream.py -> X86/dev/pci/PciUpstream.py.cc
+ [EMBED PY] src/mem/ruby/network/MessageBuffer.py -> X86/mem/ruby/network/MessageBuffer.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/viper/directory.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/viper/directory.py.cc
+ [EMBED PY] src/python/gem5/utils/socks_ssl_context.py -> X86/python/gem5/utils/socks_ssl_context.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/prebuilt/octopi_cache/octopi_network.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/prebuilt/octopi_cache/octopi_network.py.cc
+ [EMBED PY] src/python/gem5/components/devices/gpus/amdgpu.py -> X86/python/gem5/components/devices/gpus/amdgpu.py.cc
+ [EMBED PY] src/python/gem5/components/boards/mem_mode.py -> X86/python/gem5/components/boards/mem_mode.py.cc
+ [EMBED PY] src/dev/pci/PciHost.py -> X86/dev/pci/PciHost.py.cc
+ [EMBED PY] src/mem/qos/QoSMemSinkCtrl.py -> X86/mem/qos/QoSMemSinkCtrl.py.cc
+ [EMBED PY] src/sim/TickedObject.py -> X86/sim/TickedObject.py.cc
+ [EMBED PY] src/systemc/tlm_bridge/TlmBridge.py -> X86/systemc/tlm_bridge/TlmBridge.py.cc
+ [EMBED PY] src/python/gem5/components/processors/gups_generator_core.py -> X86/python/gem5/components/processors/gups_generator_core.py.cc
+ [EMBED PY] src/dev/x86/SouthBridge.py -> X86/dev/x86/SouthBridge.py.cc
+ [EMBED PY] src/python/m5/params/null_params.py -> X86/python/m5/params/null_params.py.cc
+ [EMBED PY] src/dev/virtio/VirtIO9P.py -> X86/dev/virtio/VirtIO9P.py.cc
+ [EMBED PY] src/learning_gem5/part2/HelloObject.py -> X86/learning_gem5/part2/HelloObject.py.cc
+ [EMBED PY] X86/mem/ruby/protocol/MESI_Two_Level/MESI_Two_Level_L1Cache_Controller.py -> .cc
+ [EMBED PY] src/cpu/kvm/BaseKvmCPU.py -> X86/cpu/kvm/BaseKvmCPU.py.cc
+ [EMBED PY] src/python/gem5/prebuilt/viper/viper_network.py -> X86/python/gem5/prebuilt/viper/viper_network.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/mesi_three_level/directory.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/mesi_three_level/directory.py.cc
+ [EMBED PY] src/dev/x86/I8254.py -> X86/dev/x86/I8254.py.cc
+ [EMBED PY] src/dev/ps2/PS2.py -> X86/dev/ps2/PS2.py.cc
+ [EMBED PY] src/dev/qemu/QemuFwCfg.py -> X86/dev/qemu/QemuFwCfg.py.cc
+ [EMBED PY] src/python/m5/util/convert.py -> X86/python/m5/util/convert.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/classic/private_l1_private_l2_walk_cache_hierarchy.py -> X86/python/gem5/components/cachehierarchies/classic/private_l1_private_l2_walk_cache_hierarchy.py.cc
+ [EMBED PY] src/cpu/CPUTracers.py -> X86/cpu/CPUTracers.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/mesi_three_level_cache_hierarchy.py -> X86/python/gem5/components/cachehierarchies/ruby/mesi_three_level_cache_hierarchy.py.cc
+ [EMBED PY] src/base/vnc/Vnc.py -> X86/base/vnc/Vnc.py.cc
+ [EMBED PY] src/mem/ruby/network/simple/SimpleNetwork.py -> X86/mem/ruby/network/simple/SimpleNetwork.py.cc
+ [EMBED PY] src/arch/generic/BaseMMU.py -> X86/arch/generic/BaseMMU.py.cc
+ [EMBED PY] src/python/gem5/components/processors/simple_switchable_processor.py -> X86/python/gem5/components/processors/simple_switchable_processor.py.cc
+ [EMBED PY] src/python/m5/ext/pyfdt/pyfdt.py -> X86/python/m5/ext/pyfdt/pyfdt.py.cc
+ [EMBED PY] src/python/gem5/components/boards/abstract_board.py -> X86/python/gem5/components/boards/abstract_board.py.cc
+ [EMBED PY] src/sim/Workload.py -> X86/sim/Workload.py.cc
+ [EMBED PY] src/python/m5/ext/pystats/jsonloader.py -> X86/python/m5/ext/pystats/jsonloader.py.cc
+ [EMBED PY] X86/python/m5/defines.py -> .cc
+ [EMBED PY] src/dev/serial/Terminal.py -> X86/dev/serial/Terminal.py.cc
+ [EMBED PY] src/python/m5/simulate.py -> X86/python/m5/simulate.py.cc
+ [EMBED PY] src/cpu/DummyChecker.py -> X86/cpu/DummyChecker.py.cc
+ [EMBED PY] src/python/gem5/resources/client_api/__init__.py -> X86/python/gem5/resources/client_api/__init__.py.cc
+ [EMBED PY] src/python/importer.py -> X86/python/importer.py.cc
+ [EMBED PY] src/python/gem5/utils/requires.py -> X86/python/gem5/utils/requires.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/viper/corepair_cache.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/viper/corepair_cache.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/ruby/caches/prebuilt/octopi_cache/core_complex.py -> X86/python/gem5/components/cachehierarchies/ruby/caches/prebuilt/octopi_cache/core_complex.py.cc
+ [EMBED PY] src/python/gem5/components/devices/gpus/__init__.py -> X86/python/gem5/components/devices/gpus/__init__.py.cc
+ [EMBED PY] src/python/gem5/components/boards/arm_board.py -> X86/python/gem5/components/boards/arm_board.py.cc
+ [EMBED PY] src/python/gem5/components/memory/hbm.py -> X86/python/gem5/components/memory/hbm.py.cc
+ [EMBED PY] src/mem/CfiMemory.py -> X86/mem/CfiMemory.py.cc
+ [EMBED PY] src/python/gem5/components/cachehierarchies/chi/nodes/memory_controller.py -> X86/python/gem5/components/cachehierarchies/chi/nodes/memory_controller.py.cc
+ [EMBED PY] src/python/gem5/components/memory/dram_interfaces/lpddr5.py -> X86/python/gem5/components/memory/dram_interfaces/lpddr5.py.cc
+ [EMBED PY] src/python/m5/objects/__init__.py -> X86/python/m5/objects/__init__.py.cc
+ [EMBED PY] src/cpu/simple/BaseAtomicSimpleCPU.py -> X86/cpu/simple/BaseAtomicSimpleCPU.py.cc
+ [EMBED PY] src/python/gem5/components/processors/cpu_types.py -> X86/python/gem5/components/processors/cpu_types.py.cc
+ [EMBED PY] src/arch/x86/bios/SMBios.py -> X86/arch/x86/bios/SMBios.py.cc
+ [EMBED PY] src/python/m5/params/network_params.py -> X86/python/m5/params/network_params.py.cc
+ [EMBED PY] src/cpu/o3/BaseO3Checker.py -> X86/cpu/o3/BaseO3Checker.py.cc
+ [ TRACING]  -> X86/debug/Event.hh
+ [ TRACING]  -> X86/debug/CxxConfig.hh
+ [ TRACING]  -> X86/debug/Drain.hh
+ [    LINK]  -> X86/gem5py_m5
+ [ TRACING]  -> X86/debug/Checkpoint.hh
+ [ TRACING]  -> X86/debug/InvalidReg.hh
+ [ TRACING]  -> X86/debug/ExternalSignal.hh
+ [ TRACING]  -> X86/debug/Loader.hh
+ [ TRACING]  -> X86/debug/TimeSync.hh
+ [ TRACING]  -> X86/debug/Vma.hh
+ [ TRACING]  -> X86/debug/EnteringEventQueue.hh
+ [ TRACING]  -> X86/debug/ClockDomain.hh
+ [ TRACING]  -> X86/debug/VoltageDomain.hh
+ [ TRACING]  -> X86/debug/Quiesce.hh
+ [ TRACING]  -> X86/debug/WorkItems.hh
+ [ TRACING]  -> X86/debug/Mwait.hh
+ [ TRACING]  -> X86/debug/IntPin.hh
+ [ TRACING]  -> X86/debug/DVFS.hh
+ [ TRACING]  -> X86/debug/PowerDomain.hh
+ [ TRACING]  -> X86/debug/Faults.hh
+ [ TRACING]  -> X86/debug/SyscallBase.hh
+ [ TRACING]  -> X86/debug/SyscallVerbose.hh
+ [ TRACING]  -> X86/debug/PseudoInst.hh
+ [ TRACING]  -> X86/debug/Checkpoint.cc
+ [ TRACING]  -> X86/debug/Config.cc
+ [ TRACING]  -> X86/debug/CxxConfig.cc
+ [     CXX] X86/debug/Checkpoint.cc -> .o
+ [ TRACING]  -> X86/debug/Config.hh
+ [     CXX] X86/debug/CxxConfig.cc -> .o
+ [     CXX] X86/debug/Config.cc -> .o
+ [ TRACING]  -> X86/debug/Drain.cc
+ [ TRACING]  -> X86/debug/Event.cc
+ [     CXX] X86/debug/Drain.cc -> .o
+ [ TRACING]  -> X86/debug/ExternalSignal.cc
+ [     CXX] X86/debug/Event.cc -> .o
+ [     CXX] X86/debug/ExternalSignal.cc -> .o
+ [ TRACING]  -> X86/debug/Flow.cc
+ [ TRACING]  -> X86/debug/IPI.cc
+ [ TRACING]  -> X86/debug/Flow.hh
+ [ TRACING]  -> X86/debug/IPR.cc
+ [ TRACING]  -> X86/debug/IPI.hh
+ [     CXX] X86/debug/Flow.cc -> .o
+ [ TRACING]  -> X86/debug/IPR.hh
+ [     CXX] X86/debug/IPI.cc -> .o
+ [     CXX] X86/debug/IPR.cc -> .o
+ [ TRACING]  -> X86/debug/Interrupt.cc
+ [ TRACING]  -> X86/debug/Loader.cc
+ [ TRACING]  -> X86/debug/Interrupt.hh
+ [ TRACING]  -> X86/debug/PseudoInst.cc
+ [     CXX] X86/debug/Loader.cc -> .o
+ [     CXX] X86/debug/Interrupt.cc -> .o
+ [     CXX] X86/debug/PseudoInst.cc -> .o
+ [SO Param] m5.objects.ClockDomain, DerivedClockDomain -> X86/python/_m5/param_DerivedClockDomain.cc
+ [ENUMDECL] m5.objects.System, MemoryMode -> X86/enums/MemoryMode.hh
+ [SO Param] m5.objects.Workload, KernelWorkload -> X86/python/_m5/param_KernelWorkload.cc
+ [SO Param] m5.objects.AbstractMemory, AbstractMemory -> X86/params/AbstractMemory.hh
+ [SO Param] m5.objects.Process, Process -> X86/python/_m5/param_Process.cc
+ [ENUMDECL] m5.objects.Workload, KernelPanicOopsBehaviour -> X86/enums/KernelPanicOopsBehaviour.hh
+ [SO Param] m5.objects.Workload, SEWorkload -> X86/python/_m5/param_SEWorkload.cc
+ [SO Param] m5.objects.SubSystem, SubSystem -> X86/python/_m5/param_SubSystem.cc
+ [SO Param] m5.objects.PowerModel, PowerModel -> X86/params/PowerModel.hh
+ [SO Param] m5.objects.Process, Process -> X86/params/Process.hh
+ [ENUMDECL] m5.objects.PowerModel, PMType -> X86/enums/PMType.hh
+ [SO Param] m5.objects.TickedObject, TickedObject -> X86/python/_m5/param_TickedObject.cc
+ [SO Param] m5.objects.ClockedObject, ClockedObject -> X86/params/ClockedObject.hh
+ [SO Param] m5.objects.RedirectPath, RedirectPath -> X86/params/RedirectPath.hh
+ [SO Param] m5.objects.DVFSHandler, DVFSHandler -> X86/params/DVFSHandler.hh
+ [SO Param] m5.objects.BaseCPU, BaseCPU -> X86/params/BaseCPU.hh
+ [ENUMDECL] m5.objects.StaticInstFlags, StaticInstFlags -> X86/enums/StaticInstFlags.hh
+ [SO Param] m5.objects.BaseTLB, BaseTLB -> X86/params/BaseTLB.hh
+ [ENUM STR] m5.objects.System, MemoryMode -> X86/enums/MemoryMode.cc
+ [SO Param] m5.objects.Process, EmulatedDriver -> X86/params/EmulatedDriver.hh
+ [SO Param] m5.objects.InstDecoder, InstDecoder -> X86/params/InstDecoder.hh
+ [SO Param] m5.objects.InstTracer, InstTracer -> X86/python/_m5/param_InstTracer.cc
+ [     CXX] X86/enums/MemoryMode.cc -> .o
+ [SO Param] m5.objects.PowerDomain, PowerDomain -> X86/params/PowerDomain.hh
+ [SO Param] m5.objects.BaseInterrupts, BaseInterrupts -> X86/params/BaseInterrupts.hh
+ [SO Param] m5.objects.DVFSHandler, DVFSHandler -> X86/python/_m5/param_DVFSHandler.cc
+ [SO Param] m5.objects.PowerState, PowerState -> X86/params/PowerState.hh
+ [SO Param] m5.objects.ClockDomain, ClockDomain -> X86/params/ClockDomain.hh
+ [SO Param] m5.objects.VoltageDomain, VoltageDomain -> X86/params/VoltageDomain.hh
+ [SO Param] m5.objects.InstTracer, InstTracer -> X86/params/InstTracer.hh
+ [ENUMDECL] m5.objects.PowerState, PwrState -> X86/enums/PwrState.hh
+ [SO Param] m5.objects.ClockDomain, SrcClockDomain -> X86/params/SrcClockDomain.hh
+ [SO Param] m5.objects.Workload, Workload -> X86/params/Workload.hh
+ [SO Param] m5.objects.PowerModelState, PowerModelState -> X86/params/PowerModelState.hh
+ [SO Param] m5.objects.ClockDomain, DerivedClockDomain -> X86/params/DerivedClockDomain.hh
+ [SO Param] m5.objects.Root, Root -> X86/params/Root.hh
+ [SO Param] m5.objects.PowerDomain, PowerDomain -> X86/python/_m5/param_PowerDomain.cc
+ [SO Param] m5.objects.Workload, StubWorkload -> X86/params/StubWorkload.hh
+ [SO Param] m5.objects.Workload, KernelWorkload -> X86/params/KernelWorkload.hh
+ [SO Param] m5.objects.PowerState, PowerState -> X86/python/_m5/param_PowerState.cc
+ [SO Param] m5.objects.ClockDomain, ClockDomain -> X86/python/_m5/param_ClockDomain.cc
+ [SO Param] m5.objects.VoltageDomain, VoltageDomain -> X86/python/_m5/param_VoltageDomain.cc
+ [ENUMDECL] m5.objects.BaseTLB, TypeTLB -> X86/enums/TypeTLB.hh
+ [SO Param] m5.objects.Workload, StubWorkload -> X86/python/_m5/param_StubWorkload.cc
+ [SO Param] m5.objects.SubSystem, SubSystem -> X86/params/SubSystem.hh
+ [SO Param] m5.objects.Workload, SEWorkload -> X86/params/SEWorkload.hh
+ [SO Param] m5.objects.Workload, Workload -> X86/python/_m5/param_Workload.cc
+ [SO Param] m5.objects.ClockDomain, SrcClockDomain -> X86/python/_m5/param_SrcClockDomain.cc
+ [SO Param] m5.objects.TickedObject, TickedObject -> X86/params/TickedObject.hh
+ [SO Param] m5.objects.BaseMMU, BaseMMU -> X86/params/BaseMMU.hh
+ [SO Param] m5.objects.System, System -> X86/params/System.hh
+ [SO Param] m5.objects.System, System -> X86/python/_m5/param_System.cc
+ [SO Param] m5.objects.RedirectPath, RedirectPath -> X86/python/_m5/param_RedirectPath.cc
+ [SO Param] m5.objects.Root, Root -> X86/python/_m5/param_Root.cc
+ [SO Param] m5.objects.ThermalModel, ThermalModel -> X86/params/ThermalModel.hh
+ [SO Param] m5.objects.ClockedObject, ClockedObject -> X86/python/_m5/param_ClockedObject.cc
+ [SO Param] m5.objects.SimObject, SimObject -> X86/params/SimObject.hh
+ [ENUM STR] m5.objects.Workload, KernelPanicOopsBehaviour -> X86/enums/KernelPanicOopsBehaviour.cc
+ [SO Param] m5.objects.ThermalDomain, ThermalDomain -> X86/params/ThermalDomain.hh
+ [     CXX] X86/python/_m5/param_DerivedClockDomain.cc -> .o
+ [     CXX] X86/enums/KernelPanicOopsBehaviour.cc -> .o
+ [     CXX] X86/python/_m5/param_ClockedObject.cc -> .o
+ [     CXX] X86/python/_m5/param_SubSystem.cc -> .o
+ [     CXX] src/sim/sub_system.cc -> X86/sim/sub_system.o
+ [     CXX] X86/python/_m5/param_PowerState.cc -> .o
+ [     CXX] src/sim/clock_domain.cc -> X86/sim/clock_domain.o
+ [     CXX] src/sim/stats.cc -> X86/sim/stats.o
+ [     CXX] src/sim/cxx_manager.cc -> X86/sim/cxx_manager.o
+ [     CXX] X86/python/_m5/param_PowerDomain.cc -> .o
+ [     CXX] X86/python/_m5/param_Root.cc -> .o
+ [     CXX] src/sim/sim_object.cc -> X86/sim/sim_object.o
+ [     CXX] src/sim/clocked_object.cc -> X86/sim/clocked_object.o
+ [     CXX] X86/python/_m5/param_SrcClockDomain.cc -> .o
+ [     CXX] src/sim/root.cc -> X86/sim/root.o
+ [     CXX] src/sim/power_domain.cc -> X86/sim/power_domain.o
+ [     CXX] X86/python/_m5/param_VoltageDomain.cc -> .o
+ [     CXX] src/sim/cxx_config.cc -> X86/sim/cxx_config.o
+ [     CXX] src/sim/dvfs_handler.cc -> X86/sim/dvfs_handler.o
+ [     CXX] X86/python/_m5/param_ClockDomain.cc -> .o
+ [     CXX] src/sim/ticked_object.cc -> X86/sim/ticked_object.o
+ [     CXX] X86/python/_m5/param_RedirectPath.cc -> .o
+ [     CXX] src/sim/redirect_path.cc -> X86/sim/redirect_path.o
+ [     CXX] src/sim/power_state.cc -> X86/sim/power_state.o
+ [     CXX] X86/python/_m5/param_TickedObject.cc -> .o
+ [     CXX] src/sim/voltage_domain.cc -> X86/sim/voltage_domain.o
+ [     CXX] src/sim/cxx_config_ini.cc -> X86/sim/cxx_config_ini.o
+ [     CXX] X86/python/_m5/param_DVFSHandler.cc -> .o
+ [SO Param] m5.objects.Process, EmulatedDriver -> X86/python/_m5/param_EmulatedDriver.cc
+ [ENUMDECL] m5.objects.SimObject, ByteOrder -> X86/enums/ByteOrder.hh
+ [     CXX] X86/python/_m5/param_EmulatedDriver.cc -> .o
+ [     CXX] X86/python/_m5/param_Workload.cc -> .o
+ [     CXX] src/sim/bufval.cc -> X86/sim/bufval.o
+ [     CXX] X86/python/_m5/param_SEWorkload.cc -> .o
+ [     CXX] src/sim/fd_array.cc -> X86/sim/fd_array.o
+ [     CXX] src/sim/futex_map.cc -> X86/sim/futex_map.o
+ [     CXX] X86/python/_m5/param_KernelWorkload.cc -> .o
+ [     CXX] src/sim/workload.cc -> X86/sim/workload.o
+ [     CXX] X86/python/_m5/param_Process.cc -> .o
+ [     CXX] src/sim/kernel_workload.cc -> X86/sim/kernel_workload.o
+ [     CXX] src/sim/process.cc -> X86/sim/process.o
+ [     CXX] X86/python/_m5/param_StubWorkload.cc -> .o
+ [     CXX] X86/python/_m5/param_System.cc -> .o
+ [     CXX] src/sim/se_workload.cc -> X86/sim/se_workload.o
+ [     CXX] src/sim/vma.cc -> X86/sim/vma.o
+ [SO Param] m5.objects.InstTracer, InstDisassembler -> X86/python/_m5/param_InstDisassembler.cc
+ [SO Param] m5.objects.InstTracer, InstDisassembler -> X86/params/InstDisassembler.hh
+ [ENUMDECL] m5.objects.FuncUnit, OpClass -> X86/enums/OpClass.hh
+ [     CXX] src/sim/mem_state.cc -> X86/sim/mem_state.o
+ [     CXX] X86/python/_m5/param_InstDisassembler.cc -> .o
+ [     CXX] src/sim/syscall_desc.cc -> X86/sim/syscall_desc.o
+ [     CXX] X86/python/_m5/param_InstTracer.cc -> .o
+ [SO Param] m5.objects.BaseISA, BaseISA -> X86/params/BaseISA.hh
+ [     CXX] src/sim/faults.cc -> X86/sim/faults.o
+ [     CXX] src/sim/system.cc -> X86/sim/system.o
+ [     CXX] src/sim/syscall_emul.cc -> X86/sim/syscall_emul.o
+ [     CXX] src/sim/pseudo_inst.cc -> X86/sim/pseudo_inst.o
+ [ENUM STR] m5.objects.PowerState, PwrState -> X86/enums/PwrState.cc
+ [     CXX] X86/enums/PwrState.cc -> .o
+ [ TRACING]  -> X86/debug/Stack.cc
+ [ TRACING]  -> X86/debug/Stack.hh
+ [     CXX] X86/debug/Stack.cc -> .o
+ [ TRACING]  -> X86/debug/SyscallBase.cc
+ [     CXX] X86/debug/SyscallBase.cc -> .o
+ [ TRACING]  -> X86/debug/SyscallVerbose.cc
+ [     CXX] X86/debug/SyscallVerbose.cc -> .o
+ [ TRACING]  -> X86/debug/TimeSync.cc
+ [     CXX] X86/debug/TimeSync.cc -> .o
+ [ TRACING]  -> X86/debug/Thread.cc
+ [ TRACING]  -> X86/debug/Thread.hh
+ [     CXX] X86/debug/Thread.cc -> .o
+ [ TRACING]  -> X86/debug/Timer.cc
+ [ TRACING]  -> X86/debug/Timer.hh
+ [     CXX] X86/debug/Timer.cc -> .o
+ [ TRACING]  -> X86/debug/VtoPhys.cc
+ [ TRACING]  -> X86/debug/VtoPhys.hh
+ [     CXX] X86/debug/VtoPhys.cc -> .o
+ [ TRACING]  -> X86/debug/WorkItems.cc
+ [     CXX] X86/debug/WorkItems.cc -> .o
+ [ TRACING]  -> X86/debug/ClockDomain.cc
+ [     CXX] X86/debug/ClockDomain.cc -> .o
+ [ TRACING]  -> X86/debug/VoltageDomain.cc
+ [     CXX] X86/debug/VoltageDomain.cc -> .o
+ [ TRACING]  -> X86/debug/DVFS.cc
+ [     CXX] X86/debug/DVFS.cc -> .o
+ [ TRACING]  -> X86/debug/Vma.cc
+ [     CXX] X86/debug/Vma.cc -> .o
+ [ TRACING]  -> X86/debug/PowerDomain.cc
+ [     CXX] X86/debug/PowerDomain.cc -> .o
+ [ TRACING]  -> X86/debug/EnteringEventQueue.cc
+ [     CXX] X86/debug/EnteringEventQueue.cc -> .o
+ [ TRACING]  -> X86/debug/SyscallAll.cc
+ [ TRACING]  -> X86/debug/SyscallAll.hh
+ [     CXX] X86/debug/SyscallAll.cc -> .o
+ [     CXX] X86/sim/power/MathExprPowerModel.py.cc -> .o
+ [SO Param] m5.objects.MathExprPowerModel, MathExprPowerModel -> X86/python/_m5/param_MathExprPowerModel.cc
+ [     CXX] X86/sim/power/PowerModel.py.cc -> .o
+ [SO Param] m5.objects.MathExprPowerModel, MathExprPowerModel -> X86/params/MathExprPowerModel.hh
+ [     CXX] X86/python/_m5/param_MathExprPowerModel.cc -> .o
+ [SO Param] m5.objects.PowerModel, PowerModel -> X86/python/_m5/param_PowerModel.cc
+ [ENUM STR] m5.objects.PowerModel, PMType -> X86/enums/PMType.cc
+ [     CXX] X86/python/_m5/param_PowerModel.cc -> .o
+ [     CXX] X86/enums/PMType.cc -> .o
+ [     CXX] X86/sim/power/PowerModelState.py.cc -> .o
+ [SO Param] m5.objects.PowerModelState, PowerModelState -> X86/python/_m5/param_PowerModelState.cc
+ [     CXX] X86/python/_m5/param_PowerModelState.cc -> .o
+ [     CXX] X86/sim/power/ThermalDomain.py.cc -> .o
+ [SO Param] m5.objects.ThermalDomain, ThermalDomain -> X86/python/_m5/param_ThermalDomain.cc
+ [     CXX] X86/sim/power/ThermalModel.py.cc -> .o
+ [     CXX] X86/python/_m5/param_ThermalDomain.cc -> .o
+ [SO Param] m5.objects.ThermalModel, ThermalNode -> X86/python/_m5/param_ThermalNode.cc
+ [SO Param] m5.objects.ThermalModel, ThermalNode -> X86/params/ThermalNode.hh
+ [SO Param] m5.objects.ThermalModel, ThermalResistor -> X86/python/_m5/param_ThermalResistor.cc
+ [     CXX] X86/python/_m5/param_ThermalNode.cc -> .o
+ [SO Param] m5.objects.ThermalModel, ThermalResistor -> X86/params/ThermalResistor.hh
+ [     CXX] X86/python/_m5/param_ThermalResistor.cc -> .o
+ [SO Param] m5.objects.ThermalModel, ThermalCapacitor -> X86/python/_m5/param_ThermalCapacitor.cc
+ [SO Param] m5.objects.ThermalModel, ThermalCapacitor -> X86/params/ThermalCapacitor.hh
+ [     CXX] X86/python/_m5/param_ThermalCapacitor.cc -> .o
+ [SO Param] m5.objects.ThermalModel, ThermalReference -> X86/python/_m5/param_ThermalReference.cc
+ [SO Param] m5.objects.ThermalModel, ThermalReference -> X86/params/ThermalReference.hh
+ [     CXX] X86/python/_m5/param_ThermalReference.cc -> .o
+ [SO Param] m5.objects.ThermalModel, ThermalModel -> X86/python/_m5/param_ThermalModel.cc
+ [     CXX] X86/python/_m5/param_ThermalModel.cc -> .o
+ [     CXX] src/sim/power/power_model.cc -> X86/sim/power/power_model.o
+ [     CXX] src/sim/power/mathexpr_powermodel.cc -> X86/sim/power/mathexpr_powermodel.o
+ [ TRACING]  -> X86/debug/ThermalDomain.hh
+ [     CXX] src/sim/power/thermal_domain.cc -> X86/sim/power/thermal_domain.o
+ [     CXX] src/sim/power/thermal_model.cc -> X86/sim/power/thermal_model.o
+ [     CXX] src/sim/power/thermal_node.cc -> X86/sim/power/thermal_node.o
+ [ TRACING]  -> X86/debug/ThermalDomain.cc
+ [     CXX] X86/debug/ThermalDomain.cc -> .o
+ [     CXX] X86/sim/probe/Probe.py.cc -> .o
+ [SO Param] m5.objects.Probe, ProbeListenerObject -> X86/python/_m5/param_ProbeListenerObject.cc
+ [SO Param] m5.objects.Probe, ProbeListenerObject -> X86/params/ProbeListenerObject.hh
+ [     CXX] X86/python/_m5/param_ProbeListenerObject.cc -> .o
+ [ TRACING]  -> X86/debug/ProbeVerbose.hh
+ [     CXX] src/sim/probe/probe.cc -> X86/sim/probe/probe.o
+ [     CXX] src/sim/probe/probe_listener_object.cc -> X86/sim/probe/probe_listener_object.o
+ [ TRACING]  -> X86/debug/ProbeVerbose.cc
+ [     CXX] X86/debug/ProbeVerbose.cc -> .o
+ [ TRACING]  -> X86/debug/Activity.cc
+ [ TRACING]  -> X86/debug/Activity.hh
+ [     CXX] X86/debug/Activity.cc -> .o
+ [ TRACING]  -> X86/debug/Commit.cc
+ [ TRACING]  -> X86/debug/Context.cc
+ [ TRACING]  -> X86/debug/Commit.hh
+ [ TRACING]  -> X86/debug/Context.hh
+ [     CXX] X86/debug/Commit.cc -> .o
+ [     CXX] X86/debug/Context.cc -> .o
+ [ TRACING]  -> X86/debug/Decode.cc
+ [ TRACING]  -> X86/debug/DynInst.cc
+ [ TRACING]  -> X86/debug/Decode.hh
+ [ TRACING]  -> X86/debug/DynInst.hh
+ [     CXX] X86/debug/Decode.cc -> .o
+ [     CXX] X86/debug/DynInst.cc -> .o
+ [ TRACING]  -> X86/debug/ExecEnable.cc
+ [ TRACING]  -> X86/debug/ExecCPSeq.cc
+ [ TRACING]  -> X86/debug/ExecEnable.hh
+ [ TRACING]  -> X86/debug/ExecCPSeq.hh
+ [     CXX] X86/debug/ExecEnable.cc -> .o
+ [     CXX] X86/debug/ExecCPSeq.cc -> .o
+ [ TRACING]  -> X86/debug/ExecEffAddr.cc
+ [ TRACING]  -> X86/debug/ExecFaulting.cc
+ [ TRACING]  -> X86/debug/ExecEffAddr.hh
+ [ TRACING]  -> X86/debug/ExecFaulting.hh
+ [     CXX] X86/debug/ExecEffAddr.cc -> .o
+ [     CXX] X86/debug/ExecFaulting.cc -> .o
+ [ TRACING]  -> X86/debug/ExecFetchSeq.cc
+ [ TRACING]  -> X86/debug/ExecOpClass.cc
+ [ TRACING]  -> X86/debug/ExecFetchSeq.hh
+ [ TRACING]  -> X86/debug/ExecOpClass.hh
+ [     CXX] X86/debug/ExecFetchSeq.cc -> .o
+ [     CXX] X86/debug/ExecOpClass.cc -> .o
+ [ TRACING]  -> X86/debug/ExecRegDelta.cc
+ [ TRACING]  -> X86/debug/ExecResult.cc
+ [ TRACING]  -> X86/debug/ExecRegDelta.hh
+ [ TRACING]  -> X86/debug/ExecResult.hh
+ [     CXX] X86/debug/ExecRegDelta.cc -> .o
+ [     CXX] X86/debug/ExecResult.cc -> .o
+ [ TRACING]  -> X86/debug/ExecSymbol.cc
+ [ TRACING]  -> X86/debug/ExecSymbol.hh
+ [     CXX] X86/debug/ExecSymbol.cc -> .o
+ [ TRACING]  -> X86/debug/ExecThread.cc
+ [ TRACING]  -> X86/debug/ExecMicro.cc
+ [ TRACING]  -> X86/debug/ExecThread.hh
+ [ TRACING]  -> X86/debug/ExecMicro.hh
+ [     CXX] X86/debug/ExecThread.cc -> .o
+ [     CXX] X86/debug/ExecMicro.cc -> .o
+ [ TRACING]  -> X86/debug/ExecMacro.cc
+ [ TRACING]  -> X86/debug/ExecMacro.hh
+ [     CXX] X86/debug/ExecMacro.cc -> .o
+ [ TRACING]  -> X86/debug/ExecUser.cc
+ [ TRACING]  -> X86/debug/ExecKernel.cc
+ [ TRACING]  -> X86/debug/ExecUser.hh
+ [ TRACING]  -> X86/debug/ExecKernel.hh
+ [     CXX] X86/debug/ExecUser.cc -> .o
+ [     CXX] X86/debug/ExecKernel.cc -> .o
+ [ TRACING]  -> X86/debug/ExecAsid.cc
+ [ TRACING]  -> X86/debug/ExecAsid.hh
+ [     CXX] X86/debug/ExecAsid.cc -> .o
+ [ TRACING]  -> X86/debug/ExecFlags.cc
+ [ TRACING]  -> X86/debug/Fetch.cc
+ [ TRACING]  -> X86/debug/ExecFlags.hh
+ [ TRACING]  -> X86/debug/Fetch.hh
+ [     CXX] X86/debug/ExecFlags.cc -> .o
+ [     CXX] X86/debug/Fetch.cc -> .o
+ [ TRACING]  -> X86/debug/HtmCpu.cc
+ [ TRACING]  -> X86/debug/HtmCpu.hh
+ [     CXX] X86/debug/HtmCpu.cc -> .o
+ [ TRACING]  -> X86/debug/InvalidReg.cc
+ [ TRACING]  -> X86/debug/O3PipeView.cc
+ [     CXX] X86/debug/InvalidReg.cc -> .o
+ [ TRACING]  -> X86/debug/O3PipeView.hh
+ [     CXX] X86/debug/O3PipeView.cc -> .o
+ [ TRACING]  -> X86/debug/PCEvent.cc
+ [ TRACING]  -> X86/debug/PCEvent.hh
+ [     CXX] X86/debug/PCEvent.cc -> .o
+ [ TRACING]  -> X86/debug/Quiesce.cc
+ [     CXX] X86/debug/Quiesce.cc -> .o
+ [ TRACING]  -> X86/debug/Mwait.cc
+ [     CXX] X86/debug/Mwait.cc -> .o
+ [ TRACING]  -> X86/debug/ExecAll.cc
+ [ TRACING]  -> X86/debug/ExecAll.hh
+ [     CXX] X86/debug/ExecAll.cc -> .o
+ [ TRACING]  -> X86/debug/Exec.cc
+ [ TRACING]  -> X86/debug/Exec.hh
+ [ TRACING]  -> X86/debug/ExecNoTicks.cc
+ [     CXX] X86/debug/Exec.cc -> .o
+ [ TRACING]  -> X86/debug/ExecNoTicks.hh
+ [ TRACING]  -> X86/debug/FmtTicksOff.hh
+ [     CXX] X86/debug/ExecNoTicks.cc -> .o
+ [SO Param] m5.objects.FuncUnit, FUDesc -> X86/params/FUDesc.hh
+ [SO Param] m5.objects.FuncUnit, OpDesc -> X86/params/OpDesc.hh
+ [     CXX] src/cpu/pc_event.cc -> X86/cpu/pc_event.o
+ [     CXX] X86/cpu/FuncUnit.py.cc -> .o
+ [     CXX] src/cpu/func_unit.cc -> X86/cpu/func_unit.o
+ [SO Param] m5.objects.FuncUnit, OpDesc -> X86/python/_m5/param_OpDesc.cc
+ [     CXX] X86/python/_m5/param_OpDesc.cc -> .o
+ [SO Param] m5.objects.FuncUnit, FUDesc -> X86/python/_m5/param_FUDesc.cc
+ [     CXX] X86/python/_m5/param_FUDesc.cc -> .o
+ [ENUM STR] m5.objects.FuncUnit, OpClass -> X86/enums/OpClass.cc
+ [     CXX] X86/enums/OpClass.cc -> .o
+ [     CXX] X86/cpu/StaticInstFlags.py.cc -> .o
+ [ENUM STR] m5.objects.StaticInstFlags, StaticInstFlags -> X86/enums/StaticInstFlags.cc
+ [     CXX] X86/enums/StaticInstFlags.cc -> .o
+ [     CXX] X86/cpu/BaseCPU.py.cc -> .o
+ [SO Param] m5.objects.BaseCPU, BaseCPU -> X86/python/_m5/param_BaseCPU.cc
+ [     CXX] X86/python/_m5/param_BaseCPU.cc -> .o
+ [     CXX] X86/cpu/CpuCluster.py.cc -> .o
+ [SO Param] m5.objects.CpuCluster, CpuCluster -> X86/python/_m5/param_CpuCluster.cc
+ [SO Param] m5.objects.CpuCluster, CpuCluster -> X86/params/CpuCluster.hh
+ [     CXX] X86/python/_m5/param_CpuCluster.cc -> .o
+ [     CXX] X86/cpu/CPUTracers.py.cc -> .o
+ [SO Param] m5.objects.CPUTracers, ExeTracer -> X86/python/_m5/param_ExeTracer.cc
+ [SO Param] m5.objects.CPUTracers, ExeTracer -> X86/params/ExeTracer.hh
+ [     CXX] X86/python/_m5/param_ExeTracer.cc -> .o
+ [SO Param] m5.objects.CPUTracers, IntelTrace -> X86/python/_m5/param_IntelTrace.cc
+ [SO Param] m5.objects.CPUTracers, IntelTrace -> X86/params/IntelTrace.hh
+ [     CXX] X86/python/_m5/param_IntelTrace.cc -> .o
+ [SO Param] m5.objects.CPUTracers, NativeTrace -> X86/python/_m5/param_NativeTrace.cc
+ [SO Param] m5.objects.CPUTracers, NativeTrace -> X86/params/NativeTrace.hh
+ [     CXX] X86/cpu/TimingExpr.py.cc -> .o
+ [     CXX] X86/python/_m5/param_NativeTrace.cc -> .o
+ [SO Param] m5.objects.TimingExpr, TimingExpr -> X86/python/_m5/param_TimingExpr.cc
+ [SO Param] m5.objects.TimingExpr, TimingExpr -> X86/params/TimingExpr.hh
+ [ENUMDECL] m5.objects.TimingExpr, TimingExprOp -> X86/enums/TimingExprOp.hh
+ [SO Param] m5.objects.TimingExpr, TimingExprBin -> X86/params/TimingExprBin.hh
+ [SO Param] m5.objects.TimingExpr, TimingExprIf -> X86/params/TimingExprIf.hh
+ [SO Param] m5.objects.TimingExpr, TimingExprLet -> X86/params/TimingExprLet.hh
+ [SO Param] m5.objects.TimingExpr, TimingExprLiteral -> X86/params/TimingExprLiteral.hh
+ [SO Param] m5.objects.TimingExpr, TimingExprRef -> X86/params/TimingExprRef.hh
+ [SO Param] m5.objects.TimingExpr, TimingExprSrcReg -> X86/params/TimingExprSrcReg.hh
+ [SO Param] m5.objects.TimingExpr, TimingExprUn -> X86/params/TimingExprUn.hh
+ [     CXX] X86/python/_m5/param_TimingExpr.cc -> .o
+ [SO Param] m5.objects.TimingExpr, TimingExprLiteral -> X86/python/_m5/param_TimingExprLiteral.cc
+ [     CXX] X86/python/_m5/param_TimingExprLiteral.cc -> .o
+ [SO Param] m5.objects.TimingExpr, TimingExprSrcReg -> X86/python/_m5/param_TimingExprSrcReg.cc
+ [     CXX] X86/python/_m5/param_TimingExprSrcReg.cc -> .o
+ [SO Param] m5.objects.TimingExpr, TimingExprLet -> X86/python/_m5/param_TimingExprLet.cc
+ [     CXX] X86/python/_m5/param_TimingExprLet.cc -> .o
+ [SO Param] m5.objects.TimingExpr, TimingExprRef -> X86/python/_m5/param_TimingExprRef.cc
+ [     CXX] X86/python/_m5/param_TimingExprRef.cc -> .o
+ [SO Param] m5.objects.TimingExpr, TimingExprUn -> X86/python/_m5/param_TimingExprUn.cc
+ [     CXX] X86/python/_m5/param_TimingExprUn.cc -> .o
+ [SO Param] m5.objects.TimingExpr, TimingExprBin -> X86/python/_m5/param_TimingExprBin.cc
+ [     CXX] X86/python/_m5/param_TimingExprBin.cc -> .o
+ [SO Param] m5.objects.TimingExpr, TimingExprIf -> X86/python/_m5/param_TimingExprIf.cc
+ [     CXX] X86/python/_m5/param_TimingExprIf.cc -> .o
+ [ENUM STR] m5.objects.TimingExpr, TimingExprOp -> X86/enums/TimingExprOp.cc
+ [     CXX] X86/enums/TimingExprOp.cc -> .o
+ [     CXX] src/cpu/activity.cc -> X86/cpu/activity.o
+ [ TRACING]  -> X86/debug/Checker.hh
+ [SO Param] m5.objects.CheckerCPU, CheckerCPU -> X86/params/CheckerCPU.hh
+ [ TRACING]  -> X86/debug/CCRegs.hh
+ [ TRACING]  -> X86/debug/FloatRegs.hh
+ [ TRACING]  -> X86/debug/IntRegs.hh
+ [ TRACING]  -> X86/debug/MatRegs.hh
+ [ TRACING]  -> X86/debug/VecPredRegs.hh
+ [ TRACING]  -> X86/debug/VecRegs.hh
+ [     CXX] src/cpu/base.cc -> X86/cpu/base.o
+ [     CXX] src/cpu/exetrace.cc -> X86/cpu/exetrace.o
+ [     CXX] src/cpu/inteltrace.cc -> X86/cpu/inteltrace.o
+ [ TRACING]  -> X86/debug/GDBMisc.hh
+ [     CXX] src/cpu/nativetrace.cc -> X86/cpu/nativetrace.o
+ [     CXX] src/cpu/nop_static_inst.cc -> X86/cpu/nop_static_inst.o
+ [     CXX] src/cpu/null_static_inst.cc -> X86/cpu/null_static_inst.o
+ [     CXX] src/cpu/profile.cc -> X86/cpu/profile.o
+ [     CXX] src/cpu/reg_class.cc -> X86/cpu/reg_class.o
+ [     CXX] src/cpu/static_inst.cc -> X86/cpu/static_inst.o
+ [     CXX] src/cpu/simple_thread.cc -> X86/cpu/simple_thread.o
+ [     CXX] src/cpu/thread_context.cc -> X86/cpu/thread_context.o
+ [     CXX] src/cpu/thread_state.cc -> X86/cpu/thread_state.o
+ [     CXX] src/cpu/timing_expr.cc -> X86/cpu/timing_expr.o
+ [     CXX] X86/cpu/DummyChecker.py.cc -> .o
+ [SO Param] m5.objects.DummyChecker, DummyChecker -> X86/python/_m5/param_DummyChecker.cc
+ [ TRACING]  -> X86/debug/Checker.cc
+ [SO Param] m5.objects.DummyChecker, DummyChecker -> X86/params/DummyChecker.hh
+ [     CXX] X86/debug/Checker.cc -> .o
+ [     CXX] X86/python/_m5/param_DummyChecker.cc -> .o
+ [     CXX] X86/cpu/pred/BranchPredictor.py.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, BranchPredictor -> X86/python/_m5/param_BranchPredictor.cc
+ [SO Param] m5.objects.BranchPredictor, BranchPredictor -> X86/params/BranchPredictor.hh
+ [ENUMDECL] m5.objects.BranchPredictor, TargetProvider -> X86/enums/TargetProvider.hh
+ [SO Param] m5.objects.BranchPredictor, BranchTargetBuffer -> X86/params/BranchTargetBuffer.hh
+ [SO Param] m5.objects.BranchPredictor, ConditionalPredictor -> X86/params/ConditionalPredictor.hh
+ [SO Param] m5.objects.BranchPredictor, IndirectPredictor -> X86/params/IndirectPredictor.hh
+ [SO Param] m5.objects.BranchPredictor, ReturnAddrStack -> X86/params/ReturnAddrStack.hh
+ [ENUMDECL] m5.objects.BranchPredictor, BranchType -> X86/enums/BranchType.hh
+ [     CXX] X86/python/_m5/param_BranchPredictor.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, ConditionalPredictor -> X86/python/_m5/param_ConditionalPredictor.cc
+ [     CXX] X86/python/_m5/param_ConditionalPredictor.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, IndirectPredictor -> X86/python/_m5/param_IndirectPredictor.cc
+ [     CXX] X86/python/_m5/param_IndirectPredictor.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, SimpleIndirectPredictor -> X86/python/_m5/param_SimpleIndirectPredictor.cc
+ [SO Param] m5.objects.BranchPredictor, SimpleIndirectPredictor -> X86/params/SimpleIndirectPredictor.hh
+ [     CXX] X86/python/_m5/param_SimpleIndirectPredictor.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, BranchTargetBuffer -> X86/python/_m5/param_BranchTargetBuffer.cc
+ [SO Param] m5.objects.BranchPredictor, SimpleBTB -> X86/python/_m5/param_SimpleBTB.cc
+ [     CXX] X86/python/_m5/param_BranchTargetBuffer.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, SimpleBTB -> X86/params/SimpleBTB.hh
+ [SO Param] m5.objects.BranchPredictor, BTBIndexingPolicy -> X86/params/BTBIndexingPolicy.hh
+ [SO Param] m5.objects.BranchPredictor, BTBSetAssociative -> X86/params/BTBSetAssociative.hh
+ [SO Param] m5.objects.ReplacementPolicies, BaseReplacementPolicy -> X86/params/BaseReplacementPolicy.hh
+ [SO Param] m5.objects.IndexingPolicies, BaseIndexingPolicy -> X86/params/BaseIndexingPolicy.hh
+ [SO Param] m5.objects.BranchPredictor, BTBIndexingPolicy -> X86/python/_m5/param_BTBIndexingPolicy.cc
+ [     CXX] X86/python/_m5/param_SimpleBTB.cc -> .o
+ [     CXX] X86/python/_m5/param_BTBIndexingPolicy.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, BTBSetAssociative -> X86/python/_m5/param_BTBSetAssociative.cc
+ [     CXX] X86/python/_m5/param_BTBSetAssociative.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, ReturnAddrStack -> X86/python/_m5/param_ReturnAddrStack.cc
+ [     CXX] X86/python/_m5/param_ReturnAddrStack.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, LocalBP -> X86/python/_m5/param_LocalBP.cc
+ [SO Param] m5.objects.BranchPredictor, LocalBP -> X86/params/LocalBP.hh
+ [     CXX] X86/python/_m5/param_LocalBP.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, TournamentBP -> X86/python/_m5/param_TournamentBP.cc
+ [SO Param] m5.objects.BranchPredictor, TournamentBP -> X86/params/TournamentBP.hh
+ [     CXX] X86/python/_m5/param_TournamentBP.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, BiModeBP -> X86/python/_m5/param_BiModeBP.cc
+ [SO Param] m5.objects.BranchPredictor, BiModeBP -> X86/params/BiModeBP.hh
+ [     CXX] X86/python/_m5/param_BiModeBP.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, TAGEBase -> X86/python/_m5/param_TAGEBase.cc
+ [SO Param] m5.objects.BranchPredictor, TAGEBase -> X86/params/TAGEBase.hh
+ [     CXX] X86/python/_m5/param_TAGEBase.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, TAGE -> X86/python/_m5/param_TAGE.cc
+ [SO Param] m5.objects.BranchPredictor, TAGE -> X86/params/TAGE.hh
+ [     CXX] X86/python/_m5/param_TAGE.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, LoopPredictor -> X86/python/_m5/param_LoopPredictor.cc
+ [SO Param] m5.objects.BranchPredictor, LoopPredictor -> X86/params/LoopPredictor.hh
+ [     CXX] X86/python/_m5/param_LoopPredictor.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, TAGE_SC_L_TAGE -> X86/python/_m5/param_TAGE_SC_L_TAGE.cc
+ [SO Param] m5.objects.BranchPredictor, TAGE_SC_L_TAGE -> X86/params/TAGE_SC_L_TAGE.hh
+ [SO Param] m5.objects.BranchPredictor, TAGE_SC_L -> X86/params/TAGE_SC_L.hh
+ [SO Param] m5.objects.BranchPredictor, TAGE_SC_L_LoopPredictor -> X86/params/TAGE_SC_L_LoopPredictor.hh
+ [SO Param] m5.objects.BranchPredictor, LTAGE -> X86/params/LTAGE.hh
+ [SO Param] m5.objects.BranchPredictor, StatisticalCorrector -> X86/params/StatisticalCorrector.hh
+ [     CXX] X86/python/_m5/param_TAGE_SC_L_TAGE.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, TAGE_SC_L_TAGE_64KB -> X86/python/_m5/param_TAGE_SC_L_TAGE_64KB.cc
+ [SO Param] m5.objects.BranchPredictor, TAGE_SC_L_TAGE_64KB -> X86/params/TAGE_SC_L_TAGE_64KB.hh
+ [SO Param] m5.objects.BranchPredictor, TAGE_SC_L_64KB -> X86/params/TAGE_SC_L_64KB.hh
+ [SO Param] m5.objects.BranchPredictor, TAGE_SC_L_64KB_StatisticalCorrector -> X86/params/TAGE_SC_L_64KB_StatisticalCorrector.hh
+ [SO Param] m5.objects.BranchPredictor, TAGE_SC_L_TAGE_8KB -> X86/python/_m5/param_TAGE_SC_L_TAGE_8KB.cc
+ [     CXX] X86/python/_m5/param_TAGE_SC_L_TAGE_64KB.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, TAGE_SC_L_TAGE_8KB -> X86/params/TAGE_SC_L_TAGE_8KB.hh
+ [SO Param] m5.objects.BranchPredictor, TAGE_SC_L_8KB -> X86/params/TAGE_SC_L_8KB.hh
+ [SO Param] m5.objects.BranchPredictor, TAGE_SC_L_8KB_StatisticalCorrector -> X86/params/TAGE_SC_L_8KB_StatisticalCorrector.hh
+ [     CXX] X86/python/_m5/param_TAGE_SC_L_TAGE_8KB.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, LTAGE -> X86/python/_m5/param_LTAGE.cc
+ [     CXX] X86/python/_m5/param_LTAGE.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, TAGE_SC_L_LoopPredictor -> X86/python/_m5/param_TAGE_SC_L_LoopPredictor.cc
+ [     CXX] X86/python/_m5/param_TAGE_SC_L_LoopPredictor.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, StatisticalCorrector -> X86/python/_m5/param_StatisticalCorrector.cc
+ [     CXX] X86/python/_m5/param_StatisticalCorrector.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, TAGE_SC_L -> X86/python/_m5/param_TAGE_SC_L.cc
+ [     CXX] X86/python/_m5/param_TAGE_SC_L.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, TAGE_SC_L_64KB_StatisticalCorrector -> X86/python/_m5/param_TAGE_SC_L_64KB_StatisticalCorrector.cc
+ [     CXX] X86/python/_m5/param_TAGE_SC_L_64KB_StatisticalCorrector.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, TAGE_SC_L_8KB_StatisticalCorrector -> X86/python/_m5/param_TAGE_SC_L_8KB_StatisticalCorrector.cc
+ [     CXX] X86/python/_m5/param_TAGE_SC_L_8KB_StatisticalCorrector.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, TAGE_SC_L_64KB -> X86/python/_m5/param_TAGE_SC_L_64KB.cc
+ [     CXX] X86/python/_m5/param_TAGE_SC_L_64KB.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, TAGE_SC_L_8KB -> X86/python/_m5/param_TAGE_SC_L_8KB.cc
+ [     CXX] X86/python/_m5/param_TAGE_SC_L_8KB.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, MultiperspectivePerceptron -> X86/python/_m5/param_MultiperspectivePerceptron.cc
+ [SO Param] m5.objects.BranchPredictor, MultiperspectivePerceptron -> X86/params/MultiperspectivePerceptron.hh
+ [     CXX] X86/python/_m5/param_MultiperspectivePerceptron.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, MultiperspectivePerceptron8KB -> X86/python/_m5/param_MultiperspectivePerceptron8KB.cc
+ [SO Param] m5.objects.BranchPredictor, MultiperspectivePerceptron8KB -> X86/params/MultiperspectivePerceptron8KB.hh
+ [     CXX] X86/python/_m5/param_MultiperspectivePerceptron8KB.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, MultiperspectivePerceptron64KB -> X86/python/_m5/param_MultiperspectivePerceptron64KB.cc
+ [SO Param] m5.objects.BranchPredictor, MultiperspectivePerceptron64KB -> X86/params/MultiperspectivePerceptron64KB.hh
+ [     CXX] X86/python/_m5/param_MultiperspectivePerceptron64KB.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, MPP_TAGE -> X86/python/_m5/param_MPP_TAGE.cc
+ [SO Param] m5.objects.BranchPredictor, MPP_TAGE -> X86/params/MPP_TAGE.hh
+ [SO Param] m5.objects.BranchPredictor, MPP_LoopPredictor -> X86/params/MPP_LoopPredictor.hh
+ [SO Param] m5.objects.BranchPredictor, MPP_StatisticalCorrector -> X86/params/MPP_StatisticalCorrector.hh
+ [SO Param] m5.objects.BranchPredictor, MultiperspectivePerceptronTAGE -> X86/params/MultiperspectivePerceptronTAGE.hh
+ [     CXX] X86/python/_m5/param_MPP_TAGE.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, MPP_LoopPredictor -> X86/python/_m5/param_MPP_LoopPredictor.cc
+ [     CXX] X86/python/_m5/param_MPP_LoopPredictor.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, MPP_StatisticalCorrector -> X86/python/_m5/param_MPP_StatisticalCorrector.cc
+ [     CXX] X86/python/_m5/param_MPP_StatisticalCorrector.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, MultiperspectivePerceptronTAGE -> X86/python/_m5/param_MultiperspectivePerceptronTAGE.cc
+ [     CXX] X86/python/_m5/param_MultiperspectivePerceptronTAGE.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, MPP_StatisticalCorrector_64KB -> X86/python/_m5/param_MPP_StatisticalCorrector_64KB.cc
+ [SO Param] m5.objects.BranchPredictor, MPP_StatisticalCorrector_64KB -> X86/params/MPP_StatisticalCorrector_64KB.hh
+ [SO Param] m5.objects.BranchPredictor, MultiperspectivePerceptronTAGE64KB -> X86/params/MultiperspectivePerceptronTAGE64KB.hh
+ [SO Param] m5.objects.BranchPredictor, MultiperspectivePerceptronTAGE64KB -> X86/python/_m5/param_MultiperspectivePerceptronTAGE64KB.cc
+ [     CXX] X86/python/_m5/param_MPP_StatisticalCorrector_64KB.cc -> .o
+ [     CXX] X86/python/_m5/param_MultiperspectivePerceptronTAGE64KB.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, MPP_TAGE_8KB -> X86/python/_m5/param_MPP_TAGE_8KB.cc
+ [SO Param] m5.objects.BranchPredictor, MPP_TAGE_8KB -> X86/params/MPP_TAGE_8KB.hh
+ [SO Param] m5.objects.BranchPredictor, MPP_LoopPredictor_8KB -> X86/params/MPP_LoopPredictor_8KB.hh
+ [SO Param] m5.objects.BranchPredictor, MPP_StatisticalCorrector_8KB -> X86/params/MPP_StatisticalCorrector_8KB.hh
+ [SO Param] m5.objects.BranchPredictor, MultiperspectivePerceptronTAGE8KB -> X86/params/MultiperspectivePerceptronTAGE8KB.hh
+ [     CXX] X86/python/_m5/param_MPP_TAGE_8KB.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, MPP_LoopPredictor_8KB -> X86/python/_m5/param_MPP_LoopPredictor_8KB.cc
+ [     CXX] X86/python/_m5/param_MPP_LoopPredictor_8KB.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, MPP_StatisticalCorrector_8KB -> X86/python/_m5/param_MPP_StatisticalCorrector_8KB.cc
+ [     CXX] X86/python/_m5/param_MPP_StatisticalCorrector_8KB.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, MultiperspectivePerceptronTAGE8KB -> X86/python/_m5/param_MultiperspectivePerceptronTAGE8KB.cc
+ [     CXX] X86/python/_m5/param_MultiperspectivePerceptronTAGE8KB.cc -> .o
+ [SO Param] m5.objects.BranchPredictor, GshareBP -> X86/python/_m5/param_GshareBP.cc
+ [SO Param] m5.objects.BranchPredictor, GshareBP -> X86/params/GshareBP.hh
+ [     CXX] X86/python/_m5/param_GshareBP.cc -> .o
+ [ENUM STR] m5.objects.BranchPredictor, BranchType -> X86/enums/BranchType.cc
+ [     CXX] X86/enums/BranchType.cc -> .o
+ [ENUM STR] m5.objects.BranchPredictor, TargetProvider -> X86/enums/TargetProvider.cc
+ [     CXX] X86/enums/TargetProvider.cc -> .o
+ [ TRACING]  -> X86/debug/Branch.hh
+ [     CXX] src/cpu/pred/bpred_unit.cc -> X86/cpu/pred/bpred_unit.o
+ [     CXX] src/cpu/pred/2bit_local.cc -> X86/cpu/pred/2bit_local.o
+ [ TRACING]  -> X86/debug/Indirect.hh
+ [     CXX] src/cpu/pred/simple_indirect.cc -> X86/cpu/pred/simple_indirect.o
+ [     CXX] src/cpu/pred/conditional.cc -> X86/cpu/pred/conditional.o
+ [     CXX] src/cpu/pred/indirect.cc -> X86/cpu/pred/indirect.o
+ [ TRACING]  -> X86/debug/RAS.hh
+ [     CXX] src/cpu/pred/ras.cc -> X86/cpu/pred/ras.o
+ [     CXX] src/cpu/pred/tournament.cc -> X86/cpu/pred/tournament.o
+ [     CXX] src/cpu/pred/bi_mode.cc -> X86/cpu/pred/bi_mode.o
+ [ TRACING]  -> X86/debug/Tage.hh
+ [     CXX] src/cpu/pred/tage_base.cc -> X86/cpu/pred/tage_base.o
+ [     CXX] src/cpu/pred/tage.cc -> X86/cpu/pred/tage.o
+ [ TRACING]  -> X86/debug/LTage.hh
+ [     CXX] src/cpu/pred/loop_predictor.cc -> X86/cpu/pred/loop_predictor.o
+ [     CXX] src/cpu/pred/ltage.cc -> X86/cpu/pred/ltage.o
+ [     CXX] src/cpu/pred/multiperspective_perceptron.cc -> X86/cpu/pred/multiperspective_perceptron.o
+ [     CXX] src/cpu/pred/multiperspective_perceptron_8KB.cc -> X86/cpu/pred/multiperspective_perceptron_8KB.o
+ [     CXX] src/cpu/pred/multiperspective_perceptron_64KB.cc -> X86/cpu/pred/multiperspective_perceptron_64KB.o
+ [     CXX] src/cpu/pred/multiperspective_perceptron_tage.cc -> X86/cpu/pred/multiperspective_perceptron_tage.o
+ [     CXX] src/cpu/pred/multiperspective_perceptron_tage_8KB.cc -> X86/cpu/pred/multiperspective_perceptron_tage_8KB.o
+ [     CXX] src/cpu/pred/multiperspective_perceptron_tage_64KB.cc -> X86/cpu/pred/multiperspective_perceptron_tage_64KB.o
+ [     CXX] src/cpu/pred/statistical_corrector.cc -> X86/cpu/pred/statistical_corrector.o
+ [ TRACING]  -> X86/debug/TageSCL.hh
+ [     CXX] src/cpu/pred/tage_sc_l.cc -> X86/cpu/pred/tage_sc_l.o
+ [     CXX] src/cpu/pred/tage_sc_l_8KB.cc -> X86/cpu/pred/tage_sc_l_8KB.o
+ [     CXX] src/cpu/pred/tage_sc_l_64KB.cc -> X86/cpu/pred/tage_sc_l_64KB.o
+ [     CXX] src/cpu/pred/gshare.cc -> X86/cpu/pred/gshare.o
+ [     CXX] src/cpu/pred/btb.cc -> X86/cpu/pred/btb.o
+ [ TRACING]  -> X86/debug/BTB.hh
+ [     CXX] src/cpu/pred/simple_btb.cc -> X86/cpu/pred/simple_btb.o
+ [ TRACING]  -> X86/debug/Indirect.cc
+ [     CXX] X86/debug/Indirect.cc -> .o
+ [ TRACING]  -> X86/debug/BTB.cc
+ [     CXX] X86/debug/BTB.cc -> .o
+ [ TRACING]  -> X86/debug/RAS.cc
+ [     CXX] X86/debug/RAS.cc -> .o
+ [ TRACING]  -> X86/debug/FreeList.cc
+ [ TRACING]  -> X86/debug/FreeList.hh
+ [     CXX] X86/debug/FreeList.cc -> .o
+ [ TRACING]  -> X86/debug/Branch.cc
+ [     CXX] X86/debug/Branch.cc -> .o
+ [ TRACING]  -> X86/debug/Tage.cc
+ [     CXX] X86/debug/Tage.cc -> .o
+ [ TRACING]  -> X86/debug/LTage.cc
+ [     CXX] X86/debug/LTage.cc -> .o
+ [ TRACING]  -> X86/debug/TageSCL.cc
+ [     CXX] X86/debug/TageSCL.cc -> .o
+ [     CXX] X86/cpu/o3/FUPool.py.cc -> .o
+ [SO Param] m5.objects.FUPool, FUPool -> X86/python/_m5/param_FUPool.cc
+ [     CXX] X86/cpu/o3/FuncUnitConfig.py.cc -> .o
+ [SO Param] m5.objects.FUPool, FUPool -> X86/params/FUPool.hh
+ [     CXX] X86/python/_m5/param_FUPool.cc -> .o
+ [     CXX] X86/cpu/o3/BaseO3CPU.py.cc -> .o
+ [SO Param] m5.objects.BaseO3CPU, BaseO3CPU -> X86/python/_m5/param_BaseO3CPU.cc
+ [ENUMDECL] m5.objects.SMT, CommitPolicy -> X86/enums/CommitPolicy.hh
+ [ENUMDECL] m5.objects.SMT, SMTFetchPolicy -> X86/enums/SMTFetchPolicy.hh
+ [ENUMDECL] m5.objects.SMT, SMTQueuePolicy -> X86/enums/SMTQueuePolicy.hh
+ [SO Param] m5.objects.BaseO3CPU, BaseO3CPU -> X86/params/BaseO3CPU.hh
+ [ TRACING]  -> X86/debug/LSQUnit.hh
+ [ TRACING]  -> X86/debug/MemDepUnit.hh
+ [ TRACING]  -> X86/debug/IEW.hh
+ [ TRACING]  -> X86/debug/Scoreboard.hh
+ [     CXX] X86/cpu/o3/IQUnit.py.cc -> .o
+ [SO Param] m5.objects.IQUnit, IQUnit -> X86/params/IQUnit.hh
+ [     CXX] X86/python/_m5/param_BaseO3CPU.cc -> .o
+ [SO Param] m5.objects.IQUnit, IQUnit -> X86/python/_m5/param_IQUnit.cc
+ [     CXX] X86/python/_m5/param_IQUnit.cc -> .o
+ [     CXX] X86/cpu/o3/SMT.py.cc -> .o
+ [ENUM STR] m5.objects.SMT, SMTFetchPolicy -> X86/enums/SMTFetchPolicy.cc
+ [     CXX] X86/enums/SMTFetchPolicy.cc -> .o
+ [ENUM STR] m5.objects.SMT, SMTQueuePolicy -> X86/enums/SMTQueuePolicy.cc
+ [     CXX] X86/enums/SMTQueuePolicy.cc -> .o
+ [ENUM STR] m5.objects.SMT, CommitPolicy -> X86/enums/CommitPolicy.cc
+ [     CXX] X86/enums/CommitPolicy.cc -> .o
+ [ TRACING]  -> X86/debug/BAC.hh
+ [ TRACING]  -> X86/debug/FTQ.hh
+ [     CXX] src/cpu/o3/bac.cc -> X86/cpu/o3/bac.o
+ [ TRACING]  -> X86/debug/CommitRate.hh
+ [     CXX] src/cpu/o3/commit.cc -> X86/cpu/o3/commit.o
+ [ TRACING]  -> X86/debug/O3CPU.hh
+ [     CXX] src/cpu/o3/cpu.cc -> X86/cpu/o3/cpu.o
+ [     CXX] src/cpu/o3/decode.cc -> X86/cpu/o3/decode.o
+ [ TRACING]  -> X86/debug/IQ.hh
+ [     CXX] src/cpu/o3/dyn_inst.cc -> X86/cpu/o3/dyn_inst.o
+ [     CXX] src/cpu/o3/fetch.cc -> X86/cpu/o3/fetch.o
+ [     CXX] src/cpu/o3/free_list.cc -> X86/cpu/o3/free_list.o
+ [     CXX] src/cpu/o3/ftq.cc -> X86/cpu/o3/ftq.o
+ [     CXX] src/cpu/o3/fu_pool.cc -> X86/cpu/o3/fu_pool.o
+ [     CXX] src/cpu/o3/iew.cc -> X86/cpu/o3/iew.o
+ [     CXX] src/cpu/o3/inst_queue.cc -> X86/cpu/o3/inst_queue.o
+ [ TRACING]  -> X86/debug/LSQ.hh
+ [ TRACING]  -> X86/debug/Writeback.hh
+ [     CXX] src/cpu/o3/lsq.cc -> X86/cpu/o3/lsq.o
+ [     CXX] src/cpu/o3/lsq_unit.cc -> X86/cpu/o3/lsq_unit.o
+ [     CXX] src/cpu/o3/mem_dep_unit.cc -> X86/cpu/o3/mem_dep_unit.o
+ [     CXX] src/cpu/o3/regfile.cc -> X86/cpu/o3/regfile.o
+ [ TRACING]  -> X86/debug/Rename.hh
+ [     CXX] src/cpu/o3/rename.cc -> X86/cpu/o3/rename.o
+ [     CXX] src/cpu/o3/rename_map.cc -> X86/cpu/o3/rename_map.o
+ [ TRACING]  -> X86/debug/ROB.hh
+ [     CXX] src/cpu/o3/rob.cc -> X86/cpu/o3/rob.o
+ [     CXX] src/cpu/o3/scoreboard.cc -> X86/cpu/o3/scoreboard.o
+ [ TRACING]  -> X86/debug/StoreSet.hh
+ [     CXX] src/cpu/o3/store_set.cc -> X86/cpu/o3/store_set.o
+ [     CXX] src/cpu/o3/thread_context.cc -> X86/cpu/o3/thread_context.o
+ [     CXX] src/cpu/o3/thread_state.cc -> X86/cpu/o3/thread_state.o
+ [ TRACING]  -> X86/debug/BAC.cc
+ [     CXX] X86/debug/BAC.cc -> .o
+ [ TRACING]  -> X86/debug/CommitRate.cc
+ [     CXX] X86/debug/CommitRate.cc -> .o
+ [ TRACING]  -> X86/debug/FTQ.cc
+ [ TRACING]  -> X86/debug/IEW.cc
+ [     CXX] X86/debug/FTQ.cc -> .o
+ [     CXX] X86/debug/IEW.cc -> .o
+ [ TRACING]  -> X86/debug/IQ.cc
+ [ TRACING]  -> X86/debug/LSQ.cc
+ [     CXX] X86/debug/IQ.cc -> .o
+ [     CXX] X86/debug/LSQ.cc -> .o
+ [ TRACING]  -> X86/debug/LSQUnit.cc
+ [ TRACING]  -> X86/debug/MemDepUnit.cc
+ [     CXX] X86/debug/LSQUnit.cc -> .o
+ [     CXX] X86/debug/MemDepUnit.cc -> .o
+ [ TRACING]  -> X86/debug/O3CPU.cc
+ [ TRACING]  -> X86/debug/ROB.cc
+ [     CXX] X86/debug/O3CPU.cc -> .o
+ [ TRACING]  -> X86/debug/Rename.cc
+ [     CXX] X86/debug/ROB.cc -> .o
+ [     CXX] X86/debug/Rename.cc -> .o
+ [ TRACING]  -> X86/debug/Scoreboard.cc
+ [ TRACING]  -> X86/debug/StoreSet.cc
+ [     CXX] X86/debug/Scoreboard.cc -> .o
+ [ TRACING]  -> X86/debug/Writeback.cc
+ [     CXX] X86/debug/StoreSet.cc -> .o
+ [     CXX] X86/debug/Writeback.cc -> .o
+ [ TRACING]  -> X86/debug/O3CPUAll.cc
+ [     CXX] X86/cpu/o3/BaseO3Checker.py.cc -> .o
+ [ TRACING]  -> X86/debug/O3CPUAll.hh
+ [SO Param] m5.objects.BaseO3Checker, BaseO3Checker -> X86/python/_m5/param_BaseO3Checker.cc
+ [     CXX] X86/debug/O3CPUAll.cc -> .o
+ [SO Param] m5.objects.BaseO3Checker, BaseO3Checker -> X86/params/BaseO3Checker.hh
+ [     CXX] src/cpu/o3/checker.cc -> X86/cpu/o3/checker.o
+ [     CXX] X86/python/_m5/param_BaseO3Checker.cc -> .o
+ [     CXX] X86/cpu/o3/O3CPU.py.cc -> .o
+ [     CXX] X86/cpu/o3/O3Checker.py.cc -> .o
+ [     CXX] X86/cpu/o3/probe/SimpleTrace.py.cc -> .o
+ [SO Param] m5.objects.SimpleTrace, SimpleTrace -> X86/python/_m5/param_SimpleTrace.cc
+ [SO Param] m5.objects.SimpleTrace, SimpleTrace -> X86/params/SimpleTrace.hh
+ [     CXX] X86/python/_m5/param_SimpleTrace.cc -> .o
+ [ TRACING]  -> X86/debug/SimpleTrace.hh
+ [     CXX] src/cpu/o3/probe/simple_trace.cc -> X86/cpu/o3/probe/simple_trace.o
+ [ TRACING]  -> X86/debug/SimpleTrace.cc
+ [     CXX] X86/cpu/testers/rubytest/RubyTester.py.cc -> .o
+ [     CXX] X86/debug/SimpleTrace.cc -> .o
+ [SO Param] m5.objects.RubyTester, RubyTester -> X86/python/_m5/param_RubyTester.cc
+ [SO Param] m5.objects.RubyTester, RubyTester -> X86/params/RubyTester.hh
+ [     CXX] X86/python/_m5/param_RubyTester.cc -> .o
+ [ TRACING]  -> X86/debug/RubyTest.hh
+ [     CXX] src/cpu/testers/rubytest/RubyTester.cc -> X86/cpu/testers/rubytest/RubyTester.o
+ [     CXX] src/cpu/testers/rubytest/Check.cc -> X86/cpu/testers/rubytest/Check.o
+ [     CXX] src/cpu/testers/rubytest/CheckTable.cc -> X86/cpu/testers/rubytest/CheckTable.o
+ [ TRACING]  -> X86/debug/RubyTest.cc
+ [     CXX] X86/cpu/testers/spatter_gen/SpatterGen.py.cc -> .o
+ [     CXX] X86/debug/RubyTest.cc -> .o
+ [SO Param] m5.objects.SpatterGen, SpatterGen -> X86/python/_m5/param_SpatterGen.cc
+ [ENUMDECL] m5.objects.SpatterGen, SpatterProcessingMode -> X86/enums/SpatterProcessingMode.hh
+ [SO Param] m5.objects.SpatterGen, SpatterGen -> X86/params/SpatterGen.hh
+ [ENUMDECL] m5.objects.SpatterGen, SpatterKernelType -> X86/enums/SpatterKernelType.hh
+ [     CXX] X86/python/_m5/param_SpatterGen.cc -> .o
+ [ENUM STR] m5.objects.SpatterGen, SpatterKernelType -> X86/enums/SpatterKernelType.cc
+ [     CXX] X86/enums/SpatterKernelType.cc -> .o
+ [ENUM STR] m5.objects.SpatterGen, SpatterProcessingMode -> X86/enums/SpatterProcessingMode.cc
+ [     CXX] X86/enums/SpatterProcessingMode.cc -> .o
+ [ TRACING]  -> X86/debug/SpatterGen.hh
+ [ TRACING]  -> X86/debug/SpatterKernel.hh
+ [     CXX] src/cpu/testers/spatter_gen/spatter_gen.cc -> X86/cpu/testers/spatter_gen/spatter_gen.o
+ [ TRACING]  -> X86/debug/SpatterGen.cc
+ [ TRACING]  -> X86/debug/SpatterKernel.cc
+ [     CXX] X86/debug/SpatterGen.cc -> .o
+ [     CXX] X86/debug/SpatterKernel.cc -> .o
+ [     CXX] X86/cpu/testers/garnet_synthetic_traffic/GarnetSyntheticTraffic.py.cc -> .o
+ [SO Param] m5.objects.GarnetSyntheticTraffic, GarnetSyntheticTraffic -> X86/python/_m5/param_GarnetSyntheticTraffic.cc
+ [SO Param] m5.objects.GarnetSyntheticTraffic, GarnetSyntheticTraffic -> X86/params/GarnetSyntheticTraffic.hh
+ [ TRACING]  -> X86/debug/GarnetSyntheticTraffic.hh
+ [ TRACING]  -> X86/debug/GarnetSyntheticTraffic.cc
+ [     CXX] X86/debug/GarnetSyntheticTraffic.cc -> .o
+ [     CXX] src/cpu/testers/garnet_synthetic_traffic/GarnetSyntheticTraffic.cc -> X86/cpu/testers/garnet_synthetic_traffic/GarnetSyntheticTraffic.o
+ [     CXX] X86/python/_m5/param_GarnetSyntheticTraffic.cc -> .o
+ [CONFIG H] HAVE_PROTOBUF, 0 -> X86/config/have_protobuf.hh
+ [ TRACING]  -> X86/debug/TrafficGen.hh
+ [ENUMDECL] m5.objects.MemInterface, AddrMap -> X86/enums/AddrMap.hh
+ [SO Param] m5.objects.BaseTrafficGen, BaseTrafficGen -> X86/params/BaseTrafficGen.hh
+ [ENUMDECL] m5.objects.BaseTrafficGen, StreamGenType -> X86/enums/StreamGenType.hh
+ [     CXX] src/cpu/testers/traffic_gen/base.cc -> X86/cpu/testers/traffic_gen/base.o
+ [     CXX] src/cpu/testers/traffic_gen/base_gen.cc -> X86/cpu/testers/traffic_gen/base_gen.o
+ [     CXX] src/cpu/testers/traffic_gen/dram_gen.cc -> X86/cpu/testers/traffic_gen/dram_gen.o
+ [     CXX] src/cpu/testers/traffic_gen/dram_rot_gen.cc -> X86/cpu/testers/traffic_gen/dram_rot_gen.o
+ [     CXX] src/cpu/testers/traffic_gen/exit_gen.cc -> X86/cpu/testers/traffic_gen/exit_gen.o
+ [ TRACING]  -> X86/debug/GUPSGen.hh
+ [SO Param] m5.objects.GUPSGen, GUPSGen -> X86/params/GUPSGen.hh
+ [     CXX] src/cpu/testers/traffic_gen/gups_gen.cc -> X86/cpu/testers/traffic_gen/gups_gen.o
+ [     CXX] src/cpu/testers/traffic_gen/hybrid_gen.cc -> X86/cpu/testers/traffic_gen/hybrid_gen.o
+ [     CXX] src/cpu/testers/traffic_gen/idle_gen.cc -> X86/cpu/testers/traffic_gen/idle_gen.o
+ [     CXX] src/cpu/testers/traffic_gen/linear_gen.cc -> X86/cpu/testers/traffic_gen/linear_gen.o
+ [     CXX] src/cpu/testers/traffic_gen/nvm_gen.cc -> X86/cpu/testers/traffic_gen/nvm_gen.o
+ [     CXX] src/cpu/testers/traffic_gen/random_gen.cc -> X86/cpu/testers/traffic_gen/random_gen.o
+ [     CXX] src/cpu/testers/traffic_gen/stream_gen.cc -> X86/cpu/testers/traffic_gen/stream_gen.o
+ [     CXX] src/cpu/testers/traffic_gen/strided_gen.cc -> X86/cpu/testers/traffic_gen/strided_gen.o
+ [ TRACING]  -> X86/debug/TrafficGen.cc
+ [     CXX] X86/debug/TrafficGen.cc -> .o
+ [     CXX] X86/cpu/testers/traffic_gen/BaseTrafficGen.py.cc -> .o
+ [SO Param] m5.objects.BaseTrafficGen, BaseTrafficGen -> X86/python/_m5/param_BaseTrafficGen.cc
+ [ENUM STR] m5.objects.BaseTrafficGen, StreamGenType -> X86/enums/StreamGenType.cc
+ [     CXX] X86/python/_m5/param_BaseTrafficGen.cc -> .o
+ [     CXX] X86/enums/StreamGenType.cc -> .o
+ [ TRACING]  -> X86/debug/GUPSGen.cc
+ [     CXX] X86/debug/GUPSGen.cc -> .o
+ [     CXX] X86/cpu/testers/traffic_gen/GUPSGen.py.cc -> .o
+ [SO Param] m5.objects.GUPSGen, GUPSGen -> X86/python/_m5/param_GUPSGen.cc
+ [     CXX] X86/python/_m5/param_GUPSGen.cc -> .o
+ [SO Param] m5.objects.PyTrafficGen, PyTrafficGen -> X86/params/PyTrafficGen.hh
+ [     CXX] src/cpu/testers/traffic_gen/pygen.cc -> X86/cpu/testers/traffic_gen/pygen.o
+ [     CXX] X86/cpu/testers/traffic_gen/PyTrafficGen.py.cc -> .o
+ [SO Param] m5.objects.PyTrafficGen, PyTrafficGen -> X86/python/_m5/param_PyTrafficGen.cc
+ [     CXX] X86/python/_m5/param_PyTrafficGen.cc -> .o
+ [     CXX] X86/cpu/testers/directedtest/RubyDirectedTester.py.cc -> .o
+ [SO Param] m5.objects.RubyDirectedTester, DirectedGenerator -> X86/python/_m5/param_DirectedGenerator.cc
+ [SO Param] m5.objects.RubyDirectedTester, SeriesRequestGenerator -> X86/python/_m5/param_SeriesRequestGenerator.cc
+ [SO Param] m5.objects.RubyDirectedTester, DirectedGenerator -> X86/params/DirectedGenerator.hh
+ [SO Param] m5.objects.RubyDirectedTester, SeriesRequestGenerator -> X86/params/SeriesRequestGenerator.hh
+ [SO Param] m5.objects.RubyDirectedTester, RubyDirectedTester -> X86/params/RubyDirectedTester.hh
+ [SO Param] m5.objects.RubyDirectedTester, InvalidateGenerator -> X86/python/_m5/param_InvalidateGenerator.cc
+ [     CXX] X86/python/_m5/param_DirectedGenerator.cc -> .o
+ [SO Param] m5.objects.RubyDirectedTester, InvalidateGenerator -> X86/params/InvalidateGenerator.hh
+ [     CXX] X86/python/_m5/param_InvalidateGenerator.cc -> .o
+ [     CXX] X86/python/_m5/param_SeriesRequestGenerator.cc -> .o
+ [SO Param] m5.objects.RubyDirectedTester, RubyDirectedTester -> X86/python/_m5/param_RubyDirectedTester.cc
+ [     CXX] X86/python/_m5/param_RubyDirectedTester.cc -> .o
+ [ TRACING]  -> X86/debug/DirectedTest.hh
+ [     CXX] src/cpu/testers/directedtest/RubyDirectedTester.cc -> X86/cpu/testers/directedtest/RubyDirectedTester.o
+ [     CXX] src/cpu/testers/directedtest/DirectedGenerator.cc -> X86/cpu/testers/directedtest/DirectedGenerator.o
+ [     CXX] src/cpu/testers/directedtest/SeriesRequestGenerator.cc -> X86/cpu/testers/directedtest/SeriesRequestGenerator.o
+ [     CXX] src/cpu/testers/directedtest/InvalidateGenerator.cc -> X86/cpu/testers/directedtest/InvalidateGenerator.o
+ [ TRACING]  -> X86/debug/DirectedTest.cc
+ [     CXX] X86/debug/DirectedTest.cc -> .o
+ [     CXX] X86/cpu/testers/memtest/MemTest.py.cc -> .o
+ [SO Param] m5.objects.MemTest, MemTest -> X86/python/_m5/param_MemTest.cc
+ [SO Param] m5.objects.MemTest, MemTest -> X86/params/MemTest.hh
+ [     CXX] X86/python/_m5/param_MemTest.cc -> .o
+ [ TRACING]  -> X86/debug/MemTest.hh
+ [     CXX] src/cpu/testers/memtest/memtest.cc -> X86/cpu/testers/memtest/memtest.o
+ [ TRACING]  -> X86/debug/MemTest.cc
+ [     CXX] X86/debug/MemTest.cc -> .o
+ [     CXX] X86/cpu/minor/BaseMinorCPU.py.cc -> .o
+ [SO Param] m5.objects.BaseMinorCPU, MinorOpClass -> X86/python/_m5/param_MinorOpClass.cc
+ [SO Param] m5.objects.BaseMinorCPU, MinorOpClass -> X86/params/MinorOpClass.hh
+ [SO Param] m5.objects.BaseMinorCPU, MinorFU -> X86/params/MinorFU.hh
+ [SO Param] m5.objects.BaseMinorCPU, MinorFUPool -> X86/params/MinorFUPool.hh
+ [SO Param] m5.objects.BaseMinorCPU, MinorOpClassSet -> X86/params/MinorOpClassSet.hh
+ [ TRACING]  -> X86/debug/MinorTrace.hh
+ [SO Param] m5.objects.BaseMinorCPU, MinorOpClassSet -> X86/python/_m5/param_MinorOpClassSet.cc
+ [SO Param] m5.objects.BaseMinorCPU, MinorFUTiming -> X86/params/MinorFUTiming.hh
+ [SO Param] m5.objects.BaseMinorCPU, MinorFUTiming -> X86/python/_m5/param_MinorFUTiming.cc
+ [     CXX] X86/python/_m5/param_MinorOpClass.cc -> .o
+ [     CXX] X86/python/_m5/param_MinorFUTiming.cc -> .o
+ [     CXX] X86/python/_m5/param_MinorOpClassSet.cc -> .o
+ [SO Param] m5.objects.BaseMinorCPU, MinorFU -> X86/python/_m5/param_MinorFU.cc
+ [     CXX] X86/python/_m5/param_MinorFU.cc -> .o
+ [SO Param] m5.objects.BaseMinorCPU, MinorFUPool -> X86/python/_m5/param_MinorFUPool.cc
+ [     CXX] X86/python/_m5/param_MinorFUPool.cc -> .o
+ [SO Param] m5.objects.BaseMinorCPU, BaseMinorCPU -> X86/python/_m5/param_BaseMinorCPU.cc
+ [ENUM STR] m5.objects.BaseMinorCPU, ThreadPolicy -> X86/enums/ThreadPolicy.cc
+ [ENUMDECL] m5.objects.BaseMinorCPU, ThreadPolicy -> X86/enums/ThreadPolicy.hh
+ [SO Param] m5.objects.BaseMinorCPU, BaseMinorCPU -> X86/params/BaseMinorCPU.hh
+ [     CXX] X86/enums/ThreadPolicy.cc -> .o
+ [     CXX] X86/python/_m5/param_BaseMinorCPU.cc -> .o
+ [     CXX] src/cpu/minor/activity.cc -> X86/cpu/minor/activity.o
+ [ TRACING]  -> X86/debug/MinorCPU.hh
+ [     CXX] src/cpu/minor/cpu.cc -> X86/cpu/minor/cpu.o
+ [     CXX] src/cpu/minor/decode.cc -> X86/cpu/minor/decode.o
+ [ TRACING]  -> X86/debug/MinorExecute.hh
+ [     CXX] src/cpu/minor/dyn_inst.cc -> X86/cpu/minor/dyn_inst.o
+ [ TRACING]  -> X86/debug/MinorInterrupt.hh
+ [ TRACING]  -> X86/debug/MinorMem.hh
+ [     CXX] src/cpu/minor/execute.cc -> X86/cpu/minor/execute.o
+ [     CXX] src/cpu/minor/fetch1.cc -> X86/cpu/minor/fetch1.o
+ [     CXX] src/cpu/minor/fetch2.cc -> X86/cpu/minor/fetch2.o
+ [ TRACING]  -> X86/debug/MinorTiming.hh
+ [     CXX] src/cpu/minor/func_unit.cc -> X86/cpu/minor/func_unit.o
+ [     CXX] src/cpu/minor/lsq.cc -> X86/cpu/minor/lsq.o
+ [     CXX] src/cpu/minor/pipe_data.cc -> X86/cpu/minor/pipe_data.o
+ [     CXX] src/cpu/minor/pipeline.cc -> X86/cpu/minor/pipeline.o
+ [ TRACING]  -> X86/debug/MinorScoreboard.hh
+ [     CXX] src/cpu/minor/scoreboard.cc -> X86/cpu/minor/scoreboard.o
+ [     CXX] src/cpu/minor/stats.cc -> X86/cpu/minor/stats.o
+ [ TRACING]  -> X86/debug/MinorCPU.cc
+ [     CXX] X86/debug/MinorCPU.cc -> .o
+ [ TRACING]  -> X86/debug/MinorExecute.cc
+ [     CXX] X86/debug/MinorExecute.cc -> .o
+ [ TRACING]  -> X86/debug/MinorInterrupt.cc
+ [     CXX] X86/debug/MinorInterrupt.cc -> .o
+ [ TRACING]  -> X86/debug/MinorMem.cc
+ [     CXX] X86/debug/MinorMem.cc -> .o
+ [ TRACING]  -> X86/debug/MinorScoreboard.cc
+ [ TRACING]  -> X86/debug/MinorTrace.cc
+ [     CXX] X86/debug/MinorScoreboard.cc -> .o
+ [     CXX] X86/debug/MinorTrace.cc -> .o
+ [ TRACING]  -> X86/debug/MinorTiming.cc
+ [     CXX] X86/debug/MinorTiming.cc -> .o
+ [ TRACING]  -> X86/debug/Minor.cc
+ [     CXX] X86/cpu/minor/MinorCPU.py.cc -> .o
+ [ TRACING]  -> X86/debug/Minor.hh
+ [     CXX] X86/debug/Minor.cc -> .o
+ [     CXX] X86/cpu/probes/PcCountTracker.py.cc -> .o
+ [SO Param] m5.objects.PcCountTracker, PcCountTracker -> X86/python/_m5/param_PcCountTracker.cc
+ [SO Param] m5.objects.PcCountTracker, PcCountTrackerManager -> X86/python/_m5/param_PcCountTrackerManager.cc
+ [SO Param] m5.objects.PcCountTracker, PcCountTracker -> X86/params/PcCountTracker.hh
+ [SO Param] m5.objects.PcCountTracker, PcCountTrackerManager -> X86/params/PcCountTrackerManager.hh
+ [ TRACING]  -> X86/debug/PcCountTracker.hh
+ [ TRACING]  -> X86/debug/PcCountTracker.cc
+ [     CXX] X86/debug/PcCountTracker.cc -> .o
+ [     CXX] X86/python/_m5/param_PcCountTrackerManager.cc -> .o
+ [     CXX] src/cpu/probes/pc_count_tracker.cc -> X86/cpu/probes/pc_count_tracker.o
+ [     CXX] src/cpu/probes/pc_count_tracker_manager.cc -> X86/cpu/probes/pc_count_tracker_manager.o
+ [     CXX] X86/python/_m5/param_PcCountTracker.cc -> .o
+ [     CXX] X86/cpu/probes/InstTracker.py.cc -> .o
+ [SO Param] m5.objects.InstTracker, GlobalInstTracker -> X86/python/_m5/param_GlobalInstTracker.cc
+ [SO Param] m5.objects.InstTracker, GlobalInstTracker -> X86/params/GlobalInstTracker.hh
+ [ TRACING]  -> X86/debug/InstTracker.hh
+ [SO Param] m5.objects.InstTracker, LocalInstTracker -> X86/params/LocalInstTracker.hh
+ [     CXX] X86/python/_m5/param_GlobalInstTracker.cc -> .o
+ [SO Param] m5.objects.InstTracker, LocalInstTracker -> X86/python/_m5/param_LocalInstTracker.cc
+ [     CXX] X86/python/_m5/param_LocalInstTracker.cc -> .o
+ [     CXX] src/cpu/probes/inst_tracker.cc -> X86/cpu/probes/inst_tracker.o
+ [ TRACING]  -> X86/debug/InstTracker.cc
+ [     CXX] X86/debug/InstTracker.cc -> .o
+ [     CXX] X86/cpu/checker/CheckerCPU.py.cc -> .o
+ [SO Param] m5.objects.CheckerCPU, CheckerCPU -> X86/python/_m5/param_CheckerCPU.cc
+ [     CXX] X86/python/_m5/param_CheckerCPU.cc -> .o
+ [     CXX] src/cpu/checker/cpu.cc -> X86/cpu/checker/cpu.o
+ [     CXX] X86/cpu/kvm/KvmVM.py.cc -> .o
+ [SO Param] m5.objects.KvmVM, KvmVM -> X86/python/_m5/param_KvmVM.cc
+ [SO Param] m5.objects.KvmVM, KvmVM -> X86/params/KvmVM.hh
+ [     CXX] X86/python/_m5/param_KvmVM.cc -> .o
+ [     CXX] X86/cpu/kvm/BaseKvmCPU.py.cc -> .o
+ [SO Param] m5.objects.BaseKvmCPU, BaseKvmCPU -> X86/python/_m5/param_BaseKvmCPU.cc
+ [SO Param] m5.objects.BaseKvmCPU, BaseKvmCPU -> X86/params/BaseKvmCPU.hh
+ [CONFIG H] HAVE_PERF_ATTR_EXCLUDE_HOST, 1 -> X86/config/have_perf_attr_exclude_host.hh
+ [     CXX] X86/python/_m5/param_BaseKvmCPU.cc -> .o
+ [ TRACING]  -> X86/debug/Kvm.hh
+ [ TRACING]  -> X86/debug/KvmIO.hh
+ [ TRACING]  -> X86/debug/KvmRun.hh
+ [     CXX] src/cpu/kvm/base.cc -> X86/cpu/kvm/base.o
+ [     CXX] src/cpu/kvm/device.cc -> X86/cpu/kvm/device.o
+ [     CXX] src/cpu/kvm/vm.cc -> X86/cpu/kvm/vm.o
+ [     CXX] src/cpu/kvm/perfevent.cc -> X86/cpu/kvm/perfevent.o
+ [ TRACING]  -> X86/debug/KvmTimer.hh
+ [     CXX] src/cpu/kvm/timer.cc -> X86/cpu/kvm/timer.o
+ [ TRACING]  -> X86/debug/Kvm.cc
+ [     CXX] X86/debug/Kvm.cc -> .o
+ [ TRACING]  -> X86/debug/KvmContext.cc
+ [ TRACING]  -> X86/debug/KvmContext.hh
+ [     CXX] X86/debug/KvmContext.cc -> .o
+ [ TRACING]  -> X86/debug/KvmIO.cc
+ [     CXX] X86/debug/KvmIO.cc -> .o
+ [ TRACING]  -> X86/debug/KvmInt.cc
+ [ TRACING]  -> X86/debug/KvmInt.hh
+ [     CXX] X86/debug/KvmInt.cc -> .o
+ [ TRACING]  -> X86/debug/KvmRun.cc
+ [     CXX] X86/debug/KvmRun.cc -> .o
+ [ TRACING]  -> X86/debug/KvmTimer.cc
+ [     CXX] X86/debug/KvmTimer.cc -> .o
+ [ TRACING]  -> X86/debug/KvmAll.cc
+ [ TRACING]  -> X86/debug/KvmAll.hh
+ [     CXX] X86/debug/KvmAll.cc -> .o
+ [     CXX] X86/cpu/simple/BaseAtomicSimpleCPU.py.cc -> .o
+ [SO Param] m5.objects.BaseAtomicSimpleCPU, BaseAtomicSimpleCPU -> X86/python/_m5/param_BaseAtomicSimpleCPU.cc
+ [ TRACING]  -> X86/debug/SimpleCPU.hh
+ [SO Param] m5.objects.BaseAtomicSimpleCPU, BaseAtomicSimpleCPU -> X86/params/BaseAtomicSimpleCPU.hh
+ [     CXX] X86/cpu/simple/BaseNonCachingSimpleCPU.py.cc -> .o
+ [SO Param] m5.objects.BaseSimpleCPU, BaseSimpleCPU -> X86/params/BaseSimpleCPU.hh
+ [     CXX] src/cpu/simple/atomic.cc -> X86/cpu/simple/atomic.o
+ [     CXX] X86/python/_m5/param_BaseAtomicSimpleCPU.cc -> .o
+ [SO Param] m5.objects.BaseNonCachingSimpleCPU, BaseNonCachingSimpleCPU -> X86/python/_m5/param_BaseNonCachingSimpleCPU.cc
+ [SO Param] m5.objects.BaseNonCachingSimpleCPU, BaseNonCachingSimpleCPU -> X86/params/BaseNonCachingSimpleCPU.hh
+ [     CXX] X86/cpu/simple/BaseTimingSimpleCPU.py.cc -> .o
+ [SO Param] m5.objects.BaseTimingSimpleCPU, BaseTimingSimpleCPU -> X86/python/_m5/param_BaseTimingSimpleCPU.cc
+ [     CXX] X86/python/_m5/param_BaseNonCachingSimpleCPU.cc -> .o
+ [SO Param] m5.objects.BaseTimingSimpleCPU, BaseTimingSimpleCPU -> X86/params/BaseTimingSimpleCPU.hh
+ [     CXX] X86/python/_m5/param_BaseTimingSimpleCPU.cc -> .o
+ [     CXX] src/cpu/simple/noncaching.cc -> X86/cpu/simple/noncaching.o
+ [     CXX] src/cpu/simple/timing.cc -> X86/cpu/simple/timing.o
+ [ TRACING]  -> X86/debug/SimpleCPU.cc
+ [     CXX] X86/debug/SimpleCPU.cc -> .o
+ [     CXX] src/cpu/simple/base.cc -> X86/cpu/simple/base.o
+ [     CXX] X86/cpu/simple/BaseSimpleCPU.py.cc -> .o
+ [SO Param] m5.objects.BaseSimpleCPU, BaseSimpleCPU -> X86/python/_m5/param_BaseSimpleCPU.cc
+ [     CXX] X86/python/_m5/param_BaseSimpleCPU.cc -> .o
+ [     CXX] X86/cpu/simple/AtomicSimpleCPU.py.cc -> .o
+ [     CXX] X86/cpu/simple/NonCachingSimpleCPU.py.cc -> .o
+ [     CXX] X86/cpu/simple/TimingSimpleCPU.py.cc -> .o
+ [     CXX] X86/cpu/simple/probes/SimPoint.py.cc -> .o
+ [SO Param] m5.objects.SimPoint, SimPoint -> X86/python/_m5/param_SimPoint.cc
+ [SO Param] m5.objects.SimPoint, SimPoint -> X86/params/SimPoint.hh
+ [     CXX] X86/cpu/simple/probes/LooppointAnalysis.py.cc -> .o
+ [     CXX] src/cpu/simple/probes/simpoint.cc -> X86/cpu/simple/probes/simpoint.o
+ [     CXX] X86/python/_m5/param_SimPoint.cc -> .o
+ [SO Param] m5.objects.LooppointAnalysis, LooppointAnalysis -> X86/python/_m5/param_LooppointAnalysis.cc
+ [SO Param] m5.objects.LooppointAnalysis, LooppointAnalysis -> X86/params/LooppointAnalysis.hh
+ [ TRACING]  -> X86/debug/LooppointAnalysis.hh
+ [SO Param] m5.objects.LooppointAnalysis, LooppointAnalysisManager -> X86/params/LooppointAnalysisManager.hh
+ [SO Param] m5.objects.LooppointAnalysis, LooppointAnalysisManager -> X86/python/_m5/param_LooppointAnalysisManager.cc
+ [     CXX] X86/python/_m5/param_LooppointAnalysis.cc -> .o
+ [     CXX] X86/python/_m5/param_LooppointAnalysisManager.cc -> .o
+ [     CXX] src/cpu/simple/probes/looppoint_analysis.cc -> X86/cpu/simple/probes/looppoint_analysis.o
+ [ TRACING]  -> X86/debug/LooppointAnalysis.cc
+ [     CXX] X86/debug/LooppointAnalysis.cc -> .o
+ [ TRACING]  -> X86/debug/DebugPrintf.hh
+ [     CXX] src/kern/linux/events.cc -> X86/kern/linux/events.o
+ [     CXX] src/kern/linux/linux.cc -> X86/kern/linux/linux.o
+ [     CXX] src/kern/linux/helpers.cc -> X86/kern/linux/helpers.o
+ [     CXX] src/kern/linux/printk.cc -> X86/kern/linux/printk.o
+ [     CXX] src/kern/freebsd/events.cc -> X86/kern/freebsd/events.o
+ [     CXX] src/kern/operatingsystem.cc -> X86/kern/operatingsystem.o
+ [     CXX] src/kern/system_events.cc -> X86/kern/system_events.o
+ [ TRACING]  -> X86/debug/DebugPrintf.cc
+ [     CXX] X86/debug/DebugPrintf.cc -> .o
+ [ TRACING]  -> X86/debug/Printf.cc
+ [     CXX] X86/learning_gem5/part2/SimpleObject.py.cc -> .o
+ [ TRACING]  -> X86/debug/Printf.hh
+ [     CXX] X86/debug/Printf.cc -> .o
+ [SO Param] m5.objects.SimpleObject, SimpleObject -> X86/python/_m5/param_SimpleObject.cc
+ [SO Param] m5.objects.SimpleObject, SimpleObject -> X86/params/SimpleObject.hh
+ [     CXX] X86/learning_gem5/part2/HelloObject.py.cc -> .o
+ [     CXX] X86/python/_m5/param_SimpleObject.cc -> .o
+ [SO Param] m5.objects.HelloObject, HelloObject -> X86/python/_m5/param_HelloObject.cc
+ [SO Param] m5.objects.HelloObject, HelloObject -> X86/params/HelloObject.hh
+ [SO Param] m5.objects.HelloObject, GoodbyeObject -> X86/params/GoodbyeObject.hh
+ [     CXX] X86/python/_m5/param_HelloObject.cc -> .o
+ [SO Param] m5.objects.HelloObject, GoodbyeObject -> X86/python/_m5/param_GoodbyeObject.cc
+ [     CXX] X86/python/_m5/param_GoodbyeObject.cc -> .o
+ [     CXX] X86/learning_gem5/part2/SimpleMemobj.py.cc -> .o
+ [SO Param] m5.objects.SimpleMemobj, SimpleMemobj -> X86/python/_m5/param_SimpleMemobj.cc
+ [SO Param] m5.objects.SimpleMemobj, SimpleMemobj -> X86/params/SimpleMemobj.hh
+ [     CXX] X86/python/_m5/param_SimpleMemobj.cc -> .o
+ [     CXX] X86/learning_gem5/part2/SimpleCache.py.cc -> .o
+ [SO Param] m5.objects.SimpleCache, SimpleCache -> X86/python/_m5/param_SimpleCache.cc
+ [SO Param] m5.objects.SimpleCache, SimpleCache -> X86/params/SimpleCache.hh
+ [     CXX] X86/python/_m5/param_SimpleCache.cc -> .o
+ [     CXX] src/learning_gem5/part2/simple_object.cc -> X86/learning_gem5/part2/simple_object.o
+ [ TRACING]  -> X86/debug/HelloExample.hh
+ [     CXX] src/learning_gem5/part2/hello_object.cc -> X86/learning_gem5/part2/hello_object.o
+ [     CXX] src/learning_gem5/part2/goodbye_object.cc -> X86/learning_gem5/part2/goodbye_object.o
+ [ TRACING]  -> X86/debug/SimpleMemobj.hh
+ [     CXX] src/learning_gem5/part2/simple_memobj.cc -> X86/learning_gem5/part2/simple_memobj.o
+ [ TRACING]  -> X86/debug/SimpleCache.hh
+ [ TRACING]  -> X86/debug/HelloExample.cc
+ [     CXX] src/learning_gem5/part2/simple_cache.cc -> X86/learning_gem5/part2/simple_cache.o
+ [     CXX] X86/debug/HelloExample.cc -> .o
+ [ TRACING]  -> X86/debug/SimpleMemobj.cc
+ [     CXX] X86/debug/SimpleMemobj.cc -> .o
+ [ TRACING]  -> X86/debug/SimpleCache.cc
+ [     CXX] X86/debug/SimpleCache.cc -> .o
+ [     CXX] X86/dev/Device.py.cc -> .o
+ [SO Param] m5.objects.Device, PioDevice -> X86/python/_m5/param_PioDevice.cc
+ [SO Param] m5.objects.Device, PioDevice -> X86/params/PioDevice.hh
+ [SO Param] m5.objects.Device, BasicPioDevice -> X86/params/BasicPioDevice.hh
+ [     CXX] X86/python/_m5/param_PioDevice.cc -> .o
+ [SO Param] m5.objects.Device, BasicPioDevice -> X86/python/_m5/param_BasicPioDevice.cc
+ [     CXX] X86/python/_m5/param_BasicPioDevice.cc -> .o
+ [SO Param] m5.objects.Device, DmaDevice -> X86/python/_m5/param_DmaDevice.cc
+ [SO Param] m5.objects.Device, DmaDevice -> X86/params/DmaDevice.hh
+ [     CXX] X86/python/_m5/param_DmaDevice.cc -> .o
+ [SO Param] m5.objects.Device, DmaVirtDevice -> X86/python/_m5/param_DmaVirtDevice.cc
+ [SO Param] m5.objects.Device, DmaVirtDevice -> X86/params/DmaVirtDevice.hh
+ [     CXX] X86/python/_m5/param_DmaVirtDevice.cc -> .o
+ [SO Param] m5.objects.Device, IsaFake -> X86/python/_m5/param_IsaFake.cc
+ [SO Param] m5.objects.Device, IsaFake -> X86/params/IsaFake.hh
+ [     CXX] X86/python/_m5/param_IsaFake.cc -> .o
+ [ TRACING]  -> X86/debug/AddrRanges.hh
+ [     CXX] src/dev/io_device.cc -> X86/dev/io_device.o
+ [ TRACING]  -> X86/debug/IsaFake.hh
+ [     CXX] src/dev/isa_fake.cc -> X86/dev/isa_fake.o
+ [ TRACING]  -> X86/debug/DMA.hh
+ [     CXX] src/dev/dma_device.cc -> X86/dev/dma_device.o
+ [     CXX] src/dev/dma_virt_device.cc -> X86/dev/dma_virt_device.o
+ [ TRACING]  -> X86/debug/IntPin.cc
+ [     CXX] X86/debug/IntPin.cc -> .o
+ [ TRACING]  -> X86/debug/IsaFake.cc
+ [     CXX] X86/debug/IsaFake.cc -> .o
+ [ TRACING]  -> X86/debug/DMA.cc
+ [     CXX] X86/debug/DMA.cc -> .o
+ [     CXX] X86/dev/Platform.py.cc -> .o
+ [SO Param] m5.objects.Platform, Platform -> X86/python/_m5/param_Platform.cc
+ [SO Param] m5.objects.Platform, Platform -> X86/params/Platform.hh
+ [     CXX] X86/python/_m5/param_Platform.cc -> .o
+ [     CXX] src/dev/platform.cc -> X86/dev/platform.o
+ [     CXX] X86/dev/BadDevice.py.cc -> .o
+ [SO Param] m5.objects.BadDevice, BadDevice -> X86/python/_m5/param_BadDevice.cc
+ [SO Param] m5.objects.BadDevice, BadDevice -> X86/params/BadDevice.hh
+ [     CXX] X86/python/_m5/param_BadDevice.cc -> .o
+ [     CXX] src/dev/baddev.cc -> X86/dev/baddev.o
+ [ TRACING]  -> X86/debug/Intel8254Timer.hh
+ [     CXX] src/dev/intel_8254_timer.cc -> X86/dev/intel_8254_timer.o
+ [ TRACING]  -> X86/debug/MC146818.hh
+ [     CXX] src/dev/mc146818.cc -> X86/dev/mc146818.o
+ [     CXX] src/dev/pixelpump.cc -> X86/dev/pixelpump.o
+ [ TRACING]  -> X86/debug/Intel8254Timer.cc
+ [     CXX] X86/debug/Intel8254Timer.cc -> .o
+ [ TRACING]  -> X86/debug/MC146818.cc
+ [     CXX] X86/debug/MC146818.cc -> .o
+ [     CXX] X86/dev/pci/PciDevice.py.cc -> .o
+ [SO Param] m5.objects.PciDevice, PciBar -> X86/python/_m5/param_PciBar.cc
+ [SO Param] m5.objects.PciDevice, PciBar -> X86/params/PciBar.hh
+ [SO Param] m5.objects.PciDevice, PciBarNone -> X86/params/PciBarNone.hh
+ [SO Param] m5.objects.PciDevice, PciDevice -> X86/params/PciDevice.hh
+ [SO Param] m5.objects.PciDevice, PciEndpoint -> X86/params/PciEndpoint.hh
+ [SO Param] m5.objects.PciDevice, PciIoBar -> X86/params/PciIoBar.hh
+ [SO Param] m5.objects.PciDevice, PciLegacyIoBar -> X86/params/PciLegacyIoBar.hh
+ [SO Param] m5.objects.PciDevice, PciMemBar -> X86/params/PciMemBar.hh
+ [SO Param] m5.objects.PciDevice, PciMemUpperBar -> X86/params/PciMemUpperBar.hh
+ [SO Param] m5.objects.PciDevice, PciType1Device -> X86/params/PciType1Device.hh
+ [SO Param] m5.objects.PciUpstream, PciConfigError -> X86/params/PciConfigError.hh
+ [SO Param] m5.objects.PciUpstream, PciUpstream -> X86/params/PciUpstream.hh
+ [SO Param] m5.objects.PciUpstream, PciUpDownBridge -> X86/params/PciUpDownBridge.hh
+ [SO Param] m5.objects.Bridge, Bridge -> X86/params/Bridge.hh
+ [SO Param] m5.objects.Bridge, BridgeBase -> X86/params/BridgeBase.hh
+ [SO Param] m5.objects.PciDevice, PciBarNone -> X86/python/_m5/param_PciBarNone.cc
+ [SO Param] m5.objects.PciDevice, PciIoBar -> X86/python/_m5/param_PciIoBar.cc
+ [     CXX] X86/python/_m5/param_PciBar.cc -> .o
+ [     CXX] X86/python/_m5/param_PciBarNone.cc -> .o
+ [     CXX] X86/python/_m5/param_PciIoBar.cc -> .o
+ [SO Param] m5.objects.PciDevice, PciLegacyIoBar -> X86/python/_m5/param_PciLegacyIoBar.cc
+ [     CXX] X86/python/_m5/param_PciLegacyIoBar.cc -> .o
+ [SO Param] m5.objects.PciDevice, PciMemBar -> X86/python/_m5/param_PciMemBar.cc
+ [     CXX] X86/python/_m5/param_PciMemBar.cc -> .o
+ [SO Param] m5.objects.PciDevice, PciMemUpperBar -> X86/python/_m5/param_PciMemUpperBar.cc
+ [     CXX] X86/python/_m5/param_PciMemUpperBar.cc -> .o
+ [SO Param] m5.objects.PciDevice, PciDevice -> X86/python/_m5/param_PciDevice.cc
+ [     CXX] X86/python/_m5/param_PciDevice.cc -> .o
+ [SO Param] m5.objects.PciDevice, PciEndpoint -> X86/python/_m5/param_PciEndpoint.cc
+ [     CXX] X86/python/_m5/param_PciEndpoint.cc -> .o
+ [SO Param] m5.objects.PciDevice, PciType1Device -> X86/python/_m5/param_PciType1Device.cc
+ [     CXX] X86/python/_m5/param_PciType1Device.cc -> .o
+ [ TRACING]  -> X86/debug/PciDevice.hh
+ [     CXX] src/dev/pci/device.cc -> X86/dev/pci/device.o
+ [ TRACING]  -> X86/debug/PciDevice.cc
+ [     CXX] X86/debug/PciDevice.cc -> .o
+ [     CXX] X86/dev/pci/PciUpstream.py.cc -> .o
+ [SO Param] m5.objects.PciUpstream, PciUpstream -> X86/python/_m5/param_PciUpstream.cc
+ [SO Param] m5.objects.PciUpstream, PciUpDownBridge -> X86/python/_m5/param_PciUpDownBridge.cc
+ [     CXX] X86/python/_m5/param_PciUpstream.cc -> .o
+ [     CXX] X86/python/_m5/param_PciUpDownBridge.cc -> .o
+ [SO Param] m5.objects.PciUpstream, PciBus -> X86/python/_m5/param_PciBus.cc
+ [SO Param] m5.objects.PciUpstream, PciBus -> X86/params/PciBus.hh
+ [SO Param] m5.objects.XBar, NoncoherentXBar -> X86/params/NoncoherentXBar.hh
+ [SO Param] m5.objects.XBar, BaseXBar -> X86/params/BaseXBar.hh
+ [     CXX] X86/python/_m5/param_PciBus.cc -> .o
+ [SO Param] m5.objects.PciUpstream, PciConfigError -> X86/python/_m5/param_PciConfigError.cc
+ [     CXX] X86/python/_m5/param_PciConfigError.cc -> .o
+ [ TRACING]  -> X86/debug/PciUpstream.hh
+ [     CXX] src/dev/pci/upstream.cc -> X86/dev/pci/upstream.o
+ [     CXX] src/dev/pci/up_down_bridge.cc -> X86/dev/pci/up_down_bridge.o
+ [     CXX] src/dev/pci/bus.cc -> X86/dev/pci/bus.o
+ [ TRACING]  -> X86/debug/PciUpstream.cc
+ [     CXX] X86/debug/PciUpstream.cc -> .o
+ [     CXX] X86/dev/pci/PciHost.py.cc -> .o
+ [SO Param] m5.objects.PciHost, PciHost -> X86/python/_m5/param_PciHost.cc
+ [SO Param] m5.objects.PciHost, PciHost -> X86/params/PciHost.hh
+ [     CXX] X86/python/_m5/param_PciHost.cc -> .o
+ [SO Param] m5.objects.PciHost, GenericPciHost -> X86/python/_m5/param_GenericPciHost.cc
+ [SO Param] m5.objects.PciHost, GenericPciHost -> X86/params/GenericPciHost.hh
+ [     CXX] X86/python/_m5/param_GenericPciHost.cc -> .o
+ [ TRACING]  -> X86/debug/PciHost.hh
+ [     CXX] src/dev/pci/host.cc -> X86/dev/pci/host.o
+ [ TRACING]  -> X86/debug/PciHost.cc
+ [     CXX] X86/debug/PciHost.cc -> .o
+ [     CXX] X86/dev/pci/CopyEngine.py.cc -> .o
+ [SO Param] m5.objects.CopyEngine, CopyEngine -> X86/python/_m5/param_CopyEngine.cc
+ [SO Param] m5.objects.CopyEngine, CopyEngine -> X86/params/CopyEngine.hh
+ [     CXX] X86/python/_m5/param_CopyEngine.cc -> .o
+ [ TRACING]  -> X86/debug/DMACopyEngine.hh
+ [     CXX] src/dev/pci/copy_engine.cc -> X86/dev/pci/copy_engine.o
+ [ TRACING]  -> X86/debug/DMACopyEngine.cc
+ [     CXX] X86/debug/DMACopyEngine.cc -> .o
+ [     CXX] X86/dev/net/Ethernet.py.cc -> .o
+ [SO Param] m5.objects.Ethernet, EtherLink -> X86/python/_m5/param_EtherLink.cc
+ [SO Param] m5.objects.Ethernet, EtherLink -> X86/params/EtherLink.hh
+ [SO Param] m5.objects.Ethernet, EtherDump -> X86/params/EtherDump.hh
+ [     CXX] X86/python/_m5/param_EtherLink.cc -> .o
+ [SO Param] m5.objects.Ethernet, DistEtherLink -> X86/python/_m5/param_DistEtherLink.cc
+ [SO Param] m5.objects.Ethernet, DistEtherLink -> X86/params/DistEtherLink.hh
+ [     CXX] X86/python/_m5/param_DistEtherLink.cc -> .o
+ [SO Param] m5.objects.Ethernet, EtherBus -> X86/python/_m5/param_EtherBus.cc
+ [SO Param] m5.objects.Ethernet, EtherBus -> X86/params/EtherBus.hh
+ [     CXX] X86/python/_m5/param_EtherBus.cc -> .o
+ [SO Param] m5.objects.Ethernet, EtherSwitch -> X86/python/_m5/param_EtherSwitch.cc
+ [SO Param] m5.objects.Ethernet, EtherSwitch -> X86/params/EtherSwitch.hh
+ [     CXX] X86/python/_m5/param_EtherSwitch.cc -> .o
+ [SO Param] m5.objects.Ethernet, EtherTapBase -> X86/python/_m5/param_EtherTapBase.cc
+ [SO Param] m5.objects.Ethernet, EtherTapBase -> X86/params/EtherTapBase.hh
+ [CONFIG H] HAVE_TUNTAP, 1 -> X86/config/have_tuntap.hh
+ [SO Param] m5.objects.Ethernet, EtherTap -> X86/params/EtherTap.hh
+ [SO Param] m5.objects.Ethernet, EtherTapStub -> X86/params/EtherTapStub.hh
+ [     CXX] X86/python/_m5/param_EtherTapBase.cc -> .o
+ [SO Param] m5.objects.Ethernet, EtherTapStub -> X86/python/_m5/param_EtherTapStub.cc
+ [     CXX] X86/python/_m5/param_EtherTapStub.cc -> .o
+ [SO Param] m5.objects.Ethernet, EtherDump -> X86/python/_m5/param_EtherDump.cc
+ [     CXX] X86/python/_m5/param_EtherDump.cc -> .o
+ [SO Param] m5.objects.Ethernet, EtherDevice -> X86/python/_m5/param_EtherDevice.cc
+ [SO Param] m5.objects.Ethernet, EtherDevice -> X86/params/EtherDevice.hh
+ [SO Param] m5.objects.Ethernet, EtherDevBase -> X86/params/EtherDevBase.hh
+ [     CXX] X86/python/_m5/param_EtherDevice.cc -> .o
+ [SO Param] m5.objects.Ethernet, IGbE -> X86/python/_m5/param_IGbE.cc
+ [SO Param] m5.objects.Ethernet, IGbE -> X86/params/IGbE.hh
+ [ TRACING]  -> X86/debug/EthernetDesc.hh
+ [ TRACING]  -> X86/debug/EthernetIntr.hh
+ [     CXX] X86/python/_m5/param_IGbE.cc -> .o
+ [SO Param] m5.objects.Ethernet, EtherDevBase -> X86/python/_m5/param_EtherDevBase.cc
+ [SO Param] m5.objects.Ethernet, NSGigE -> X86/python/_m5/param_NSGigE.cc
+ [     CXX] X86/python/_m5/param_EtherDevBase.cc -> .o
+ [SO Param] m5.objects.Ethernet, NSGigE -> X86/params/NSGigE.hh
+ [     CXX] X86/python/_m5/param_NSGigE.cc -> .o
+ [SO Param] m5.objects.Ethernet, Sinic -> X86/python/_m5/param_Sinic.cc
+ [SO Param] m5.objects.Ethernet, Sinic -> X86/params/Sinic.hh
+ [     CXX] X86/python/_m5/param_Sinic.cc -> .o
+ [SO Param] m5.objects.Ethernet, EtherTap -> X86/python/_m5/param_EtherTap.cc
+ [     CXX] X86/python/_m5/param_EtherTap.cc -> .o
+ [ TRACING]  -> X86/debug/Ethernet.hh
+ [ TRACING]  -> X86/debug/EthernetData.hh
+ [     CXX] src/dev/net/etherbus.cc -> X86/dev/net/etherbus.o
+ [ TRACING]  -> X86/debug/EthernetAll.hh
+ [ TRACING]  -> X86/debug/EthernetCksum.hh
+ [ TRACING]  -> X86/debug/EthernetDMA.hh
+ [ TRACING]  -> X86/debug/EthernetEEPROM.hh
+ [ TRACING]  -> X86/debug/EthernetPIO.hh
+ [ TRACING]  -> X86/debug/EthernetSM.hh
+ [     CXX] src/dev/net/etherswitch.cc -> X86/dev/net/etherswitch.o
+ [     CXX] src/dev/net/etherdevice.cc -> X86/dev/net/etherdevice.o
+ [     CXX] src/dev/net/etherdump.cc -> X86/dev/net/etherdump.o
+ [     CXX] src/dev/net/etherint.cc -> X86/dev/net/etherint.o
+ [     CXX] src/dev/net/etherlink.cc -> X86/dev/net/etherlink.o
+ [     CXX] src/dev/net/etherpkt.cc -> X86/dev/net/etherpkt.o
+ [     CXX] src/dev/net/ethertap.cc -> X86/dev/net/ethertap.o
+ [     CXX] src/dev/net/pktfifo.cc -> X86/dev/net/pktfifo.o
+ [ TRACING]  -> X86/debug/Ethernet.cc
+ [     CXX] X86/debug/Ethernet.cc -> .o
+ [ TRACING]  -> X86/debug/EthernetCksum.cc
+ [     CXX] X86/debug/EthernetCksum.cc -> .o
+ [ TRACING]  -> X86/debug/EthernetDMA.cc
+ [     CXX] X86/debug/EthernetDMA.cc -> .o
+ [ TRACING]  -> X86/debug/EthernetData.cc
+ [     CXX] X86/debug/EthernetData.cc -> .o
+ [ TRACING]  -> X86/debug/EthernetDesc.cc
+ [     CXX] X86/debug/EthernetDesc.cc -> .o
+ [ TRACING]  -> X86/debug/EthernetEEPROM.cc
+ [     CXX] X86/debug/EthernetEEPROM.cc -> .o
+ [ TRACING]  -> X86/debug/EthernetIntr.cc
+ [     CXX] X86/debug/EthernetIntr.cc -> .o
+ [ TRACING]  -> X86/debug/EthernetPIO.cc
+ [     CXX] X86/debug/EthernetPIO.cc -> .o
+ [ TRACING]  -> X86/debug/EthernetSM.cc
+ [     CXX] X86/debug/EthernetSM.cc -> .o
+ [ TRACING]  -> X86/debug/DistEthernet.hh
+ [ TRACING]  -> X86/debug/DistEthernetPkt.hh
+ [     CXX] src/dev/net/dist_iface.cc -> X86/dev/net/dist_iface.o
+ [     CXX] src/dev/net/dist_etherlink.cc -> X86/dev/net/dist_etherlink.o
+ [ TRACING]  -> X86/debug/DistEthernetCmd.hh
+ [     CXX] src/dev/net/tcp_iface.cc -> X86/dev/net/tcp_iface.o
+ [ TRACING]  -> X86/debug/DistEthernet.cc
+ [     CXX] X86/debug/DistEthernet.cc -> .o
+ [ TRACING]  -> X86/debug/DistEthernetPkt.cc
+ [     CXX] X86/debug/DistEthernetPkt.cc -> .o
+ [ TRACING]  -> X86/debug/DistEthernetCmd.cc
+ [     CXX] X86/debug/DistEthernetCmd.cc -> .o
+ [     CXX] src/dev/net/i8254xGBe.cc -> X86/dev/net/i8254xGBe.o
+ [     CXX] src/dev/net/ns_gige.cc -> X86/dev/net/ns_gige.o
+ [     CXX] src/dev/net/sinic.cc -> X86/dev/net/sinic.o
+ [ TRACING]  -> X86/debug/EthernetAll.cc
+ [     CXX] X86/debug/EthernetAll.cc -> .o
+ [ TRACING]  -> X86/debug/EthernetNoData.cc
+ [ TRACING]  -> X86/debug/EthernetNoData.hh
+ [     CXX] X86/debug/EthernetNoData.cc -> .o
+ [     CXX] X86/dev/serial/Serial.py.cc -> .o
+ [SO Param] m5.objects.Serial, SerialDevice -> X86/python/_m5/param_SerialDevice.cc
+ [SO Param] m5.objects.Serial, SerialDevice -> X86/params/SerialDevice.hh
+ [SO Param] m5.objects.Serial, SerialNullDevice -> X86/python/_m5/param_SerialNullDevice.cc
+ [     CXX] X86/python/_m5/param_SerialDevice.cc -> .o
+ [     CXX] X86/dev/serial/Terminal.py.cc -> .o
+ [SO Param] m5.objects.Serial, SerialNullDevice -> X86/params/SerialNullDevice.hh
+ [     CXX] X86/python/_m5/param_SerialNullDevice.cc -> .o
+ [SO Param] m5.objects.Terminal, Terminal -> X86/python/_m5/param_Terminal.cc
+ [ENUMDECL] m5.objects.Terminal, TerminalDump -> X86/enums/TerminalDump.hh
+ [SO Param] m5.objects.Terminal, Terminal -> X86/params/Terminal.hh
+ [     CXX] X86/python/_m5/param_Terminal.cc -> .o
+ [ENUM STR] m5.objects.Terminal, TerminalDump -> X86/enums/TerminalDump.cc
+ [     CXX] X86/enums/TerminalDump.cc -> .o
+ [     CXX] X86/dev/serial/Uart.py.cc -> .o
+ [SO Param] m5.objects.Uart, Uart -> X86/python/_m5/param_Uart.cc
+ [SO Param] m5.objects.Uart, Uart -> X86/params/Uart.hh
+ [     CXX] X86/python/_m5/param_Uart.cc -> .o
+ [SO Param] m5.objects.Uart, SimpleUart -> X86/python/_m5/param_SimpleUart.cc
+ [SO Param] m5.objects.Uart, SimpleUart -> X86/params/SimpleUart.hh
+ [     CXX] X86/python/_m5/param_SimpleUart.cc -> .o
+ [SO Param] m5.objects.Uart, Uart8250 -> X86/python/_m5/param_Uart8250.cc
+ [SO Param] m5.objects.Uart, Uart8250 -> X86/params/Uart8250.hh
+ [     CXX] X86/python/_m5/param_Uart8250.cc -> .o
+ [     CXX] src/dev/serial/serial.cc -> X86/dev/serial/serial.o
+ [     CXX] src/dev/serial/simple.cc -> X86/dev/serial/simple.o
+ [ TRACING]  -> X86/debug/Terminal.hh
+ [ TRACING]  -> X86/debug/TerminalVerbose.hh
+ [     CXX] src/dev/serial/terminal.cc -> X86/dev/serial/terminal.o
+ [     CXX] src/dev/serial/uart.cc -> X86/dev/serial/uart.o
+ [ TRACING]  -> X86/debug/Uart.hh
+ [     CXX] src/dev/serial/uart8250.cc -> X86/dev/serial/uart8250.o
+ [ TRACING]  -> X86/debug/Terminal.cc
+ [     CXX] X86/debug/Terminal.cc -> .o
+ [ TRACING]  -> X86/debug/TerminalVerbose.cc
+ [     CXX] X86/debug/TerminalVerbose.cc -> .o
+ [ TRACING]  -> X86/debug/Uart.cc
+ [     CXX] X86/debug/Uart.cc -> .o
+ [     CXX] X86/dev/i2c/I2C.py.cc -> .o
+ [SO Param] m5.objects.I2C, I2CDevice -> X86/python/_m5/param_I2CDevice.cc
+ [SO Param] m5.objects.I2C, I2CDevice -> X86/params/I2CDevice.hh
+ [     CXX] X86/python/_m5/param_I2CDevice.cc -> .o
+ [SO Param] m5.objects.I2C, I2CBus -> X86/python/_m5/param_I2CBus.cc
+ [SO Param] m5.objects.I2C, I2CBus -> X86/params/I2CBus.hh
+ [     CXX] X86/python/_m5/param_I2CBus.cc -> .o
+ [     CXX] src/dev/i2c/bus.cc -> X86/dev/i2c/bus.o
+ [     CXX] X86/dev/ps2/PS2.py.cc -> .o
+ [SO Param] m5.objects.PS2, PS2Device -> X86/python/_m5/param_PS2Device.cc
+ [SO Param] m5.objects.PS2, PS2Device -> X86/params/PS2Device.hh
+ [     CXX] X86/python/_m5/param_PS2Device.cc -> .o
+ [SO Param] m5.objects.PS2, PS2Keyboard -> X86/python/_m5/param_PS2Keyboard.cc
+ [SO Param] m5.objects.PS2, PS2Keyboard -> X86/params/PS2Keyboard.hh
+ [SO Param] m5.objects.Vnc, VncInput -> X86/params/VncInput.hh
+ [ENUMDECL] m5.objects.Graphics, ImageFormat -> X86/enums/ImageFormat.hh
+ [     CXX] X86/python/_m5/param_PS2Keyboard.cc -> .o
+ [SO Param] m5.objects.PS2, PS2Mouse -> X86/python/_m5/param_PS2Mouse.cc
+ [SO Param] m5.objects.PS2, PS2TouchKit -> X86/python/_m5/param_PS2TouchKit.cc
+ [SO Param] m5.objects.PS2, PS2Mouse -> X86/params/PS2Mouse.hh
+ [SO Param] m5.objects.PS2, PS2TouchKit -> X86/params/PS2TouchKit.hh
+ [     CXX] X86/python/_m5/param_PS2Mouse.cc -> .o
+ [     CXX] X86/python/_m5/param_PS2TouchKit.cc -> .o
+ [ TRACING]  -> X86/debug/PS2.hh
+ [     CXX] src/dev/ps2/device.cc -> X86/dev/ps2/device.o
+ [     CXX] src/dev/ps2/keyboard.cc -> X86/dev/ps2/keyboard.o
+ [     CXX] src/dev/ps2/mouse.cc -> X86/dev/ps2/mouse.o
+ [     CXX] src/dev/ps2/touchkit.cc -> X86/dev/ps2/touchkit.o
+ [     CXX] src/dev/ps2/types.cc -> X86/dev/ps2/types.o
+ [ TRACING]  -> X86/debug/PS2.cc
+ [     CXX] X86/debug/PS2.cc -> .o
+ [     CXX] X86/dev/virtio/VirtIO.py.cc -> .o
+ [SO Param] m5.objects.VirtIO, VirtIODeviceBase -> X86/python/_m5/param_VirtIODeviceBase.cc
+ [SO Param] m5.objects.VirtIO, VirtIODummyDevice -> X86/python/_m5/param_VirtIODummyDevice.cc
+ [SO Param] m5.objects.VirtIO, VirtIODeviceBase -> X86/params/VirtIODeviceBase.hh
+ [SO Param] m5.objects.VirtIO, PciVirtIO -> X86/python/_m5/param_PciVirtIO.cc
+ [SO Param] m5.objects.VirtIO, VirtIODummyDevice -> X86/params/VirtIODummyDevice.hh
+ [     CXX] X86/python/_m5/param_VirtIODeviceBase.cc -> .o
+ [SO Param] m5.objects.VirtIO, PciVirtIO -> X86/params/PciVirtIO.hh
+ [     CXX] X86/python/_m5/param_VirtIODummyDevice.cc -> .o
+ [     CXX] X86/python/_m5/param_PciVirtIO.cc -> .o
+ [     CXX] X86/dev/virtio/VirtIOConsole.py.cc -> .o
+ [SO Param] m5.objects.VirtIOConsole, VirtIOConsole -> X86/python/_m5/param_VirtIOConsole.cc
+ [SO Param] m5.objects.VirtIOConsole, VirtIOConsole -> X86/params/VirtIOConsole.hh
+ [     CXX] X86/python/_m5/param_VirtIOConsole.cc -> .o
+ [     CXX] X86/dev/virtio/VirtIOBlock.py.cc -> .o
+ [SO Param] m5.objects.VirtIOBlock, VirtIOBlock -> X86/python/_m5/param_VirtIOBlock.cc
+ [     CXX] X86/dev/virtio/VirtIORng.py.cc -> .o
+ [SO Param] m5.objects.VirtIOBlock, VirtIOBlock -> X86/params/VirtIOBlock.hh
+ [SO Param] m5.objects.DiskImage, CowDiskImage -> X86/params/CowDiskImage.hh
+ [SO Param] m5.objects.DiskImage, DiskImage -> X86/params/DiskImage.hh
+ [SO Param] m5.objects.DiskImage, RawDiskImage -> X86/params/RawDiskImage.hh
+ [     CXX] X86/python/_m5/param_VirtIOBlock.cc -> .o
+ [SO Param] m5.objects.VirtIORng, VirtIORng -> X86/python/_m5/param_VirtIORng.cc
+ [SO Param] m5.objects.VirtIORng, VirtIORng -> X86/params/VirtIORng.hh
+ [     CXX] X86/dev/virtio/VirtIO9P.py.cc -> .o
+ [     CXX] X86/python/_m5/param_VirtIORng.cc -> .o
+ [SO Param] m5.objects.VirtIO9P, VirtIO9PBase -> X86/python/_m5/param_VirtIO9PBase.cc
+ [SO Param] m5.objects.VirtIO9P, VirtIO9PBase -> X86/params/VirtIO9PBase.hh
+ [     CXX] X86/python/_m5/param_VirtIO9PBase.cc -> .o
+ [SO Param] m5.objects.VirtIO9P, VirtIO9PProxy -> X86/python/_m5/param_VirtIO9PProxy.cc
+ [SO Param] m5.objects.VirtIO9P, VirtIO9PProxy -> X86/params/VirtIO9PProxy.hh
+ [     CXX] X86/python/_m5/param_VirtIO9PProxy.cc -> .o
+ [SO Param] m5.objects.VirtIO9P, VirtIO9PDiod -> X86/python/_m5/param_VirtIO9PDiod.cc
+ [SO Param] m5.objects.VirtIO9P, VirtIO9PDiod -> X86/params/VirtIO9PDiod.hh
+ [     CXX] X86/python/_m5/param_VirtIO9PDiod.cc -> .o
+ [SO Param] m5.objects.VirtIO9P, VirtIO9PSocket -> X86/python/_m5/param_VirtIO9PSocket.cc
+ [SO Param] m5.objects.VirtIO9P, VirtIO9PSocket -> X86/params/VirtIO9PSocket.hh
+ [     CXX] X86/python/_m5/param_VirtIO9PSocket.cc -> .o
+ [ TRACING]  -> X86/debug/VIO.hh
+ [     CXX] src/dev/virtio/base.cc -> X86/dev/virtio/base.o
+ [ TRACING]  -> X86/debug/VIOIface.hh
+ [     CXX] src/dev/virtio/pci.cc -> X86/dev/virtio/pci.o
+ [ TRACING]  -> X86/debug/VIOConsole.hh
+ [     CXX] src/dev/virtio/console.cc -> X86/dev/virtio/console.o
+ [ TRACING]  -> X86/debug/VIOBlock.hh
+ [     CXX] src/dev/virtio/block.cc -> X86/dev/virtio/block.o
+ [ TRACING]  -> X86/debug/VIO9P.hh
+ [ TRACING]  -> X86/debug/VIO9PData.hh
+ [     CXX] src/dev/virtio/fs9p.cc -> X86/dev/virtio/fs9p.o
+ [ TRACING]  -> X86/debug/VIORng.hh
+ [     CXX] src/dev/virtio/rng.cc -> X86/dev/virtio/rng.o
+ [ TRACING]  -> X86/debug/VIO.cc
+ [     CXX] X86/debug/VIO.cc -> .o
+ [ TRACING]  -> X86/debug/VIORng.cc
+ [ TRACING]  -> X86/debug/VIOIface.cc
+ [     CXX] X86/debug/VIORng.cc -> .o
+ [     CXX] X86/debug/VIOIface.cc -> .o
+ [ TRACING]  -> X86/debug/VIOConsole.cc
+ [ TRACING]  -> X86/debug/VIOBlock.cc
+ [     CXX] X86/debug/VIOConsole.cc -> .o
+ [     CXX] X86/debug/VIOBlock.cc -> .o
+ [ TRACING]  -> X86/debug/VIO9P.cc
+ [ TRACING]  -> X86/debug/VIO9PData.cc
+ [     CXX] X86/debug/VIO9P.cc -> .o
+ [     CXX] X86/debug/VIO9PData.cc -> .o
+ [     CXX] X86/dev/storage/Ide.py.cc -> .o
+ [SO Param] m5.objects.Ide, IdeDisk -> X86/python/_m5/param_IdeDisk.cc
+ [ENUMDECL] m5.objects.Ide, IdeID -> X86/enums/IdeID.hh
+ [SO Param] m5.objects.Ide, IdeDisk -> X86/params/IdeDisk.hh
+ [SO Param] m5.objects.Ide, IdeController -> X86/params/IdeController.hh
+ [     CXX] X86/python/_m5/param_IdeDisk.cc -> .o
+ [SO Param] m5.objects.Ide, IdeController -> X86/python/_m5/param_IdeController.cc
+ [     CXX] X86/python/_m5/param_IdeController.cc -> .o
+ [ENUM STR] m5.objects.Ide, IdeID -> X86/enums/IdeID.cc
+ [     CXX] X86/enums/IdeID.cc -> .o
+ [ TRACING]  -> X86/debug/IdeCtrl.hh
+ [     CXX] src/dev/storage/ide_ctrl.cc -> X86/dev/storage/ide_ctrl.o
+ [ TRACING]  -> X86/debug/IdeDisk.hh
+ [     CXX] src/dev/storage/ide_disk.cc -> X86/dev/storage/ide_disk.o
+ [ TRACING]  -> X86/debug/IdeCtrl.cc
+ [     CXX] X86/debug/IdeCtrl.cc -> .o
+ [ TRACING]  -> X86/debug/IdeDisk.cc
+ [     CXX] X86/debug/IdeDisk.cc -> .o
+ [     CXX] X86/dev/storage/DiskImage.py.cc -> .o
+ [SO Param] m5.objects.DiskImage, DiskImage -> X86/python/_m5/param_DiskImage.cc
+ [SO Param] m5.objects.DiskImage, RawDiskImage -> X86/python/_m5/param_RawDiskImage.cc
+ [     CXX] X86/python/_m5/param_DiskImage.cc -> .o
+ [     CXX] X86/python/_m5/param_RawDiskImage.cc -> .o
+ [SO Param] m5.objects.DiskImage, CowDiskImage -> X86/python/_m5/param_CowDiskImage.cc
+ [     CXX] X86/python/_m5/param_CowDiskImage.cc -> .o
+ [     CXX] X86/dev/storage/SimpleDisk.py.cc -> .o
+ [SO Param] m5.objects.SimpleDisk, SimpleDisk -> X86/python/_m5/param_SimpleDisk.cc
+ [SO Param] m5.objects.SimpleDisk, SimpleDisk -> X86/params/SimpleDisk.hh
+ [ TRACING]  -> X86/debug/DiskImageRead.hh
+ [ TRACING]  -> X86/debug/DiskImageWrite.hh
+ [     CXX] src/dev/storage/disk_image.cc -> X86/dev/storage/disk_image.o
+ [     CXX] X86/python/_m5/param_SimpleDisk.cc -> .o
+ [ TRACING]  -> X86/debug/SimpleDisk.hh
+ [ TRACING]  -> X86/debug/SimpleDiskData.hh
+ [     CXX] src/dev/storage/simple_disk.cc -> X86/dev/storage/simple_disk.o
+ [ TRACING]  -> X86/debug/DiskImageRead.cc
+ [     CXX] X86/debug/DiskImageRead.cc -> .o
+ [ TRACING]  -> X86/debug/DiskImageWrite.cc
+ [     CXX] X86/debug/DiskImageWrite.cc -> .o
+ [ TRACING]  -> X86/debug/SimpleDisk.cc
+ [     CXX] X86/debug/SimpleDisk.cc -> .o
+ [ TRACING]  -> X86/debug/SimpleDiskData.cc
+ [     CXX] X86/debug/SimpleDiskData.cc -> .o
+ [ TRACING]  -> X86/debug/DiskImageAll.cc
+ [ TRACING]  -> X86/debug/DiskImageAll.hh
+ [     CXX] X86/debug/DiskImageAll.cc -> .o
+ [ TRACING]  -> X86/debug/IdeAll.cc
+ [ TRACING]  -> X86/debug/IdeAll.hh
+ [     CXX] X86/debug/IdeAll.cc -> .o
+ [     CXX] X86/dev/qemu/QemuFwCfg.py.cc -> .o
+ [SO Param] m5.objects.QemuFwCfg, QemuFwCfgItem -> X86/python/_m5/param_QemuFwCfgItem.cc
+ [SO Param] m5.objects.QemuFwCfg, QemuFwCfgItem -> X86/params/QemuFwCfgItem.hh
+ [SO Param] m5.objects.QemuFwCfg, QemuFwCfg -> X86/params/QemuFwCfg.hh
+ [SO Param] m5.objects.QemuFwCfg, QemuFwCfgIo -> X86/params/QemuFwCfgIo.hh
+ [SO Param] m5.objects.QemuFwCfg, QemuFwCfgItemBytes -> X86/params/QemuFwCfgItemBytes.hh
+ [SO Param] m5.objects.QemuFwCfg, QemuFwCfgItemFile -> X86/params/QemuFwCfgItemFile.hh
+ [SO Param] m5.objects.QemuFwCfg, QemuFwCfgItemString -> X86/params/QemuFwCfgItemString.hh
+ [SO Param] m5.objects.QemuFwCfg, QemuFwCfgMmio -> X86/params/QemuFwCfgMmio.hh
+ [SO Param] m5.objects.QemuFwCfg, QemuFwCfgItemBytes -> X86/python/_m5/param_QemuFwCfgItemBytes.cc
+ [     CXX] X86/python/_m5/param_QemuFwCfgItem.cc -> .o
+ [     CXX] X86/python/_m5/param_QemuFwCfgItemBytes.cc -> .o
+ [SO Param] m5.objects.QemuFwCfg, QemuFwCfgItemFile -> X86/python/_m5/param_QemuFwCfgItemFile.cc
+ [SO Param] m5.objects.QemuFwCfg, QemuFwCfgItemString -> X86/python/_m5/param_QemuFwCfgItemString.cc
+ [     CXX] X86/python/_m5/param_QemuFwCfgItemFile.cc -> .o
+ [     CXX] X86/python/_m5/param_QemuFwCfgItemString.cc -> .o
+ [SO Param] m5.objects.QemuFwCfg, QemuFwCfg -> X86/python/_m5/param_QemuFwCfg.cc
+ [     CXX] X86/python/_m5/param_QemuFwCfg.cc -> .o
+ [SO Param] m5.objects.QemuFwCfg, QemuFwCfgIo -> X86/python/_m5/param_QemuFwCfgIo.cc
+ [     CXX] X86/python/_m5/param_QemuFwCfgIo.cc -> .o
+ [SO Param] m5.objects.QemuFwCfg, QemuFwCfgMmio -> X86/python/_m5/param_QemuFwCfgMmio.cc
+ [ TRACING]  -> X86/debug/QemuFwCfg.hh
+ [ TRACING]  -> X86/debug/QemuFwCfgVerbose.hh
+ [     CXX] X86/python/_m5/param_QemuFwCfgMmio.cc -> .o
+ [     CXX] src/dev/qemu/fw_cfg.cc -> X86/dev/qemu/fw_cfg.o
+ [ TRACING]  -> X86/debug/QemuFwCfg.cc
+ [     CXX] X86/debug/QemuFwCfg.cc -> .o
+ [ TRACING]  -> X86/debug/QemuFwCfgVerbose.cc
+ [     CXX] X86/debug/QemuFwCfgVerbose.cc -> .o
+ [     CXX] X86/dev/x86/Pc.py.cc -> .o
+ [SO Param] m5.objects.Pc, Pc -> X86/python/_m5/param_Pc.cc
+ [SO Param] m5.objects.Pc, Pc -> X86/params/Pc.hh
+ [SO Param] m5.objects.SouthBridge, SouthBridge -> X86/params/SouthBridge.hh
+ [SO Param] m5.objects.I82094AA, I82094AA -> X86/params/I82094AA.hh
+ [SO Param] m5.objects.Cmos, Cmos -> X86/params/Cmos.hh
+ [SO Param] m5.objects.I8042, I8042 -> X86/params/I8042.hh
+ [SO Param] m5.objects.I8237, I8237 -> X86/params/I8237.hh
+ [SO Param] m5.objects.I8254, I8254 -> X86/params/I8254.hh
+ [SO Param] m5.objects.I8259, I8259 -> X86/params/I8259.hh
+ [SO Param] m5.objects.PcSpeaker, PcSpeaker -> X86/params/PcSpeaker.hh
+ [ENUMDECL] m5.objects.I8259, X86I8259CascadeMode -> X86/enums/X86I8259CascadeMode.hh
+ [     CXX] X86/dev/x86/SouthBridge.py.cc -> .o
+ [     CXX] X86/python/_m5/param_Pc.cc -> .o
+ [     CXX] src/dev/x86/pc.cc -> X86/dev/x86/pc.o
+ [SO Param] m5.objects.SouthBridge, SouthBridge -> X86/python/_m5/param_SouthBridge.cc
+ [     CXX] X86/python/_m5/param_SouthBridge.cc -> .o
+ [     CXX] src/dev/x86/south_bridge.cc -> X86/dev/x86/south_bridge.o
+ [     CXX] X86/dev/x86/Cmos.py.cc -> .o
+ [SO Param] m5.objects.Cmos, Cmos -> X86/python/_m5/param_Cmos.cc
+ [     CXX] X86/python/_m5/param_Cmos.cc -> .o
+ [ TRACING]  -> X86/debug/CMOS.hh
+ [     CXX] src/dev/x86/cmos.cc -> X86/dev/x86/cmos.o
+ [ TRACING]  -> X86/debug/CMOS.cc
+ [     CXX] X86/debug/CMOS.cc -> .o
+ [     CXX] X86/dev/x86/I8259.py.cc -> .o
+ [SO Param] m5.objects.I8259, I8259 -> X86/python/_m5/param_I8259.cc
+ [     CXX] X86/python/_m5/param_I8259.cc -> .o
+ [ENUM STR] m5.objects.I8259, X86I8259CascadeMode -> X86/enums/X86I8259CascadeMode.cc
+ [     CXX] X86/enums/X86I8259CascadeMode.cc -> .o
+ [ TRACING]  -> X86/debug/I8259.hh
+ [     CXX] src/dev/x86/i8259.cc -> X86/dev/x86/i8259.o
+ [ TRACING]  -> X86/debug/I8259.cc
+ [     CXX] X86/debug/I8259.cc -> .o
+ [     CXX] X86/dev/x86/I8254.py.cc -> .o
+ [SO Param] m5.objects.I8254, I8254 -> X86/python/_m5/param_I8254.cc
+ [     CXX] X86/python/_m5/param_I8254.cc -> .o
+ [ TRACING]  -> X86/debug/I8254.hh
+ [     CXX] src/dev/x86/i8254.cc -> X86/dev/x86/i8254.o
+ [ TRACING]  -> X86/debug/I8254.cc
+ [     CXX] X86/debug/I8254.cc -> .o
+ [     CXX] X86/dev/x86/I8237.py.cc -> .o
+ [SO Param] m5.objects.I8237, I8237 -> X86/python/_m5/param_I8237.cc
+ [     CXX] X86/python/_m5/param_I8237.cc -> .o
+ [     CXX] src/dev/x86/i8237.cc -> X86/dev/x86/i8237.o
+ [ TRACING]  -> X86/debug/I8237.cc
+ [ TRACING]  -> X86/debug/I8237.hh
+ [     CXX] X86/debug/I8237.cc -> .o
+ [     CXX] X86/dev/x86/I8042.py.cc -> .o
+ [SO Param] m5.objects.I8042, I8042 -> X86/python/_m5/param_I8042.cc
+ [     CXX] X86/python/_m5/param_I8042.cc -> .o
+ [ TRACING]  -> X86/debug/I8042.hh
+ [     CXX] src/dev/x86/i8042.cc -> X86/dev/x86/i8042.o
+ [ TRACING]  -> X86/debug/I8042.cc
+ [     CXX] X86/debug/I8042.cc -> .o
+ [     CXX] X86/dev/x86/X86Ide.py.cc -> .o
+ [SO Param] m5.objects.X86Ide, X86IdeController -> X86/python/_m5/param_X86IdeController.cc
+ [SO Param] m5.objects.X86Ide, X86IdeController -> X86/params/X86IdeController.hh
+ [     CXX] X86/python/_m5/param_X86IdeController.cc -> .o
+ [     CXX] src/dev/x86/ide_ctrl.cc -> X86/dev/x86/ide_ctrl.o
+ [     CXX] X86/dev/x86/PcSpeaker.py.cc -> .o
+ [SO Param] m5.objects.PcSpeaker, PcSpeaker -> X86/python/_m5/param_PcSpeaker.cc
+ [ TRACING]  -> X86/debug/PcSpeaker.hh
+ [     CXX] src/dev/x86/speaker.cc -> X86/dev/x86/speaker.o
+ [     CXX] X86/python/_m5/param_PcSpeaker.cc -> .o
+ [ TRACING]  -> X86/debug/PcSpeaker.cc
+ [     CXX] X86/debug/PcSpeaker.cc -> .o
+ [     CXX] X86/dev/x86/I82094AA.py.cc -> .o
+ [SO Param] m5.objects.I82094AA, I82094AA -> X86/python/_m5/param_I82094AA.cc
+ [     CXX] X86/python/_m5/param_I82094AA.cc -> .o
+ [ TRACING]  -> X86/debug/I82094AA.hh
+ [SO Param] m5.objects.X86LocalApic, X86LocalApic -> X86/params/X86LocalApic.hh
+ [SO Param] m5.objects.X86TLB, X86TLB -> X86/params/X86TLB.hh
+ [SO Param] m5.objects.X86TLB, X86PagetableWalker -> X86/params/X86PagetableWalker.hh
+ [     CXX] src/dev/x86/i82094aa.cc -> X86/dev/x86/i82094aa.o
+ [ TRACING]  -> X86/debug/I82094AA.cc
+ [     CXX] X86/debug/I82094AA.cc -> .o
+ [     CXX] X86/dev/x86/X86QemuFwCfg.py.cc -> .o
+ [SO Param] m5.objects.X86QemuFwCfg, QemuFwCfgItemE820 -> X86/python/_m5/param_QemuFwCfgItemE820.cc
+ [SO Param] m5.objects.X86QemuFwCfg, QemuFwCfgItemE820 -> X86/params/QemuFwCfgItemE820.hh
+ [SO Param] m5.objects.E820, X86E820Entry -> X86/params/X86E820Entry.hh
+ [SO Param] m5.objects.E820, X86E820Table -> X86/params/X86E820Table.hh
+ [ TRACING]  -> X86/debug/IntRegs.cc
+ [     CXX] X86/debug/IntRegs.cc -> .o
+ [     CXX] X86/python/_m5/param_QemuFwCfgItemE820.cc -> .o
+ [     CXX] src/dev/x86/qemu_fw_cfg.cc -> X86/dev/x86/qemu_fw_cfg.o
+ [ TRACING]  -> X86/debug/FloatRegs.cc
+ [     CXX] X86/debug/FloatRegs.cc -> .o
+ [ TRACING]  -> X86/debug/VecRegs.cc
+ [     CXX] X86/debug/VecRegs.cc -> .o
+ [ TRACING]  -> X86/debug/VecPredRegs.cc
+ [     CXX] X86/debug/VecPredRegs.cc -> .o
+ [ TRACING]  -> X86/debug/MatRegs.cc
+ [     CXX] X86/debug/MatRegs.cc -> .o
+ [ TRACING]  -> X86/debug/CCRegs.cc
+ [     CXX] X86/debug/CCRegs.cc -> .o
+ [ TRACING]  -> X86/debug/MiscRegs.cc
+ [ TRACING]  -> X86/debug/MiscRegs.hh
+ [     CXX] X86/debug/MiscRegs.cc -> .o
+ [ TRACING]  -> X86/debug/Registers.cc
+ [ TRACING]  -> X86/debug/Registers.hh
+ [     CXX] X86/debug/Registers.cc -> .o
+ [ TRACING]  -> X86/debug/Decoder.cc
+ [ TRACING]  -> X86/debug/Decoder.hh
+ [     CXX] X86/debug/Decoder.cc -> .o
+ [ TRACING]  -> X86/debug/Faults.cc
+ [     CXX] X86/debug/Faults.cc -> .o
+ [ TRACING]  -> X86/debug/TLBVerbose.cc
+ [ TRACING]  -> X86/debug/TLBVerbose.hh
+ [     CXX] X86/debug/TLBVerbose.cc -> .o
+ [     CXX] src/arch/generic/htm.cc -> X86/arch/generic/htm.o
+ [     CXX] src/arch/generic/mmu.cc -> X86/arch/generic/mmu.o
+ [     CXX] X86/arch/generic/BaseInterrupts.py.cc -> .o
+ [SO Param] m5.objects.BaseInterrupts, BaseInterrupts -> X86/python/_m5/param_BaseInterrupts.cc
+ [     CXX] X86/python/_m5/param_BaseInterrupts.cc -> .o
+ [     CXX] X86/arch/generic/BaseISA.py.cc -> .o
+ [SO Param] m5.objects.BaseISA, BaseISA -> X86/python/_m5/param_BaseISA.cc
+ [     CXX] X86/python/_m5/param_BaseISA.cc -> .o
+ [     CXX] X86/arch/generic/BaseMMU.py.cc -> .o
+ [SO Param] m5.objects.BaseMMU, BaseMMU -> X86/python/_m5/param_BaseMMU.cc
+ [     CXX] X86/python/_m5/param_BaseMMU.cc -> .o
+ [     CXX] X86/arch/generic/BaseTLB.py.cc -> .o
+ [SO Param] m5.objects.BaseTLB, BaseTLB -> X86/python/_m5/param_BaseTLB.cc
+ [     CXX] X86/python/_m5/param_BaseTLB.cc -> .o
+ [ENUM STR] m5.objects.BaseTLB, TypeTLB -> X86/enums/TypeTLB.cc
+ [     CXX] X86/enums/TypeTLB.cc -> .o
+ [     CXX] X86/arch/generic/InstDecoder.py.cc -> .o
+ [SO Param] m5.objects.InstDecoder, InstDecoder -> X86/python/_m5/param_InstDecoder.cc
+ [     CXX] X86/python/_m5/param_InstDecoder.cc -> .o
+ [ TRACING]  -> X86/debug/PageTableWalker.cc
+ [ TRACING]  -> X86/debug/PageTableWalker.hh
+ [     CXX] X86/debug/PageTableWalker.cc -> .o
+ [ TRACING]  -> X86/debug/TLB.cc
+ [ TRACING]  -> X86/debug/TLB.hh
+ [     CXX] X86/debug/TLB.cc -> .o
+ [     CXX] src/arch/generic/decoder.cc -> X86/arch/generic/decoder.o
+ [     CXX] src/arch/arm/insts/fplib.cc -> X86/arch/arm/insts/fplib.o
+ [ TRACING]  -> X86/debug/X86.hh
+ [SO Param] m5.objects.X86ISA, X86ISA -> X86/params/X86ISA.hh
+ [     CXX] src/arch/x86/cpuid.cc -> X86/arch/x86/cpuid.o
+ [SO Param] m5.objects.X86Decoder, X86Decoder -> X86/params/X86Decoder.hh
+ [     CXX] src/arch/x86/decoder.cc -> X86/arch/x86/decoder.o
+ [     CXX] src/arch/x86/decoder_tables.cc -> X86/arch/x86/decoder_tables.o
+ [     CXX] src/arch/x86/emulenv.cc -> X86/arch/x86/emulenv.o
+ [ISA DESC] src/arch/x86/isa/main.isa -> X86/arch/x86/generated/decoder-g.cc.inc, X86/arch/x86/generated/decoder-ns.cc.inc, X86/arch/x86/generated/decode-method.cc.inc, X86/arch/x86/generated/decoder.hh, X86/arch/x86/generated/decoder-g.hh.inc, X86/arch/x86/generated/decoder-ns.hh.inc, X86/arch/x86/generated/exec-g.cc.inc, X86/arch/x86/generated/exec-ns.cc.inc, X86/arch/x86/generated/decoder.cc, X86/arch/x86/generated/inst-constrs.cc, X86/arch/x86/generated/generic_cpu_exec.cc
+ [SO Param] m5.objects.X86MMU, X86MMU -> X86/params/X86MMU.hh
+ [ TRACING]  -> X86/debug/ACPI.hh
+ [SO Param] m5.objects.X86FsWorkload, X86FsWorkload -> X86/params/X86FsWorkload.hh
+ [SO Param] m5.objects.ACPI, X86ACPIMadt -> X86/params/X86ACPIMadt.hh
+ [SO Param] m5.objects.ACPI, X86ACPIMadtIOAPIC -> X86/params/X86ACPIMadtIOAPIC.hh
+Generating LALR tables
+ [SO Param] m5.objects.ACPI, X86ACPIMadtIntSourceOverride -> X86/params/X86ACPIMadtIntSourceOverride.hh
+ [SO Param] m5.objects.ACPI, X86ACPIMadtLAPIC -> X86/params/X86ACPIMadtLAPIC.hh
+ [SO Param] m5.objects.ACPI, X86ACPIMadtLAPICOverride -> X86/params/X86ACPIMadtLAPICOverride.hh
+ [SO Param] m5.objects.ACPI, X86ACPIMadtNMI -> X86/params/X86ACPIMadtNMI.hh
+ [SO Param] m5.objects.ACPI, X86ACPIMadtRecord -> X86/params/X86ACPIMadtRecord.hh
+ [SO Param] m5.objects.ACPI, X86ACPIRSDP -> X86/params/X86ACPIRSDP.hh
+ [SO Param] m5.objects.ACPI, X86ACPIRSDT -> X86/params/X86ACPIRSDT.hh
+ [SO Param] m5.objects.ACPI, X86ACPISysDescTable -> X86/params/X86ACPISysDescTable.hh
+ [SO Param] m5.objects.ACPI, X86ACPIXSDT -> X86/params/X86ACPIXSDT.hh
+ [ENUMDECL] m5.objects.IntelMP, X86IntelMPAddressType -> X86/enums/X86IntelMPAddressType.hh
+ [ENUMDECL] m5.objects.IntelMP, X86IntelMPInterruptType -> X86/enums/X86IntelMPInterruptType.hh
+ [ENUMDECL] m5.objects.IntelMP, X86IntelMPPolarity -> X86/enums/X86IntelMPPolarity.hh
+ [ENUMDECL] m5.objects.IntelMP, X86IntelMPRangeList -> X86/enums/X86IntelMPRangeList.hh
+ [ENUMDECL] m5.objects.IntelMP, X86IntelMPTriggerMode -> X86/enums/X86IntelMPTriggerMode.hh
+ [ENUMDECL] m5.objects.SMBios, Characteristic -> X86/enums/Characteristic.hh
+ [ENUMDECL] m5.objects.SMBios, ExtCharacteristic -> X86/enums/ExtCharacteristic.hh
+ [     CXX] src/arch/x86/insts/microop.cc -> X86/arch/x86/insts/microop.o
+ [     CXX] src/arch/x86/insts/microregop.cc -> X86/arch/x86/insts/microregop.o
+ [SO Param] m5.objects.IntelMP, X86IntelMPConfigTable -> X86/params/X86IntelMPConfigTable.hh
+ [SO Param] m5.objects.IntelMP, X86IntelMPFloatingPointer -> X86/params/X86IntelMPFloatingPointer.hh
+ [SO Param] m5.objects.SMBios, X86SMBiosSMBiosTable -> X86/params/X86SMBiosSMBiosTable.hh
+ [     CXX] src/arch/x86/insts/badmicroop.cc -> X86/arch/x86/insts/badmicroop.o
+ [SO Param] m5.objects.IntelMP, X86IntelMPBaseConfigEntry -> X86/params/X86IntelMPBaseConfigEntry.hh
+ [SO Param] m5.objects.IntelMP, X86IntelMPExtConfigEntry -> X86/params/X86IntelMPExtConfigEntry.hh
+ [SO Param] m5.objects.SMBios, X86SMBiosSMBiosStructure -> X86/params/X86SMBiosSMBiosStructure.hh
+ [     CXX] src/arch/x86/fs_workload.cc -> X86/arch/x86/fs_workload.o
+ [     CXX] src/arch/x86/faults.cc -> X86/arch/x86/faults.o
+ [     CXX] src/arch/x86/insts/static_inst.cc -> X86/arch/x86/insts/static_inst.o
+ [ TRACING]  -> X86/debug/LocalApic.hh
+ [     CXX] src/arch/x86/interrupts.cc -> X86/arch/x86/interrupts.o
+ [     CXX] src/arch/x86/isa.cc -> X86/arch/x86/isa.o
+ [SO Param] m5.objects.X86NativeTrace, X86NativeTrace -> X86/params/X86NativeTrace.hh
+ [     CXX] src/arch/x86/nativetrace.cc -> X86/arch/x86/nativetrace.o
+ [     CXX] src/arch/x86/pagetable.cc -> X86/arch/x86/pagetable.o
+ [     CXX] src/arch/x86/pagetable_walker.cc -> X86/arch/x86/pagetable_walker.o
+ [ TRACING]  -> X86/debug/MMU.hh
+ [     CXX] src/arch/x86/process.cc -> X86/arch/x86/process.o
+ [ TRACING]  -> X86/debug/GDBAcc.hh
+ [     CXX] src/arch/x86/remote_gdb.cc -> X86/arch/x86/remote_gdb.o
+ [     CXX] src/arch/x86/tlb.cc -> X86/arch/x86/tlb.o
+ [     CXX] src/arch/x86/types.cc -> X86/arch/x86/types.o
+ [     CXX] src/arch/x86/utility.cc -> X86/arch/x86/utility.o
+ [     CXX] X86/arch/x86/X86SeWorkload.py.cc -> .o
+ [SO Param] m5.objects.X86SeWorkload, X86EmuLinux -> X86/python/_m5/param_X86EmuLinux.cc
+ [SO Param] m5.objects.X86SeWorkload, X86EmuLinux -> X86/params/X86EmuLinux.hh
+ [     CXX] X86/python/_m5/param_X86EmuLinux.cc -> .o
+ [     CXX] X86/arch/x86/X86FsWorkload.py.cc -> .o
+ [SO Param] m5.objects.X86FsWorkload, X86BareMetalWorkload -> X86/python/_m5/param_X86BareMetalWorkload.cc
+ [SO Param] m5.objects.X86FsWorkload, X86BareMetalWorkload -> X86/params/X86BareMetalWorkload.hh
+ [     CXX] X86/python/_m5/param_X86BareMetalWorkload.cc -> .o
+ [SO Param] m5.objects.X86FsWorkload, X86FsWorkload -> X86/python/_m5/param_X86FsWorkload.cc
+ [     CXX] X86/python/_m5/param_X86FsWorkload.cc -> .o
+ [SO Param] m5.objects.X86FsWorkload, X86FsLinux -> X86/python/_m5/param_X86FsLinux.cc
+ [SO Param] m5.objects.X86FsWorkload, X86FsLinux -> X86/params/X86FsLinux.hh
+ [     CXX] X86/python/_m5/param_X86FsLinux.cc -> .o
+ [     CXX] X86/arch/x86/X86Decoder.py.cc -> .o
+ [SO Param] m5.objects.X86Decoder, X86Decoder -> X86/python/_m5/param_X86Decoder.cc
+ [     CXX] X86/python/_m5/param_X86Decoder.cc -> .o
+ [     CXX] X86/arch/x86/X86ISA.py.cc -> .o
+ [SO Param] m5.objects.X86ISA, X86ISA -> X86/python/_m5/param_X86ISA.cc
+ [     CXX] X86/python/_m5/param_X86ISA.cc -> .o
+ [     CXX] X86/arch/x86/X86LocalApic.py.cc -> .o
+ [SO Param] m5.objects.X86LocalApic, X86LocalApic -> X86/python/_m5/param_X86LocalApic.cc
+ [     CXX] X86/python/_m5/param_X86LocalApic.cc -> .o
+ [     CXX] X86/arch/x86/X86MMU.py.cc -> .o
+ [SO Param] m5.objects.X86MMU, X86MMU -> X86/python/_m5/param_X86MMU.cc
+ [     CXX] X86/python/_m5/param_X86MMU.cc -> .o
+ [     CXX] X86/arch/x86/X86NativeTrace.py.cc -> .o
+ [SO Param] m5.objects.X86NativeTrace, X86NativeTrace -> X86/python/_m5/param_X86NativeTrace.cc
+ [     CXX] X86/python/_m5/param_X86NativeTrace.cc -> .o
+ [     CXX] X86/arch/x86/X86TLB.py.cc -> .o
+ [SO Param] m5.objects.X86TLB, X86PagetableWalker -> X86/python/_m5/param_X86PagetableWalker.cc
+ [     CXX] X86/python/_m5/param_X86PagetableWalker.cc -> .o
+ [SO Param] m5.objects.X86TLB, X86TLB -> X86/python/_m5/param_X86TLB.cc
+ [     CXX] X86/python/_m5/param_X86TLB.cc -> .o
+ [     CXX] X86/arch/x86/X86CPU.py.cc -> .o
+ [ TRACING]  -> X86/debug/LocalApic.cc
+ [     CXX] X86/debug/LocalApic.cc -> .o
+ [ TRACING]  -> X86/debug/X86.cc
+ [     CXX] X86/debug/X86.cc -> .o
+ [ TRACING]  -> X86/debug/ACPI.cc
+ [     CXX] X86/debug/ACPI.cc -> .o
+ [     CXX] X86/arch/x86/generated/decoder.cc -> .o
+ [     CXX] X86/arch/x86/generated/inst-constrs.cc -> .o
+ [     CXX] X86/arch/x86/generated/generic_cpu_exec.cc -> .o
+ [     CXX] src/arch/x86/bare_metal/workload.cc -> X86/arch/x86/bare_metal/workload.o
+ [     CXX] src/arch/x86/regs/float.cc -> X86/arch/x86/regs/float.o
+ [     CXX] src/arch/x86/regs/int.cc -> X86/arch/x86/regs/int.o
+ [     CXX] src/arch/x86/regs/msr.cc -> X86/arch/x86/regs/msr.o
+ [     CXX] X86/arch/x86/kvm/X86KvmCPU.py.cc -> .o
+virtual memory exhausted: Cannot allocate memory
+scons: *** [build/X86/arch/x86/generated/inst-constrs.o] Error 1
+
+cc1plus: out of memory allocating 37467368 bytes after a total of 255496192 bytes
+scons: *** [build/X86/arch/x86/generated/decoder.o] Error 1
+scons: building terminated because of errors.
+*** Summary of Warnings ***
+Warning: You can get a 12% performance improvement by installing tcmalloc
+         (libgoogle-perftools-dev package on Ubuntu or RedHat).
+Warning: Header file <capstone/capstone.h> not found.
+         This host has no capstone library installed.
+Warning: While checking protoc version: [Errno 2] No such file or directory:
+         'protoc'
+Warning: Protocol buffer compiler (protoc) not found.
+         Please install protobuf-compiler for tracing support.
+Warning: Couldn't find HDF5 C++ libraries. Disabling HDF5 support.

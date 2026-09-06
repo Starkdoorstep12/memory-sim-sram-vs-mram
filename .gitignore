@@ -16,3 +16,6 @@ nvsim-src/
 
 # Ramulator2 source/build (tool dependency, not part of the assignment deliverable)
 ramulator2-src/
+
+# gem5 source/build (tool dependency, not part of the assignment deliverable)
+gem5-src/

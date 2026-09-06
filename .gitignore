@@ -19,3 +19,6 @@ ramulator2-src/
 
 # gem5 source/build (tool dependency, not part of the assignment deliverable)
 gem5-src/
+
+# gem5 source/build (tool dependency, not part of the assignment deliverable)
+gem5-src/

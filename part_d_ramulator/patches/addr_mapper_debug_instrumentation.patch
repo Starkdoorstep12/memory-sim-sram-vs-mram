@@ -1,0 +1,20 @@
+diff --git a/src/addr_mapper/impl/linear_mappers.cpp b/src/addr_mapper/impl/linear_mappers.cpp
+index 3792f08..5477742 100644
+--- a/src/addr_mapper/impl/linear_mappers.cpp
++++ b/src/addr_mapper/impl/linear_mappers.cpp
+@@ -67,6 +67,7 @@ class ChRaBaRoCo final : public LinearMapperBase, public Implementation {
+       for (int i = m_addr_bits.size() - 1; i >= 0; i--) {
+         req.addr_vec[i] = slice_lower_bits(addr, m_addr_bits[i]);
+       }
++      static int dbg_ch = 0; if (dbg_ch < 10) { fprintf(stderr, "[ChRaBaRoCo] raw_addr=%lld -> ", (long long)req.addr); for (int lvl : req.addr_vec) fprintf(stderr, "%d ", lvl); fprintf(stderr, "\n"); dbg_ch++; }
+     }
+ };
+ 
+@@ -89,6 +90,7 @@ class RoBaRaCoCh final : public LinearMapperBase, public Implementation {
+       for (int i = 1; i <= m_row_bits_idx; i++) {
+         req.addr_vec[i] = slice_lower_bits(addr, m_addr_bits[i]);
+       }
++      static int dbg_ro = 0; if (dbg_ro < 10) { fprintf(stderr, "[RoBaRaCoCh] raw_addr=%lld -> ", (long long)req.addr); for (int lvl : req.addr_vec) fprintf(stderr, "%d ", lvl); fprintf(stderr, "\n"); dbg_ro++; }
+     }
+ };
+ 

@@ -36,3 +36,22 @@ src/sim/mem_state.cc:443: info: Increasing stack size by one page.
 src/sim/mem_state.cc:443: info: Increasing stack size by one page.
 Generate Time:       1.14633
 Build Time:          1.02413
+Graph has 262143 nodes and 3805449 undirected edges for degree: 14
+Trial Time:          0.11513
+Trial Time:          0.11438
+Trial Time:          0.11459
+Trial Time:          0.11442
+Trial Time:          0.11428
+Trial Time:          0.11426
+Trial Time:          0.11452
+Trial Time:          0.11450
+Trial Time:          0.11449
+Trial Time:          0.11435
+Trial Time:          0.11485
+Trial Time:          0.11478
+Trial Time:          0.11441
+Trial Time:          0.11423
+Trial Time:          0.11480
+Trial Time:          0.11448
+Average Time:        0.11453
+Exiting @ tick 4553539487500 because exiting with last active thread context

@@ -1,0 +1,4 @@
+simSeconds                                   4.553539                       # Number of seconds simulated (Second)
+system.cpu.ipc                               0.742099                       # IPC: instructions per cycle (core level) ((Count/Cycle))
+system.cpu.commitStats0.ipc                  0.742099                       # IPC: instructions per cycle (thread level) ((Count/Cycle))
+system.l2.overallMissRate::total             0.208495                       # miss rate for overall accesses (Ratio)

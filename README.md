@@ -324,3 +324,40 @@ avg_read_latency_0: 1215.25171 # matches the 1-channel baseline to 5 decimal pla
 
 **Conclusion**: the observed ~3.1× slowdown was never a genuine cost of channel-level parallelism. It was entirely an artifact of the address mapper's bit-field allocation silently scrambling a trace's deliberately-engineered locality pattern whenever channel count changes the number of bits that field consumes. This is a real, previously-undocumented methodological trap for anyone sweeping channel count with a fixed synthetic trace under this class of linear address mapper (`RoBaRaCoCh`/`ChRaBaRoCo`) — a fair channel-count comparison requires either regenerating the trace for each channel-count's actual bit layout, or using a channel-count-invariant addressing scheme (e.g., XOR-based interleaving) that doesn't shift other fields' bit windows when channel count changes. Full investigation chronology — including the three disproven hypotheses and the exact debug output at each step — preserved in `part_d_ramulator/investigation/channel_count_and_buffer_bug_log.md`.
 
+
+---
+
+## Part E — gem5: full-system evaluation, SRAM vs STT-MRAM L2
+
+**Build environment note**: gem5's build requires substantially more per-process virtual memory than any other tool in this assignment — specifically, its generated x86 instruction-decoder files (`decoder.o`, `inst-constrs.o`) need several GB to compile. Turing's cluster enforces a hard per-process `ulimit -v` of ~1GB (confirmed via `ulimit -Hv`, soft limit equals hard limit — not raisable at the user level), which made gem5 unbuildable there regardless of parallelism settings (`-j4` through `-j20` all failed identically, `cc1plus: out of memory`, ruling out the process-count ceiling that affected earlier parts). **Moved the build to a local machine (WSL2, Ubuntu 24.04, 8 cores, 16GB RAM raised to a 14GB WSL2 allocation via `.wslconfig`)**, where the build completed successfully in full (`scons build/X86/gem5.opt -j6`, gem5 v25.1.0.1). Full build log from the failed Turing attempt preserved at `part_e_gem5/build_log.txt`; successful WSL build log at `part_e_gem5/build_log_wsl.txt`.
+
+**Config note**: the assignment's example uses `configs/deprecated/example/se.py`, which still exists in this gem5 version (confirmed) but has dropped the `--l2-hit-latency` command-line flag present in older gem5 releases. L2 hit latency is instead set by directly editing `configs/common/Caches.py`'s `L2Cache` class (`tag_latency`/`data_latency`/`response_latency`, all in cycles at the default 2GHz CPU clock).
+
+**Deriving our own L2 hit latencies (not the assignment's illustrative example numbers)**: at 2GHz (0.5ns/cycle):
+- SRAM: CACTI's Part B Task 1 access time (2.902ns) → **6 cycles**.
+- STT-MRAM: NVSim's Part C Task 1 read latency (2.533ns) → **6 cycles**.
+
+**A genuine, notable finding**: our real derived read-hit latencies came out essentially **identical** between SRAM and STT-MRAM (both round to 6 cycles), unlike the assignment's illustrative example (`7` vs `14`, exactly 2×). This isn't a mistake — it's what our own real CACTI/NVSim numbers say. The real STT-MRAM cost we found in Part C is concentrated entirely in *write* latency (10.526ns ≈ 22 cycles, ~3.7× the read latency) — but gem5's classic `Cache` SimObject (`src/mem/cache/Cache.py`) has **no separate write-latency parameter at all** (confirmed by searching the entire `src/mem/` tree, including every Ruby coherence protocol shipped with gem5 — nothing supports asymmetric read/write cache latency). This is a real, structural limitation of gem5's classic memory model, not something we missed — see the note at the end of this section on a concrete follow-up research direction this points to.
+
+**Derived STT-MRAM L2 capacity**: using our own Part B/C area ratio (10.658mm² / 2.888mm² = 3.69×, not the assignment's illustrative 4×) gives 2MB × 3.69 = **7.38MB**. Used **8MB** for a clean, power-of-two-friendly config — an 8% deviation from our own precise derivation, explicitly flagged rather than silently substituted.
+
+**Workload**: GAPBS (`github.com/sbeamer/gapbs`), built cleanly with `make` (plain C++11, no issues). `bfs` and `sssp` on a synthetic Kronecker graph (`-g 18`, 262,143 nodes, ~3.8M edges) — matching the assignment's example scale. Default `-n 16` trials per run — checked whether this was safe to reduce (each of the four runs took multiple hours under `O3CPU`, a legitimate practical concern) and found via source inspection (`src/benchmark.h`, `src/bfs.cc`'s `SourcePicker`) that each trial genuinely starts BFS/SSSP from a **different random source node** — real, meaningful variation in traversal work per trial, not simulator noise to be pruned. Kept all four runs at the full default 16 trials for methodological consistency and validity.
+
+Config: `--cpu-type=O3CPU --caches --l2cache --l1d_size=32kB --l1i_size=32kB --l2_assoc=8 --mem-type=DDR4_2400_8x8 --mem-size=4GB`, `--l2_size=2MB` (SRAM) or `--l2_size=8MB` (STT-MRAM).
+
+### Task 1 — SRAM vs STT-MRAM L2, IPC / L2 miss rate / simSeconds
+
+| Metric | SRAM+bfs | STT-MRAM+bfs | Δ | SRAM+sssp | STT-MRAM+sssp | Δ |
+|---|---|---|---|---|---|---|
+| IPC | 0.819 | 0.960 | **+17.3%** | 0.742 | 0.846 | **+14.0%** |
+| simSeconds | 2.646 | 2.256 | **−14.7%** | 4.554 | 3.994 | **−12.3%** |
+| L2 miss rate | 33.7% | 16.5% | **−51.2%** | 20.8% | 15.1% | **−27.6%** |
+
+**STT-MRAM wins decisively on every metric, for both kernels.** This is a direct, coherent consequence of the chain built across Parts B, C, and E: our real NVSim-derived STT-MRAM read latency matched SRAM's CACTI-derived latency almost exactly (both 6 cycles) — so STT-MRAM pays essentially **no** per-hit latency penalty in this evaluation — while its measured 3.69× area advantage lets it hold 4× the capacity in the same L2 slot. With no latency cost to offset and a large capacity win, STT-MRAM wins outright. `bfs` benefits more than `sssp` (miss rate roughly halved vs. −27.6%), consistent with `bfs`'s larger, more capacity-sensitive working set (the full adjacency structure of a 262K-node graph) benefiting more from extra L2 capacity than `sssp`'s more locality-friendly relaxation-based traversal.
+
+**This result should be read carefully, not as "STT-MRAM is unconditionally better"**: it reflects our specific process parameters (45nm, the specific TMR/resistance values used in Parts B/C) and, critically, gem5's classic cache model's inability to charge STT-MRAM for its real write-latency cost. A workload with a higher write ratio, or a cache model capable of asymmetric read/write latency, could very plausibly reverse this result. This nuance is exactly what Task 4's synthesis needs to address honestly.
+
+Full logs: `part_e_gem5/results/{sram_bfs,sram_sssp,mram_bfs,mram_sssp}/stats.txt` (complete, raw gem5 statistics, not just extracted summaries).
+
+**Research follow-up flagged, not pursued here** (scope and time reasons — this is a real infrastructure contribution, not a quick fix): gem5's classic cache hierarchy has no asymmetric read/write latency support anywhere in its shipped source. A custom `SimObject` extending `BaseCache` with a genuine `write_latency` parameter (applied on the write-hit/write-fill paths in `cache.cc`) would let full-system NVM-cache evaluations correctly charge write-heavy workloads for the real device-level asymmetry this assignment's own CACTI/NVSim data demonstrates exists. Noted for potential ISCA-track follow-up.
+

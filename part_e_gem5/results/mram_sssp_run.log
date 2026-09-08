@@ -39,3 +39,20 @@ Generate Time:       1.14073
 Build Time:          0.73931
 Graph has 262143 nodes and 3805449 undirected edges for degree: 14
 Trial Time:          0.09864
+Trial Time:          0.09748
+Trial Time:          0.09768
+Trial Time:          0.09762
+Trial Time:          0.09747
+Trial Time:          0.09739
+Trial Time:          0.09765
+Trial Time:          0.09755
+Trial Time:          0.09759
+Trial Time:          0.09746
+Trial Time:          0.09792
+Trial Time:          0.09788
+Trial Time:          0.09752
+Trial Time:          0.09743
+Trial Time:          0.09789
+Trial Time:          0.09760
+Average Time:        0.09767
+Exiting @ tick 3993587199000 because exiting with last active thread context

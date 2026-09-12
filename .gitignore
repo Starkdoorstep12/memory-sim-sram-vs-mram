@@ -25,3 +25,4 @@ gem5-src/
 
 # GAPBS source (tool dependency, not part of the assignment deliverable)
 gapbs-src/
+part_e_gem5/results/real_trace_capture/memctrl_trace.log

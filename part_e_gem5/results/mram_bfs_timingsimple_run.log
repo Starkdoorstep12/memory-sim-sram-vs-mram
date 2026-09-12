@@ -1,0 +1,56 @@
+nohup: ignoring input
+warn: The se.py script is deprecated. It will be removed in future releases of  gem5.
+warn: Base 10 memory/cache size 4GB will be cast to base 2 size 4GiB.
+warn: Base 10 memory/cache size 8MB will be cast to base 2 size 8MiB.
+warn: Base 10 memory/cache size 32kB will be cast to base 2 size 32KiB.
+warn: Base 10 memory/cache size 32kB will be cast to base 2 size 32KiB.
+warn: Base 10 memory/cache size 8MB will be cast to base 2 size 8MiB.
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+src/mem/dram_interface.cc:690: warn: DRAM device capacity (16384 Mbytes) does not match the address range assigned (4096 Mbytes)
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/base/remote_gdb.cc:418: warn: Sockets disabled, not accepting gdb connections
+gem5 Simulator System.  https://www.gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 25.1.0.1
+gem5 compiled Sep  6 2026 07:14:29
+gem5 started Sep 12 2026 04:22:44
+gem5 executing on DESKTOP-DPLD80C, pid 509
+command line: ./build/X86/gem5.opt --outdir=../part_e_gem5/results/mram_bfs_timingsimple configs/deprecated/example/se.py --cpu-type=TimingSimpleCPU --caches --l2cache --l1d_size=32kB --l1i_size=32kB --l2_size=8MB --l2_assoc=8 --mem-type=DDR4_2400_8x8 --mem-size=4GB --cmd=../gapbs-src/bfs '--options=-g 18'
+
+info: Standard input is not a terminal, disabling listeners.
+**** REAL SIMULATION ****
+src/sim/mem_state.cc:443: info: Increasing stack size by one page.
+src/sim/syscall_emul.cc:86: warn: ignoring syscall set_robust_list(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall rseq(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/mem_state.cc:443: info: Increasing stack size by one page.
+src/sim/mem_state.cc:443: info: Increasing stack size by one page.
+Generate Time:       5.12723
+Build Time:          0.67286
+Graph has 262143 nodes and 3805449 undirected edges for degree: 14
+Trial Time:          0.04107
+Trial Time:          0.03272
+Trial Time:          0.03986
+Trial Time:          0.03495
+Trial Time:          0.03700
+Trial Time:          0.03139
+Trial Time:          0.03761
+Trial Time:          0.04618
+Trial Time:          0.03176
+Trial Time:          0.03208
+Trial Time:          0.03917
+Trial Time:          0.04045
+Trial Time:          0.03133
+Trial Time:          0.04038
+Trial Time:          0.04656
+Trial Time:          0.03491
+Average Time:        0.03734
+Exiting @ tick 7572294231500 because exiting with last active thread context

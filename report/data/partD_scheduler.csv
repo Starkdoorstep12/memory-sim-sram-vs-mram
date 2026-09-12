@@ -1,0 +1,3 @@
+scheduler,row_buffer_hits,avg_read_latency_cycles
+FRFCFS,1782,1159.9
+FCFS,954,1248.4

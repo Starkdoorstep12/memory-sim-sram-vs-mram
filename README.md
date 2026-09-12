@@ -374,3 +374,18 @@ Both kernels favor STT-MRAM, but by different margins: `bfs`'s L2 miss rate is r
 
 **The trade wins for both kernels here specifically because of Task 1's finding that STT-MRAM's real hit-latency penalty came out negligible** (6 cycles vs SRAM's 6 cycles) — if gem5's cache model could charge STT-MRAM for its real write-latency cost (Part C: ~22 cycles vs 6 for reads), a sufficiently write-heavy kernel could plausibly see that cost outweigh the capacity win, especially for a kernel like `sssp` whose delta-stepping repeatedly updates (writes) tentative distances as it relaxes edges — a detail this evaluation cannot currently capture given gem5's classic cache model's read/write latency limitation (see Task 1's note).
 
+
+### Task 3 — Re-running the winner with TimingSimpleCPU: what out-of-order execution was actually doing
+
+Re-ran STT-MRAM+bfs (the larger, clearer win from Task 1) with `--cpu-type=TimingSimpleCPU` instead of `O3CPU`, everything else unchanged.
+
+| Metric | O3CPU | TimingSimpleCPU | Ratio |
+|---|---|---|---|
+| IPC | 0.960 | 0.286 | **3.36×** |
+| simSeconds | 2.256 | 7.572 | **3.36× slower** |
+| L2 miss rate | 16.45% | 15.93% | −3.2% (essentially unchanged) |
+
+**IPC and simSeconds move by exactly the same 3.36× factor** (mathematically expected for a fixed instruction count — total simulated time is inversely proportional to IPC), while **the L2 miss rate barely moves at all**. This cleanly isolates what out-of-order execution was actually doing in Task 1's result: it wasn't changing *what* the cache experiences — the memory-access pattern and resulting miss rate are almost entirely a property of the program and cache configuration, not the CPU's execution model. What O3 changes is *how much each miss costs in cycles*. `TimingSimpleCPU` is strictly in-order — it fully stalls on every memory access with no ability to continue executing independent instructions while a miss is outstanding. `O3CPU`'s reorder buffer and speculative execution let it keep useful work in flight during a miss, effectively **hiding** memory latency rather than **avoiding** it. Task 1's large capacity-driven IPC gains (STT-MRAM's bigger L2 cutting miss rate) only translate into large *IPC* gains under a CPU capable of overlapping that latency — under `TimingSimpleCPU`, the *same* underlying miss-rate improvement is still present (STT-MRAM's advantage over SRAM at this CPU model would still show a similar relative miss-rate cut), but with no overlap mechanism to hide the remaining misses' cost, the absolute IPC is dramatically lower across the board. This is exactly the assignment's warning in miniature: 'STT-MRAM is M× faster' is not a portable result — it's conditional on the specific CPU model's ability to exploit the capacity advantage, not just the advantage's raw existence.
+
+Full log: `part_e_gem5/results/mram_bfs_timingsimple/stats.txt`.
+

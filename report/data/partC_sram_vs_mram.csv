@@ -1,0 +1,7 @@
+metric,sram,mram,unit
+Area,10.658,2.888,mm2
+Leakage,2250,433.9,mW
+Read energy,0.793,0.559,nJ
+Read latency,2.902,2.533,ns
+Write energy,0.851,1.901,nJ
+Write latency,2.65,10.526,ns

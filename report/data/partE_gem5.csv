@@ -1,0 +1,5 @@
+kernel,config,ipc,l2_miss_rate_pct
+bfs,SRAM,0.819,33.7
+bfs,STT-MRAM,0.960,16.5
+sssp,SRAM,0.742,20.8
+sssp,STT-MRAM,0.846,15.1
